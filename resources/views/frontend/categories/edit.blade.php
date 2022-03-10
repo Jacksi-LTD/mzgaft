@@ -1,0 +1,53 @@
+@extends('layouts.frontend')
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    {{ trans('global.edit') }} {{ trans('cruds.category.title_singular') }}
+                </div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route("frontend.categories.update", [$category->id]) }}" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
+                        <div class="form-group">
+                            <label class="required" for="name">{{ trans('cruds.category.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $category->name) }}" required>
+                            @if($errors->has('name'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.category.fields.name_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required">{{ trans('cruds.category.fields.category') }}</label>
+                            @foreach(App\Models\Category::CATEGORY_RADIO as $key => $label)
+                                <div>
+                                    <input type="radio" id="category_{{ $key }}" name="category" value="{{ $key }}" {{ old('category', $category->category) === (string) $key ? 'checked' : '' }} required>
+                                    <label for="category_{{ $key }}">{{ $label }}</label>
+                                </div>
+                            @endforeach
+                            @if($errors->has('category'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('category') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.category.fields.category_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-danger" type="submit">
+                                {{ trans('global.save') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
