@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
@@ -24,17 +23,28 @@ class BlogController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('blog_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->get();
 
         $people = Person::get();
 
-        $categories = Category::get();
-
+        $categories = Category::where('category', 'blogs')->get();
         $users = User::get();
 
         return view('frontend.blogs.index', compact('blogs', 'categories', 'people', 'users'));
+    }
+
+    public function category(Category $category)
+    {
+
+        $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->get();
+        $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->get();
+
+        $people = Person::get();
+
+        $categories = Category::where('category', 'blogs')->get();
+        $users = User::get();
+
+        return view('frontend.blogs.category', compact('blogs', 'some_blogs', 'categories', 'people', 'users'));
     }
 
     public function create()
@@ -86,28 +96,28 @@ class BlogController extends Controller
 
         if (count($blog->files) > 0) {
             foreach ($blog->files as $media) {
-                if (!in_array($media->file_name, $request->input('files', []))) {
+                if (! in_array($media->file_name, $request->input('files', []))) {
                     $media->delete();
                 }
             }
         }
         $media = $blog->files->pluck('file_name')->toArray();
         foreach ($request->input('files', []) as $file) {
-            if (count($media) === 0 || !in_array($file, $media)) {
+            if (count($media) === 0 || ! in_array($file, $media)) {
                 $blog->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
             }
         }
 
         if (count($blog->images) > 0) {
             foreach ($blog->images as $media) {
-                if (!in_array($media->file_name, $request->input('images', []))) {
+                if (! in_array($media->file_name, $request->input('images', []))) {
                     $media->delete();
                 }
             }
         }
         $media = $blog->images->pluck('file_name')->toArray();
         foreach ($request->input('images', []) as $file) {
-            if (count($media) === 0 || !in_array($file, $media)) {
+            if (count($media) === 0 || ! in_array($file, $media)) {
                 $blog->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
             }
         }
@@ -144,10 +154,10 @@ class BlogController extends Controller
     {
         abort_if(Gate::denies('blog_create') && Gate::denies('blog_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Blog();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Blog();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

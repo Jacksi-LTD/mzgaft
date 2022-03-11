@@ -99,8 +99,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
-Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['auth']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+// Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['auth']], function () {
+Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -124,6 +125,7 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::delete('blogs/destroy', 'BlogController@massDestroy')->name('blogs.massDestroy');
     Route::post('blogs/media', 'BlogController@storeMedia')->name('blogs.storeMedia');
     Route::post('blogs/ckmedia', 'BlogController@storeCKEditorImages')->name('blogs.storeCKEditorImages');
+    Route::get('blogs/category/{category}', 'BlogController@category')->name('blogs.category');
     Route::resource('blogs', 'BlogController');
 
     // Audio
@@ -144,6 +146,8 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('audio-books/ckmedia', 'AudioBookController@storeCKEditorImages')->name('audio-books.storeCKEditorImages');
     Route::resource('audio-books', 'AudioBookController');
 
+    // TODO: Tafsir
+    Route::resource('tafsir', 'TafsirController');
     // Surah
     Route::delete('surahs/destroy', 'SurahController@massDestroy')->name('surahs.massDestroy');
     Route::resource('surahs', 'SurahController');
