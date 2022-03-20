@@ -27,7 +27,7 @@ class BlogController extends Controller
 
         $people = Person::get();
 
-        $categories = Category::where('category', 'blogs')->get();
+        $categories = Category::where('type', 'blogs')->get();
         $users = User::get();
 
         return view('frontend.blogs.index', compact('blogs', 'categories', 'people', 'users'));
@@ -37,14 +37,10 @@ class BlogController extends Controller
     {
 
         $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->get();
+
         $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->get();
 
-        $people = Person::get();
-
-        $categories = Category::where('category', 'blogs')->get();
-        $users = User::get();
-
-        return view('frontend.blogs.category', compact('blogs', 'some_blogs', 'categories', 'people', 'users'));
+        return view('frontend.blogs.category', compact('blogs', 'some_blogs', 'category'));
     }
 
     public function create()

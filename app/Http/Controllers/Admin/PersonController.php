@@ -50,8 +50,8 @@ class PersonController extends Controller
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
-            $table->editColumn('category', function ($row) {
-                return $row->category ? Person::CATEGORY_SELECT[$row->category] : '';
+            $table->editColumn('type', function ($row) {
+                return $row->type ? Person::TYPE_SELECT[$row->type] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder']);

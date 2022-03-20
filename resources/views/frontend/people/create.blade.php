@@ -24,19 +24,19 @@
                             <span class="help-block">{{ trans('cruds.person.fields.name_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label class="required">{{ trans('cruds.person.fields.category') }}</label>
-                            <select class="form-control" name="category" id="category" required>
-                                <option value disabled {{ old('category', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                                @foreach(App\Models\Person::CATEGORY_SELECT as $key => $label)
-                                    <option value="{{ $key }}" {{ old('category', 'mr') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                            <label class="required">{{ trans('cruds.person.fields.type') }}</label>
+                            <select class="form-control" name="type" id="type" required>
+                                <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                @foreach(App\Models\Person::TYPE_SELECT as $key => $label)
+                                    <option value="{{ $key }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('category'))
+                            @if($errors->has('type'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('category') }}
+                                    {{ $errors->first('type') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.person.fields.category_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.person.fields.type_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

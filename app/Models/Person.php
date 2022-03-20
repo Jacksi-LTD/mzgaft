@@ -16,7 +16,7 @@ class Person extends Model
     use Auditable;
     use HasFactory;
 
-    public const CATEGORY_SELECT = [
+    public const TYPE_SELECT = [
         'blogs'       => 'مقالات',
         'audios'      => 'صوتيات',
         'books'       => 'كتب',
@@ -33,7 +33,7 @@ class Person extends Model
 
     protected $fillable = [
         'name',
-        'category',
+        'type',
         'created_at',
         'updated_at',
         'deleted_at',

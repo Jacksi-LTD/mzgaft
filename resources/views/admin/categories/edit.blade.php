@@ -19,17 +19,29 @@
                 <span class="help-block">{{ trans('cruds.category.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.category.fields.category') }}</label>
-                @foreach(App\Models\Category::CATEGORY_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('category') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="category_{{ $key }}" name="category" value="{{ $key }}" {{ old('category', $category->category) === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label" for="category_{{ $key }}">{{ $label }}</label>
-                    </div>
-                @endforeach
+                <label for="category_id">{{ trans('cruds.category.fields.category') }}</label>
+                <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
+                    @foreach($categories as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('category_id') ? old('category_id') : $category->category->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('category'))
                     <span class="text-danger">{{ $errors->first('category') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.category.fields.category_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label>{{ trans('cruds.category.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Category::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', $category->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.category.fields.type_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -36,7 +36,15 @@
                             {{ trans('cruds.category.fields.category') }}
                         </th>
                         <td>
-                            {{ App\Models\Category::CATEGORY_RADIO[$category->category] ?? '' }}
+                            {{ $category->category->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.category.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Category::TYPE_SELECT[$category->type] ?? '' }}
                         </td>
                     </tr>
                 </tbody>
@@ -50,6 +58,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#category_categories" role="tab" data-toggle="tab">
+                {{ trans('cruds.category.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="category_categories">
+            @includeIf('admin.categories.relationships.categoryCategories', ['categories' => $category->categoryCategories])
+        </div>
+    </div>
+</div>
 
 @endsection

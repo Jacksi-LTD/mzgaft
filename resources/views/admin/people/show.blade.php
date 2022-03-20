@@ -33,10 +33,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.person.fields.category') }}
+                            {{ trans('cruds.person.fields.type') }}
                         </th>
                         <td>
-                            {{ App\Models\Person::CATEGORY_SELECT[$person->category] ?? '' }}
+                            {{ App\Models\Person::TYPE_SELECT[$person->type] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

@@ -3,7 +3,7 @@
 return [
     'actions'                        => 'العمليات',
     'add'                            => 'إضافة',
-    'allRightsReserved'              => 'صنع بشغف بواسطة المبرمج محمد جاكسي',
+    'allRightsReserved'              => 'كافة الحقوق محفوظة',
     'areYouSure'                     => 'هل أنت متأكد؟',
     'clickHereToVerify'              => 'اضغط هنا للتحقق',
     'create'                         => 'إضافة',

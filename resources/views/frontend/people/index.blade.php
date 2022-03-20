@@ -33,7 +33,7 @@
                                         {{ trans('cruds.person.fields.name') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.person.fields.category') }}
+                                        {{ trans('cruds.person.fields.type') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -51,7 +51,7 @@
                                     <td>
                                         <select class="search" strict="true">
                                             <option value>{{ trans('global.all') }}</option>
-                                            @foreach(App\Models\Person::CATEGORY_SELECT as $key => $item)
+                                            @foreach(App\Models\Person::TYPE_SELECT as $key => $item)
                                                 <option value="{{ $item }}">{{ $item }}</option>
                                             @endforeach
                                         </select>
@@ -70,7 +70,7 @@
                                             {{ $person->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ App\Models\Person::CATEGORY_SELECT[$person->category] ?? '' }}
+                                            {{ App\Models\Person::TYPE_SELECT[$person->type] ?? '' }}
                                         </td>
                                         <td>
                                             @can('person_show')

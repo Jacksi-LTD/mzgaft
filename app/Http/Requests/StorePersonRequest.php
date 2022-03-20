@@ -21,7 +21,7 @@ class StorePersonRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'category' => [
+            'type' => [
                 'required',
             ],
         ];

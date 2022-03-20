@@ -21,7 +21,7 @@ class UpdatePersonRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'category' => [
+            'type' => [
                 'required',
             ],
         ];

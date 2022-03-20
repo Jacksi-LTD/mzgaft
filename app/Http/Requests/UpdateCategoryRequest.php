@@ -21,9 +21,6 @@ class UpdateCategoryRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'category' => [
-                'required',
-            ],
         ];
     }
 }

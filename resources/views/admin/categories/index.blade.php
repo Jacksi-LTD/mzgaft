@@ -35,6 +35,9 @@
                         {{ trans('cruds.category.fields.category') }}
                     </th>
                     <th>
+                        {{ trans('cruds.category.fields.type') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -48,9 +51,17 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
+                        <select class="search">
+                            <option value>{{ trans('global.all') }}</option>
+                            @foreach($categories as $key => $item)
+                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
                         <select class="search" strict="true">
                             <option value>{{ trans('global.all') }}</option>
-                            @foreach(App\Models\Category::CATEGORY_RADIO as $key => $item)
+                            @foreach(App\Models\Category::TYPE_SELECT as $key => $item)
                                 <option value="{{ $key }}">{{ $item }}</option>
                             @endforeach
                         </select>
@@ -83,7 +94,8 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
-{ data: 'category', name: 'category' },
+{ data: 'category_name', name: 'category.name' },
+{ data: 'type', name: 'type' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

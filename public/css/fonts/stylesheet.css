@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Bahij';
+    src: url('BahijTheSansArabic-Plain.eot');
+    src: url('BahijTheSansArabic-Plain.eot?#iefix') format('embedded-opentype'),
+        url('BahijTheSansArabic-Plain.woff2') format('woff2'),
+        url('BahijTheSansArabic-Plain.woff') format('woff'),
+        url('BahijTheSansArabic-Plain.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

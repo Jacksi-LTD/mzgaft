@@ -19,17 +19,17 @@
                 <span class="help-block">{{ trans('cruds.person.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.person.fields.category') }}</label>
-                <select class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category" id="category" required>
-                    <option value disabled {{ old('category', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Person::CATEGORY_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('category', $person->category) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label class="required">{{ trans('cruds.person.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type" required>
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Person::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', $person->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('category'))
-                    <span class="text-danger">{{ $errors->first('category') }}</span>
+                @if($errors->has('type'))
+                    <span class="text-danger">{{ $errors->first('type') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.person.fields.category_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.person.fields.type_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
