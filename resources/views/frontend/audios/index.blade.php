@@ -1,11 +1,7 @@
 @extends('layouts.frontend')
-@section('content')
-    @extends('layouts.frontend')
-@section('page_title', 'المقالات')
+@section('page_title', 'الصوتيات')
 
 @section('content')
-
-
     <!-- ***** articles-categories-section Start ***** -->
 
     <section class="section-style articles-categories-section categories-section ">
@@ -140,7 +136,4 @@
     </section>
 
     <!-- ***** articles-categories-section End ***** -->
-
-@endsection
-
 @endsection

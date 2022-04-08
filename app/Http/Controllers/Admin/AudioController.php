@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -41,12 +40,12 @@ class AudioController extends Controller
                 $crudRoutePart = 'audios';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('id', function ($row) {
@@ -70,7 +69,7 @@ class AudioController extends Controller
                 return '<input type="checkbox" disabled ' . ($row->approved ? 'checked' : null) . '>';
             });
             $table->editColumn('files', function ($row) {
-                if (!$row->files) {
+                if (! $row->files) {
                     return '';
                 }
                 $links = [];
@@ -81,7 +80,7 @@ class AudioController extends Controller
                 return implode(', ', $links);
             });
             $table->editColumn('images', function ($row) {
-                if (!$row->images) {
+                if (! $row->images) {
                     return '';
                 }
                 $links = [];
@@ -97,9 +96,9 @@ class AudioController extends Controller
             return $table->make(true);
         }
 
-        $people     = Person::where('type', 'audios')->get();
+        $people = Person::where('type', 'audios')->get();
         $categories = Category::where('type', 'audios')->get();
-        $users      = User::get();
+        $users = User::get();
 
         return view('admin.audios.index', compact('people', 'categories', 'users'));
     }
@@ -120,7 +119,12 @@ class AudioController extends Controller
         $audio = Audio::create($request->all());
 
         foreach ($request->input('files', []) as $file) {
-            $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+            // $duration = (new \wapmorgan\Mp3Info\Mp3Info($file, true))->duration;
+            $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))
+            ->withCustomProperties(
+                ['title' => 'العنوان الأول',
+                'duration' => '00:00']
+                )->toMediaCollection('files');
         }
 
         foreach ($request->input('images', []) as $file) {
@@ -153,28 +157,33 @@ class AudioController extends Controller
 
         if (count($audio->files) > 0) {
             foreach ($audio->files as $media) {
-                if (!in_array($media->file_name, $request->input('files', []))) {
+                if (! in_array($media->file_name, $request->input('files', []))) {
                     $media->delete();
                 }
             }
         }
         $media = $audio->files->pluck('file_name')->toArray();
         foreach ($request->input('files', []) as $file) {
-            if (count($media) === 0 || !in_array($file, $media)) {
-                $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+
+            if (count($media) === 0 || ! in_array($file, $media)) {
+                // $duration = (new \wapmorgan\Mp3Info\Mp3Info($file, true))->duration;
+                $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))
+                ->withCustomProperties(['title' => 'العنوان الأول', 'duration' => '00:00'])
+
+                ->toMediaCollection('files');
             }
         }
 
         if (count($audio->images) > 0) {
             foreach ($audio->images as $media) {
-                if (!in_array($media->file_name, $request->input('images', []))) {
+                if (! in_array($media->file_name, $request->input('images', []))) {
                     $media->delete();
                 }
             }
         }
         $media = $audio->images->pluck('file_name')->toArray();
         foreach ($request->input('images', []) as $file) {
-            if (count($media) === 0 || !in_array($file, $media)) {
+            if (count($media) === 0 || ! in_array($file, $media)) {
                 $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
             }
         }
@@ -211,10 +220,10 @@ class AudioController extends Controller
     {
         abort_if(Gate::denies('audio_create') && Gate::denies('audio_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Audio();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Audio();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

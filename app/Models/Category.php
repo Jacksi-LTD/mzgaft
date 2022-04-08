@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use \DateTimeInterface;
@@ -17,10 +16,11 @@ class Category extends Model
     use HasFactory;
 
     public const TYPE_SELECT = [
-        'blogs'       => 'مقالات',
-        'audios'      => 'صوتيات',
-        'books'       => 'كتب',
+        'blogs' => 'مقالات',
+        'audios' => 'صوتيات',
+        'books' => 'كتب',
         'audio_books' => 'كتب صوتية',
+        'questions' => 'الأسئلة',
     ];
 
     public $table = 'categories';
@@ -40,6 +40,11 @@ class Category extends Model
         'deleted_at',
         'created_by_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 
     public function childCategories()
     {

@@ -1,212 +1,201 @@
 @extends('layouts.frontend')
+@section('page_title', 'اسئلة وأجوبة')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            @can('question_create')
-                <div style="margin-bottom: 10px;" class="row">
-                    <div class="col-lg-12">
-                        <a class="btn btn-success" href="{{ route('frontend.questions.create') }}">
-                            {{ trans('global.add') }} {{ trans('cruds.question.title_singular') }}
-                        </a>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
-                            {{ trans('global.app_csvImport') }}
-                        </button>
-                        @include('csvImport.modal', ['model' => 'Question', 'route' => 'admin.questions.parseCsvImport'])
+
+
+    <section class="section-style lessons-section section-cols">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class="col-lg-8 half">
+
+                    <div class="duplicated-box-wrapper box-container ">
+
+                        <div class="duplicated-box box-lg  lessons-style duplicated-box-2 ">
+
+                            <div class="box-header box-padding ">
+
+                                <div class="header-title ">
+
+                                    اسئلة وأجوبة
+
+                                </div>
+
+
+                            </div>
+                            <div class="box-body box-padding">
+
+                                <div class="body-content ">
+
+                                    <ul class="body-list  lessons-list">
+                                        @foreach ($questions as $question)
+                                            <li class="list-item">
+
+                                                <div class="item-content">
+
+
+                                                    <a class="item-type item-link"
+                                                        href="{{ route('frontend.questions.show', $question->id) }}">
+
+                                                        <span class="icon">
+
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                                                                viewBox="0 0 17 17">
+                                                                <path id="indent"
+                                                                    d="M0,33.214A1.214,1.214,0,0,1,1.214,32H15.786a1.214,1.214,0,0,1,0,2.429H1.214A1.214,1.214,0,0,1,0,33.214Zm7.286,4.857A1.213,1.213,0,0,1,8.5,36.857h7.286a1.214,1.214,0,1,1,0,2.429H8.5A1.213,1.213,0,0,1,7.286,38.071Zm8.5,3.643a1.214,1.214,0,1,1,0,2.429H8.5a1.214,1.214,0,1,1,0-2.429ZM0,47.786a1.214,1.214,0,0,1,1.214-1.214H15.786a1.214,1.214,0,1,1,0,2.429H1.214A1.214,1.214,0,0,1,0,47.786Zm.98-3.8A.607.607,0,0,1,0,43.509V37.491a.607.607,0,0,1,.98-.478l3.87,3.009a.654.654,0,0,1,0,.956Z"
+                                                                    transform="translate(0 -32)" />
+                                                            </svg>
+
+                                                        </span>
+                                                        <span class="text">{{ $question->title }}</span>
+
+                                                    </a>
+
+
+
+                                                </div>
+
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        {{ $questions->links() }}
                     </div>
+
+
                 </div>
-            @endcan
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('cruds.question.title_singular') }} {{ trans('global.list') }}
-                </div>
+                <div class="col-lg-4 half">
 
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class=" table table-bordered table-striped table-hover datatable datatable-Question">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.id') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.question.fields.title') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.question.fields.category') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.question.fields.person') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.question.fields.visits') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.question.fields.approved') }}
-                                    </th>
-                                    <th>
-                                        &nbsp;
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($categories as $key => $item)
-                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($people as $key => $item)
-                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($questions as $key => $question)
-                                    <tr data-entry-id="{{ $question->id }}">
-                                        <td>
-                                            {{ $question->id ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $question->title ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $question->category->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $question->person->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $question->visits ?? '' }}
-                                        </td>
-                                        <td>
-                                            <span style="display:none">{{ $question->approved ?? '' }}</span>
-                                            <input type="checkbox" disabled="disabled" {{ $question->approved ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            @can('question_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.questions.show', $question->id) }}">
-                                                    {{ trans('global.view') }}
-                                                </a>
-                                            @endcan
+                    <div class="side-box-container">
 
-                                            @can('question_edit')
-                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.questions.edit', $question->id) }}">
-                                                    {{ trans('global.edit') }}
-                                                </a>
-                                            @endcan
+                        <div class="box-wrap">
 
-                                            @can('question_delete')
-                                                <form action="{{ route('frontend.questions.destroy', $question->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                                </form>
-                                            @endcan
 
-                                        </td>
+                            <div class="duplicated-box-wrapper">
 
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                <div class="duplicated-box box-lg box-side side-statistics  duplicated-box-2 ">
+
+                                    <div class="box-header box-padding ">
+
+                                        <div class="header-title ">
+
+                                            احصائيات
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="box-body box-padding">
+
+                                        <div class="body-content ">
+
+                                            <ul class="body-list statistics-list">
+
+                                                <li class="list-item">
+
+                                                    <div class="statistics-item">
+
+                                                        <span class="statistics-text">
+
+                                                            اجمالي الأسئلة
+                                                            :
+
+                                                        </span>
+                                                        <span class="statistics-val">150</span>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="box-wrap">
+
+
+                            <div class="duplicated-box-wrapper">
+
+                                <div class="duplicated-box box-lg box-side side-lessons lessons-style duplicated-box-2 ">
+
+                                    <div class="box-header box-padding ">
+
+                                        <div class="header-title ">
+
+                                            اسئلة وأجوبة
+
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="box-body box-padding">
+
+                                        <div class="body-content ">
+
+                                            <ul class="body-list lessons-list">
+                                                @foreach ($some_questions as $question)
+
+
+
+                                                    <li class="list-item">
+
+                                                        <div class="item-wrap">
+
+                                                            <div class="item-content">
+
+                                                                <a class="item-link" href="{{route('frontend.questions.show', $question->id )}}">{{ $question->title }}</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </li>
+                                                @endforeach
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
                     </div>
+
                 </div>
+
+
             </div>
 
         </div>
-    </div>
-</div>
-@endsection
-@section('scripts')
-@parent
-<script>
-    $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('question_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('frontend.questions.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-          return $(entry).data('entry-id')
-      });
 
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+    </section>
 
-        return
-      }
-
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  dtButtons.push(deleteButton)
-@endcan
-
-  $.extend(true, $.fn.dataTable.defaults, {
-    orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  });
-  let table = $('.datatable-Question:not(.ajaxTable)').DataTable({ buttons: dtButtons })
-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
-  
-let visibleColumnsIndexes = null;
-$('.datatable thead').on('input', '.search', function () {
-      let strict = $(this).attr('strict') || false
-      let value = strict && this.value ? "^" + this.value + "$" : this.value
-
-      let index = $(this).parent().index()
-      if (visibleColumnsIndexes !== null) {
-        index = visibleColumnsIndexes[index]
-      }
-
-      table
-        .column(index)
-        .search(value, strict)
-        .draw()
-  });
-table.on('column-visibility.dt', function(e, settings, column, state) {
-      visibleColumnsIndexes = []
-      table.columns(":visible").every(function(colIdx) {
-          visibleColumnsIndexes.push(colIdx);
-      });
-  })
-})
-
-</script>
 @endsection

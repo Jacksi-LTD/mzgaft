@@ -17,15 +17,15 @@ $('a[href="#"]').click(function ($) {
 
 
 function loading_overlay (){
-    
-    
+
+
     btn = $(this);
     btn.addClass('loading-overlay');
     setTimeout(function() {
       btn.removeClass('loading-overlay');
       btn.toggleClass('active')
     }, 1000);
-    
+
 }
 
 $('.loading-btn').click(loading_overlay);
@@ -34,7 +34,7 @@ $('.loading-btn').click(loading_overlay);
 /*------------- #scroll-top btn   --------------*/
 
 $(window).scroll(function() {
-          
+
         if ($(this).scrollTop() > 200) {
             $('.scrollup').addClass("show")
         } else {
@@ -46,22 +46,22 @@ $(window).scroll(function() {
 
 $('.scrollup').click(function(e){
 
-    e.preventDefault(); 
-    
+    e.preventDefault();
+
     $(this).addClass('active');
     $('html,body').animate({
 
         scrollTop:0},1000);
-    
+
      document.documentElement.style.setProperty('scroll-behavior', 'auto');
-    
-     setTimeout(function() { 
-         
+
+     setTimeout(function() {
+
        document.documentElement.style.setProperty('scroll-behavior', 'smooth');
-         
+
     }, 1000);
-        
-    
+
+
 });
 
 

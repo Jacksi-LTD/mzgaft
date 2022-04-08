@@ -1,127 +1,264 @@
 @extends('layouts.frontend')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+@section('page_title', $audioBook->title)
+@section('page_title', 'الكتب الصوتية')
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('frontend.audio-books.index') }}">الكتب الصوتية</a></li>
+    @php
+    $parent = $audioBook->category;
+    $up_parent = $parent->parentCategory;
+    @endphp
+    @if ($up_parent)
+        <li class="breadcrumb-item"><a
+                href="{{ route('frontend.audio-books.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
+        </li>
+    @endif
+    </li>
+@endsection
 
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('global.show') }} {{ trans('cruds.audioBook.title') }}
-                </div>
 
-                <div class="card-body">
-                    <div class="form-group">
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.audio-books.index') }}">
-                                {{ trans('global.back_to_list') }}
-                            </a>
+<section class="section-style lesson-section section-cols">
+
+    <div class="container">
+
+        <div class="row">
+
+
+            <div class="col-lg-8 half">
+
+                <div class="duplicated-box-wrapper box-container">
+
+                    <div class="duplicated-box box-lg lessons-style duplicated-box-2">
+
+                        <div class="box-header box-padding ">
+
+                            <div class="header-title ">
+
+                                {{ $audioBook->title }}
+
+                            </div>
+
                         </div>
-                        <table class="table table-bordered table-striped">
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.id') }}
-                                    </th>
-                                    <td>
-                                        {{ $audioBook->id }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.title') }}
-                                    </th>
-                                    <td>
-                                        {{ $audioBook->title }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.visits') }}
-                                    </th>
-                                    <td>
-                                        {{ $audioBook->visits }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.writer') }}
-                                    </th>
-                                    <td>
-                                        {{ $audioBook->writer->name ?? '' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.category') }}
-                                    </th>
-                                    <td>
-                                        {{ $audioBook->category->name ?? '' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.content') }}
-                                    </th>
-                                    <td>
-                                        {!! $audioBook->content !!}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.approved') }}
-                                    </th>
-                                    <td>
-                                        <input type="checkbox" disabled="disabled" {{ $audioBook->approved ? 'checked' : '' }}>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.image') }}
-                                    </th>
-                                    <td>
-                                        @if($audioBook->image)
-                                            <a href="{{ $audioBook->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                                <img src="{{ $audioBook->image->getUrl('thumb') }}">
-                                            </a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.file') }}
-                                    </th>
-                                    <td>
-                                        @foreach($audioBook->file as $key => $media)
-                                            <a href="{{ $media->getUrl() }}" target="_blank">
-                                                {{ trans('global.view_file') }}
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.audioBook.fields.audio') }}
-                                    </th>
-                                    <td>
-                                        @foreach($audioBook->audio as $key => $media)
-                                            <a href="{{ $media->getUrl() }}" target="_blank">
-                                                {{ trans('global.view_file') }}
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.audio-books.index') }}">
-                                {{ trans('global.back_to_list') }}
-                            </a>
+                        <div class="box-body box-padding">
+
+                            <div class="body-content ">
+
+                                <div class="lesson-perview-area">
+
+
+                                    <div class="book-wrap">
+
+                                        <div class="book-item">
+                                            <div class="book-img">
+
+                                                <img class="img-fluid" src="{{ $audioBook->image?->getUrl() }}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br>
+
+                                    {!! $audioBook->content !!}
+
+
+                                    <div class="perview-btns">
+
+                                        <button class="perview-btn audio-btn   " type="button" id="playAudiobtn">
+
+                                            <i class="fa-solid fa-play"></i>
+                                            <span>استماع</span>
+
+                                        </button>
+
+                                        <a href="{{ $audioBook->audio->first()->getUrl() }}" target="_blank" style="margin-left: 1.5rem;">
+                                            <button class="perview-btn download-btn noty-btn" type="button">
+
+                                                <i class="fa-solid fa-download"></i>
+                                                <span>تحميل</span>
+
+                                            </button>
+                                        </a>
+
+                                        <a href="{{ $audioBook->file->first()->getUrl() }}" target="_blank">
+                                            <button class="perview-btn audio-btn   " type="button" s>
+                                                <i class="fa-solid fa-download"></i>
+                                                <span>PDF</span>
+                                            </button>
+                                        </a>
+
+                                    </div>
+
+                                    <div class="audio-area" id="audioArea">
+
+                                        <div class="audio-wrap">
+
+                                            <audio controls class="audio-item" id="audio-item">
+                                                <source src="{{ $audioBook->audio->first()->getUrl() }}"
+                                                    type="audio/ogg">
+                                                <source src="{{ $audioBook->audio->first()->getUrl() }}"
+                                                    type="audio/mpeg">
+                                            </audio>
+                                            <div class=" close-audio" id="closeAudio">
+
+                                                <i class="fa-solid fa-xmark"></i>
+                                                إغلاق
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
+
+
+                        <br>
+                        <div class="box-body box-padding">
+
+                            <div class="body-content">
+
+
+
+                            </div>
+
+                            <x-share-box />
+                        </div>
+
                     </div>
+
+
+
                 </div>
+
+
+            </div>
+            <div class="col-lg-4 half">
+
+                <div class="side-box-container">
+
+                    <div class="box-wrap">
+
+
+                        <div class="duplicated-box-wrapper">
+
+                            <div class="duplicated-box box-lg box-side side-statistics  duplicated-box-2 ">
+
+                                <div class="box-header box-padding ">
+
+                                    <div class="header-title ">
+
+                                        احصائيات
+
+                                    </div>
+
+
+                                </div>
+                                <div class="box-body box-padding">
+
+                                    <div class="body-content ">
+
+                                        <ul class="body-list statistics-list">
+
+                                            <li class="list-item">
+
+                                                <div class="statistics-item">
+
+                                                    <span class="statistics-text">
+
+                                                        اجمالي مرات الاستماع
+                                                        :
+
+                                                    </span>
+                                                    <span class="statistics-val">120,560</span>
+
+                                                </div>
+
+                                            </li>
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
             </div>
 
+
         </div>
+
     </div>
-</div>
+
+</section>
+@endsection
+
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+<script>
+    /*** noty general style ***/
+    $(".download-btn").click(function() {
+
+
+        var n = new Noty({
+            type: 'success', //error//
+            theme: 'bootstrap-v4',
+            layout: 'topRight',
+            timeout: '2000',
+            progressBar: true,
+            closeWith: ['click'],
+            text: '<i class="fa-solid fa-circle-check ms-1"></i> تم تنزيل الحلقة بنجاح',
+        }).show();
+
+    });
+
+
+
+    /*** show audio  ***/
+    var flag = false;
+    $("#playAudiobtn").on("click", function() {
+
+
+        flag = !flag;
+        if (flag) {
+            $('#audio-item').get(0).play();
+
+        } else {
+            $('#audio-item').get(0).pause();
+        }
+        $('#audioArea').fadeToggle();
+
+
+    });
+    $("#closeAudio").on("click", function() {
+
+        $('#audioArea').fadeOut();
+        $('#audio-item').get(0).pause();
+
+    });
+
+    function stopAudio(audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+</script>
+
+
+
+
 @endsection

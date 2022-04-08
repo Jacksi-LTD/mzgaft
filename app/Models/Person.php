@@ -40,6 +40,8 @@ class Person extends Model
         'created_by_id',
     ];
 
+
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
@@ -49,4 +51,11 @@ class Person extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function audios()
+    {
+        return $this->hasMany(Audio::class, 'writer_id', 'id');
+    }
+
+
 }

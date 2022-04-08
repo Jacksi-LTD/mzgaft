@@ -1,99 +1,75 @@
 @extends('layouts.frontend')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+@section('page_title', $question->title)
 
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('global.show') }} {{ trans('cruds.question.title') }}
-                </div>
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="/questions">الأسئلة والأجوبة</a></li>
+    @php
+    $parent = $question->category;
+    $up_parent = $parent->parentCategory;
+    @endphp
+    @if ($up_parent)
+        <li class="breadcrumb-item"><a
+                href="{{ route('frontend.questions.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
+        </li>
+    @endif
+    </li>
+@endsection
 
-                <div class="card-body">
-                    <div class="form-group">
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.questions.index') }}">
-                                {{ trans('global.back_to_list') }}
-                            </a>
-                        </div>
-                        <table class="table table-bordered table-striped">
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.id') }}
-                                    </th>
-                                    <td>
-                                        {{ $question->id }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.title') }}
-                                    </th>
-                                    <td>
-                                        {{ $question->title }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.question') }}
-                                    </th>
-                                    <td>
-                                        {!! $question->question !!}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.answer') }}
-                                    </th>
-                                    <td>
-                                        {!! $question->answer !!}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.category') }}
-                                    </th>
-                                    <td>
-                                        {{ $question->category->name ?? '' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.person') }}
-                                    </th>
-                                    <td>
-                                        {{ $question->person->name ?? '' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.visits') }}
-                                    </th>
-                                    <td>
-                                        {{ $question->visits }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.question.fields.approved') }}
-                                    </th>
-                                    <td>
-                                        <input type="checkbox" disabled="disabled" {{ $question->approved ? 'checked' : '' }}>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.questions.index') }}">
-                                {{ trans('global.back_to_list') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- ***** article-detalis-section Start ***** -->
+
+<section class="section-style article-detalis-section">
+
+    <div class="container">
+
+        <div class="article-detalis-box">
+
+            <div class="article-title">
+
+                <p>{{ $question->title }}</p>
+
             </div>
+            <div class="article-info">
+
+                <div class="info-item article-writer">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15">
+                        <path id="user"
+                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z" />
+                    </svg>
+
+                    <span class="writer-name">{{ $question->person?->name }}</span>
+
+                </div>
+                <div class="info-item article-date">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+                        <path id="clock"
+                            d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
+                    </svg>
+
+                    <span class="date">{{ $question->created_at }}</span>
+
+                </div>
+
+            </div>
+            <div class="texts-container">
+
+                {!! $question->question !!}
+                {!! $question->answer !!}
+
+            </div>
+            <x-share-box />
 
         </div>
+
+
+
+
     </div>
-</div>
+
+</section>
+
+<!-- ***** article-detalis-section End ***** -->
+
 @endsection

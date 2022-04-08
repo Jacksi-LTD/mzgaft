@@ -103,77 +103,42 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
-    // Permissions
-    Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
-    Route::resource('permissions', 'PermissionsController');
-
-    // Roles
-    Route::resource('roles', 'RolesController', ['except' => ['destroy']]);
-
-    // Users
-    Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
-    Route::resource('users', 'UsersController');
-
     // Categories
     Route::resource('categories', 'CategoryController', ['except' => ['destroy']]);
 
     // Person
-    Route::delete('people/destroy', 'PersonController@massDestroy')->name('people.massDestroy');
     Route::resource('people', 'PersonController');
 
     // Blog
-    Route::delete('blogs/destroy', 'BlogController@massDestroy')->name('blogs.massDestroy');
-    Route::post('blogs/media', 'BlogController@storeMedia')->name('blogs.storeMedia');
-    Route::post('blogs/ckmedia', 'BlogController@storeCKEditorImages')->name('blogs.storeCKEditorImages');
     Route::get('blogs/category/{category}', 'BlogController@category')->name('blogs.category');
     Route::resource('blogs', 'BlogController');
 
     // Audio
-    Route::delete('audios/destroy', 'AudioController@massDestroy')->name('audios.massDestroy');
-    Route::post('audios/media', 'AudioController@storeMedia')->name('audios.storeMedia');
-    Route::post('audios/ckmedia', 'AudioController@storeCKEditorImages')->name('audios.storeCKEditorImages');
-
     Route::get('audios/category/{category}', 'AudioController@category')->name('audios.category');
     Route::get('audios/person/{people}', 'AudioController@people')->name('audios.people');
+    Route::get('audios/media/{media}', 'AudioController@single')->name('audios.single');
 
     Route::resource('audios', 'AudioController');
 
     // Book
-    Route::delete('books/destroy', 'BookController@massDestroy')->name('books.massDestroy');
-    Route::post('books/media', 'BookController@storeMedia')->name('books.storeMedia');
-    Route::post('books/ckmedia', 'BookController@storeCKEditorImages')->name('books.storeCKEditorImages');
     Route::resource('books', 'BookController');
 
     // Audio Book
-    Route::delete('audio-books/destroy', 'AudioBookController@massDestroy')->name('audio-books.massDestroy');
-    Route::post('audio-books/media', 'AudioBookController@storeMedia')->name('audio-books.storeMedia');
-    Route::post('audio-books/ckmedia', 'AudioBookController@storeCKEditorImages')->name('audio-books.storeCKEditorImages');
     Route::resource('audio-books', 'AudioBookController');
 
-    // TODO: Tafsir
+    // Tafsir
     Route::resource('tafsir', 'TafsirController');
+
     // Surah
-    Route::delete('surahs/destroy', 'SurahController@massDestroy')->name('surahs.massDestroy');
     Route::resource('surahs', 'SurahController');
 
     // Aya
-    Route::delete('ayas/destroy', 'AyaController@massDestroy')->name('ayas.massDestroy');
-    Route::post('ayas/media', 'AyaController@storeMedia')->name('ayas.storeMedia');
-    Route::post('ayas/ckmedia', 'AyaController@storeCKEditorImages')->name('ayas.storeCKEditorImages');
     Route::resource('ayas', 'AyaController');
 
     // Question
-    Route::delete('questions/destroy', 'QuestionController@massDestroy')->name('questions.massDestroy');
-    Route::post('questions/media', 'QuestionController@storeMedia')->name('questions.storeMedia');
-    Route::post('questions/ckmedia', 'QuestionController@storeCKEditorImages')->name('questions.storeCKEditorImages');
     Route::resource('questions', 'QuestionController');
 
     // Page
-    Route::delete('pages/destroy', 'PageController@massDestroy')->name('pages.massDestroy');
     Route::resource('pages', 'PageController');
 
-    Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
-    Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
-    Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
-    Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
 });
