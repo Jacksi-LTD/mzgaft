@@ -47,7 +47,6 @@ class AudioController extends Controller
     public function show(Audio $audio)
     {
         $audio->load('writer', 'category', 'created_by');
-
         return view('frontend.audios.show', compact('audio'));
     }
 

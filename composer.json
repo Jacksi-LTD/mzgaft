@@ -11,8 +11,10 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10",
         "nuovo/spreadsheet-reader": "^0.5.11",
         "spatie/laravel-medialibrary": "^10.0.7",
+        "spatie/laravel-medialibrary-pro": "^2.0.0",
         "wapmorgan/mp3info": "^0.0.7",
         "yajra/laravel-datatables-oracle": "^9.19"
     },
@@ -66,5 +68,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.spatie.be"
+        }
+    ]
 }

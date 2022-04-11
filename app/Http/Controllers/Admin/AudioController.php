@@ -117,23 +117,28 @@ class AudioController extends Controller
     public function store(StoreAudioRequest $request)
     {
         $audio = Audio::create($request->all());
+        $audio->syncFromMediaLibraryRequest($request->get('files'))
+                ->withCustomProperties('duration_field')
+                ->toMediaCollection('files');
+        $audio->syncFromMediaLibraryRequest($request->get('images'))
+                ->toMediaCollection('images');
 
-        foreach ($request->input('files', []) as $file) {
-            // $duration = (new \wapmorgan\Mp3Info\Mp3Info($file, true))->duration;
-            $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))
-            ->withCustomProperties(
-                ['title' => 'العنوان الأول',
-                'duration' => '00:00']
-                )->toMediaCollection('files');
-        }
+        // foreach ($request->input('files', []) as $file) {
+        //     // $duration = (new \wapmorgan\Mp3Info\Mp3Info($file, true))->duration;
+        //     $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))
+        //     ->withCustomProperties(
+        //         ['title' => 'العنوان الأول',
+        //         'duration' => '00:00']
+        //         )->toMediaCollection('files');
+        // }
 
-        foreach ($request->input('images', []) as $file) {
-            $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
-        }
+        // foreach ($request->input('images', []) as $file) {
+        //     $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
+        // }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $audio->id]);
-        }
+        // if ($media = $request->input('ck-media', false)) {
+        //     Media::whereIn('id', $media)->update(['model_id' => $audio->id]);
+        // }
 
         return redirect()->route('admin.audios.index');
     }
@@ -155,6 +160,14 @@ class AudioController extends Controller
     {
         $audio->update($request->all());
 
+        $audio->syncFromMediaLibraryRequest($request->get('files'))
+                ->withCustomProperties('duration_field')
+                ->toMediaCollection('files');
+        $audio->syncFromMediaLibraryRequest($request->get('images'))
+                ->toMediaCollection('images');
+
+        // $audio->save();
+                /*
         if (count($audio->files) > 0) {
             foreach ($audio->files as $media) {
                 if (! in_array($media->file_name, $request->input('files', []))) {
@@ -169,7 +182,6 @@ class AudioController extends Controller
                 // $duration = (new \wapmorgan\Mp3Info\Mp3Info($file, true))->duration;
                 $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))
                 ->withCustomProperties(['title' => 'العنوان الأول', 'duration' => '00:00'])
-
                 ->toMediaCollection('files');
             }
         }
@@ -187,7 +199,7 @@ class AudioController extends Controller
                 $audio->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
             }
         }
-
+*/
         return redirect()->route('admin.audios.index');
     }
 

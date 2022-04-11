@@ -6,9 +6,12 @@ use App\Models\Audio;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
+use Spatie\MediaLibraryPro\Rules\Concerns\ValidatesMedia;
 
 class UpdateAudioRequest extends FormRequest
 {
+    use ValidatesMedia;
+
     public function authorize()
     {
         return Gate::allows('audio_edit');
@@ -25,11 +28,12 @@ class UpdateAudioRequest extends FormRequest
                 'required',
             ],
             'files' => [
-                'array',
-            ],
+                $this->validateMultipleMedia()
+                ->itemName('required')->customProperty('extra_field', 'required|max:30'),
+                ],
             'images' => [
-                'array',
-            ],
+                $this->validateMultipleMedia()
+                ->itemName('required'),            ],
         ];
     }
 }

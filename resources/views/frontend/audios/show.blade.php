@@ -106,7 +106,7 @@
 
                                                     </span>
                                                     <span class="text">{{ $key + 1 }}
-                                                        {{ substr($media->name, strpos($media->name, '_') + 1) }}
+                                                        {{ $media->name }}
                                                     </span>
 
                                                 </a>
@@ -124,7 +124,7 @@
 
                                                     </span>
                                                     <span
-                                                        class="text">{{ $media->getCustomProperty('duration') }}</span>
+                                                        class="text">{{ $media->getCustomProperty('duration_field') }}</span>
 
                                                 </div>
 

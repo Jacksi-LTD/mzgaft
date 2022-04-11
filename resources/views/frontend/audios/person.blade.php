@@ -204,49 +204,22 @@
 
                                         <div class="body-content ">
 
-                                            <ul class="body-list lessons-list">
+                                            <ul class="body-list articles-list">
                                                 @foreach ($some_audios as $audio)
                                                     <li class="list-item">
+                                                        <div class="item-wrap">
 
-                                                        <div class="item-content">
+                                                            <div class="item-icon">
 
+                                                                {{-- <img class="img-fluid" src="/img/main-icon.png"> --}}
+                                                            </div>
+                                                            <div class="item-content">
 
-                                                            <a class="item-type item-link"
-                                                                href="{{ route('frontend.audios.show', $audio->id) }}">
-
-                                                                <span class="icon">
-
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12"
-                                                                        height="13.998" viewBox="0 0 12 13.998">
-                                                                        <path id="play"
-                                                                            d="M11.281,37.718A1.5,1.5,0,0,1,12,39a1.425,1.425,0,0,1-.719,1.253l-9,5.5a1.442,1.442,0,0,1-1.516.056A1.5,1.5,0,0,1,0,44.5v-11a1.5,1.5,0,0,1,2.282-1.28Z"
-                                                                            transform="translate(0 -31.999)" />
-                                                                    </svg>
-
-
-                                                                </span>
-                                                                <span class="text">{{ $audio->title }}</span>
-
-                                                            </a>
-
-                                                            <div class="item-type sub-content">
-
-                                                                <span class="icon">
-
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15"
-                                                                        height="15" viewBox="0 0 15 15">
-                                                                        <path id="clock"
-                                                                            d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
-                                                                    </svg>
-
-
-                                                                </span>
-                                                                <span class="text">120:30</span>
+                                                                <a class="item-link" href="{{ route('frontend.audios.show', $audio->id) }}">{{ $audio->title }}</a>
 
                                                             </div>
 
                                                         </div>
-
                                                     </li>
                                                 @endforeach
 

@@ -61,22 +61,24 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.audio.fields.approved_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="files">{{ trans('cruds.audio.fields.files') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
-                </div>
-                @if($errors->has('files'))
-                    <span class="text-danger">{{ $errors->first('files') }}</span>
-                @endif
+                <x-media-library-collection
+                    name="files"
+                    :model="$audio"
+                    collection="files"
+                    fields-view="layouts.duration_field"
+                />
                 <span class="help-block">{{ trans('cruds.audio.fields.files_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="images">{{ trans('cruds.audio.fields.images') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}" id="images-dropzone">
-                </div>
-                @if($errors->has('images'))
-                    <span class="text-danger">{{ $errors->first('images') }}</span>
-                @endif
+                <x-media-library-collection
+                    name="images"
+                    :model="$audio"
+                    collection="images"
+                />
                 <span class="help-block">{{ trans('cruds.audio.fields.images_helper') }}</span>
             </div>
             <div class="form-group">
