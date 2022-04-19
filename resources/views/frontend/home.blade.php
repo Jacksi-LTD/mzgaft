@@ -463,11 +463,13 @@
                                         <div class="body-content ">
 
                                             <ul class="body-list lessons-list" id="nav-sidebar">
-                                                @foreach($people as $i => $person)
-                                                {{-- @dd($person) --}}
-                                                    <li class="list-item" id="{{ $person->id }}" >
+                                                @foreach ($people as $i => $person)
+                                                    {{-- @dd($person) --}}
+                                                    <li class="list-item" id="{{ $person->id }}">
 
-                                                        <div class="item-content {{ $i == 1 ? 'active':'' }}" onclick="click_me();" id="{{ $person->id }}">
+                                                        <div class="item-content {{ $i == 0 ? 'active' : '' }}"
+                                                            id="{{ $person->id }}"
+                                                            onclick="click_person(this);">
 
 
                                                             <div class="item-type item-link">
@@ -475,13 +477,15 @@
                                                                 <span class="icon">
 
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="17" height="20" viewBox="0 0 17 20">
+                                                                        width="17" height="20"
+                                                                        viewBox="0 0 17 20">
                                                                         <path id="user"
                                                                             d="M8.5,10a4.93,4.93,0,0,0,4.857-5A4.93,4.93,0,0,0,8.5,0,4.93,4.93,0,0,0,3.643,5,4.93,4.93,0,0,0,8.5,10Zm1.924,1.875H6.576A6.676,6.676,0,0,0,0,18.646,1.335,1.335,0,0,0,1.315,20h14.37A1.333,1.333,0,0,0,17,18.646,6.676,6.676,0,0,0,10.424,11.876Z" />
                                                                     </svg>
 
                                                                 </span>
-                                                                <span class="text">{{ $person->name }}</span>
+                                                                <span
+                                                                    class="text">{{ $person->name }}</span>
 
                                                             </div>
 
@@ -499,7 +503,8 @@
 
 
                                                                 </span>
-                                                                <span class="text">{{ $person->audios_count }}</span>
+                                                                <span
+                                                                    class="text">{{ $person->audios_count }}</span>
 
                                                             </div>
 
@@ -526,11 +531,14 @@
 
                                         <div class="body-content ">
 
-                                            <ul class="body-list  lessons-list">
-                                                @foreach($first_audios as $audio)
-                                                    <li class="list-item" id="">
+                                            <ul class="body-list  lessons-list" id="subjects">
+                                                @foreach ($first_audios as $audio)
+                                                    <li class="list-item" id="{{$audio->id}}">
 
-                                                        <div class="item-content">
+                                                        <div class="item-content audio"
+                                                        id="{{$audio->id}}"
+                                                        onclick="click_media(this);">
+
 
 
                                                             <div class="item-type item-link">
@@ -538,14 +546,16 @@
                                                                 <span class="icon">
 
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="17" height="17" viewBox="0 0 17 17">
+                                                                        width="17" height="17"
+                                                                        viewBox="0 0 17 17">
                                                                         <path id="indent"
                                                                             d="M0,33.214A1.214,1.214,0,0,1,1.214,32H15.786a1.214,1.214,0,0,1,0,2.429H1.214A1.214,1.214,0,0,1,0,33.214Zm7.286,4.857A1.213,1.213,0,0,1,8.5,36.857h7.286a1.214,1.214,0,1,1,0,2.429H8.5A1.213,1.213,0,0,1,7.286,38.071Zm8.5,3.643a1.214,1.214,0,1,1,0,2.429H8.5a1.214,1.214,0,1,1,0-2.429ZM0,47.786a1.214,1.214,0,0,1,1.214-1.214H15.786a1.214,1.214,0,1,1,0,2.429H1.214A1.214,1.214,0,0,1,0,47.786Zm.98-3.8A.607.607,0,0,1,0,43.509V37.491a.607.607,0,0,1,.98-.478l3.87,3.009a.654.654,0,0,1,0,.956Z"
                                                                             transform="translate(0 -32)" />
                                                                     </svg>
 
                                                                 </span>
-                                                                <span class="text">{{ $audio->title }}</span>
+                                                                <span
+                                                                    class="text">{{ $audio->title }}</span>
 
                                                             </div>
 
@@ -563,7 +573,8 @@
 
 
                                                                 </span>
-                                                                <span class="text">{{ $audio->files->count() }}</span>
+                                                                <span
+                                                                    class="text">{{ $audio->media_count }}</span>
 
                                                             </div>
 
@@ -593,46 +604,47 @@
 
                                         <div class="body-content ">
 
-                                            <ul class="body-list  lessons-list">
+                                            <ul class="body-list  lessons-list" id="audio_files">
                                                 {{-- @dd($first_audios) --}}
                                                 @foreach ($first_files as $key => $media)
+                                                    <li class="list-item">
+
+                                                        <a class="aduio-item item-content" href="#">
 
 
-                                                <li class="list-item">
+                                                            <div class="item-type item-link">
 
-                                                    <a class="aduio-item item-content" href="#">
-
-
-                                                        <div class="item-type item-link">
-
-                                                            <span class="icon">
+                                                                <span class="icon">
 
 
 
-                                                            </span>
-                                                            <span class="text">{{ substr($media->name, strpos($media->name, '_') + 1) }}</span>
+                                                                </span>
+                                                                <span
+                                                                    class="text">{{ substr($media->name, strpos($media->name, '_') + 1) }}</span>
 
-                                                        </div>
+                                                            </div>
 
-                                                        <div class="item-type sub-content">
+                                                            <div class="item-type sub-content">
 
-                                                            <span class="icon">
+                                                                <span class="icon">
 
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="15" height="15" viewBox="0 0 15 15">
-                                                                    <path id="clock"
-                                                                        d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
-                                                                </svg>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="15" height="15"
+                                                                        viewBox="0 0 15 15">
+                                                                        <path id="clock"
+                                                                            d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
+                                                                    </svg>
 
 
-                                                            </span>
-                                                            <span class="text">{{ $media->getCustomProperty('duration') }}</span>
+                                                                </span>
+                                                                <span
+                                                                    class="text">{{ $media->getCustomProperty('duration') }}</span>
 
-                                                        </div>
+                                                            </div>
 
-                                                    </a>
+                                                        </a>
 
-                                                </li>
+                                                    </li>
                                                 @endforeach
 
 
@@ -702,7 +714,7 @@
                             <div class="swiper books-slider">
 
                                 <div class="swiper-wrapper">
-                                    @foreach($books as $book)
+                                    @foreach ($books as $book)
                                         <div class="swiper-slide">
 
                                             <div class="book-item">
@@ -711,11 +723,14 @@
 
                                                     <img class="img-fluid" src="img/SeeretIbenHisham.png">
                                                 </div>
-                                                <a class="book-name" href="{{ route('frontend.books.show', $book->id) }}"> {{ $book->title }}</a>
+                                                <a class="book-name"
+                                                    href="{{ route('frontend.books.show', $book->id) }}">
+                                                    {{ $book->title }}</a>
                                                 <div class="book-info">
                                                     <span>
 
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 14 14">
                                                             <path
                                                                 d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
                                                             </path>
@@ -1051,64 +1066,151 @@
 </script>
 
 <script>
-$(".nav-sidebar").on('click', 'li', function(e) {
-    $(this).parent().find('li.active').removeClass('active');
-    $(this).addClass('active');
-    console.log($(this));
-});
-function click_item(){
-    console.log($(this));
-    $(this).parent().parent().find('li.active').removeClass('active');
+    // $(".nav-sidebar").on('click', 'li', function(e) {
+    //     $(this).parent().find('li.active').removeClass('active');
+    //     $(this).addClass('active');
+    //     console.log($(this));
+    // });
 
-    $(this).addClass('active');
+    // function click_item() {
+    //     console.log($(this));
+    //     $(this).parent().parent().find('li.active').removeClass('active');
 
-}
-$('#list-item').on('change', function () {
-                var id = $(this).val();
-                var officer = $('#officer');
-                officer.empty();
-                officer.append('<option value="0">' + " All " + '</option>');
+    //     $(this).addClass('active');
 
-                if (id) {
-                    $.ajax({
-                        url: "projects/" + id,
-                        headers: {'x-csrf-token': _token},
-                        method: 'GET',
-                        success: function (data) {
-                            var officer = $('#project');
-                            if (data.length > 0) {
-                                officer.empty();
-                                officer.append('<option value="0">' + " All " + '</option>');
-                                $.each(data, function (key, value) {
-                                    officer.append('<option value="' + value.id + '">' + value.project_name + '</option>')
-                                })
-                            } else {
-                                officer.empty();
-                            }
-                        }
+    // }
+    // $('#list-item').on('change', function() {
+    //     var id = $(this).val();
+    //     var officer = $('#officer');
+    //     officer.empty();
+    //     officer.append('<option value="0">' + " All " + '</option>');
+
+    //     if (id) {
+    //         $.ajax({
+    //             url: "projects/" + id,
+    //             headers: {
+    //                 'x-csrf-token': _token
+    //             },
+    //             method: 'GET',
+    //             success: function(data) {
+    //                 var officer = $('#project');
+    //                 if (data.length > 0) {
+    //                     officer.empty();
+    //                     officer.append('<option value="0">' + " All " + '</option>');
+    //                     $.each(data, function(key, value) {
+    //                         officer.append('<option value="' + value.id + '">' + value
+    //                             .project_name + '</option>')
+    //                     })
+    //                 } else {
+    //                     officer.empty();
+    //                 }
+    //             }
+    //         })
+    //     }
+    // });
+
+    function click_person(item) {
+        $(".list-item .item-content").each(function(index) {
+            $(this).removeClass('active')
+        });
+        $(item).addClass('active');
+
+        $.ajax({
+            url: "audios/person-json/" + item.id,
+            headers: {
+                'x-csrf-token':  "{{ csrf_token() }}"
+            },
+            method: 'GET',
+            success: function(data) {
+                // console.log(data)
+                var subjects = $('#subjects');
+                // console.log(subjects)
+                if (data.length > 0) {
+                    subjects.empty();
+                    $.each(data, function(key, value) {
+                        // console.log(value)
+                        subjects.append(
+                        '<li class="list-item" id="'+value.id+'"> <div class="item-content audio" id="'+value.id+'" onclick="click_media(this);"> <div class="item-type item-link"> <span class="icon"> <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"> <path id="indent" d="M0,33.214A1.214,1.214,0,0,1,1.214,32H15.786a1.214,1.214,0,0,1,0,2.429H1.214A1.214,1.214,0,0,1,0,33.214Zm7.286,4.857A1.213,1.213,0,0,1,8.5,36.857h7.286a1.214,1.214,0,1,1,0,2.429H8.5A1.213,1.213,0,0,1,7.286,38.071Zm8.5,3.643a1.214,1.214,0,1,1,0,2.429H8.5a1.214,1.214,0,1,1,0-2.429ZM0,47.786a1.214,1.214,0,0,1,1.214-1.214H15.786a1.214,1.214,0,1,1,0,2.429H1.214A1.214,1.214,0,0,1,0,47.786Zm.98-3.8A.607.607,0,0,1,0,43.509V37.491a.607.607,0,0,1,.98-.478l3.87,3.009a.654.654,0,0,1,0,.956Z" transform="translate(0 -32)" /> </svg> </span> <span class="text">'+value.title+'</span> </div> <div class="item-type sub-content"> <span class="icon"> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10.687" viewBox="0 0 15 10.687"> <path id="volume-high" d="M9.67,31.61a.562.562,0,0,0-.712.871,1.081,1.081,0,0,1,0,1.706.562.562,0,0,0,.712.871,2.2,2.2,0,0,0,0-3.447Zm1.418-1.73a.562.562,0,1,0-.713.869,3.3,3.3,0,0,1,1.25,2.574,3.413,3.413,0,0,1-1.249,2.595.562.562,0,0,0,.713.869,4.42,4.42,0,0,0,0-6.907Zm1.437-1.753a.562.562,0,1,0-.713.869,5.59,5.59,0,0,1,0,8.675.561.561,0,0,0-.078.791.523.523,0,0,0,.436.226.561.561,0,0,0,.357-.127A6.733,6.733,0,0,0,15,33.323,6.648,6.648,0,0,0,12.525,28.127Zm-5.466.037a.752.752,0,0,0-.807.124L3.089,31.1H1.125A1.125,1.125,0,0,0,0,32.221v2.248a1.125,1.125,0,0,0,1.125,1.124H3.09L6.252,38.4a.751.751,0,0,0,.807.122.746.746,0,0,0,.442-.681V28.847A.747.747,0,0,0,7.059,28.164Z" transform="translate(0 -28.001)" /> </svg> </span> <span class="text">'+value.media_count+'</span> </div> </div> </li>'
+                        )
                     })
+                } else {
+                    subjects.empty();
                 }
-            });
-
-function click_me() {
-    var ids = $(this).attr("id");
-    console.log('');
-    $("#list-item .item-content").each(function(index) {
-        $(this).css("background", "white");
-    });
-
-    $(this).css("background", "#cae5f9");
-    mamosta_name = $(this).text();
-
-    $.get("inc/loader.php", {
-            go: "mamosta_audio",
-            id: ids
+            }
         })
-        .done(function(data) {
-            $("#audios").html(data);
+    }
+
+    function click_media(item) {
+        $(".list-item .item-content.audio").each(function(index) {
+            $(this).removeClass('active')
+        });
+        $(item).addClass('active');
+
+        $.ajax({
+            url: "audios/media-json/" + item.id,
+            headers: {
+                'x-csrf-token':  "{{ csrf_token() }}"
+            },
+            method: 'GET',
+            success: function(data) {
+                var json_data = data;
+
+                var result = [];
+
+                for(var i in json_data)
+                    result.push([i, json_data [i]]);
+
+                data = result
+
+                var audio_files = $('#audio_files');
+                audio_files.append('<li>ab</li>');
+                if (data.length > 0) {
+                    audio_files.empty();
+                    $.each(data, function(key, value) {
+                        // console.log(value)
+                        $.each(value, function(key, value) {
+                            console.log(value)
+                            if(value.name !== undefined)
+                            audio_files.append(
+                            '<li class="list-item"> <div id="'+value.original_url+'"class="aduio-item item-content play-media" onclick="play_media(this);"> <div class="item-type item-link"> <span class="icon"> </span> <span class="text">'+value.name+'</span> </div> <div class="item-type sub-content"> <span class="icon"> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"> <path id="clock" d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" /> </svg> </span> <span class="text">'+value.duration+'</span> </div> </div> </li>'
+
+                            )
+                        }
+                    )})
+                } else {
+                    audio_files.empty();
+                }
+            }
+        })
+    }
+
+    var audio = new Audio()
+    function play_media(item) {
+
+        audio.pause();
+        audio = new Audio(item.id);
+
+        var active = false
+        if($(item).hasClass('active')){
+            active = true
+            $(item).removeClass('active');
+            audio.pause();
+        }
+
+        audio.onended = function() {
+            $(item).removeClass('active');
+        };
+
+        $(".list-item .item-content.play-media").each(function(index) {
+            $(this).removeClass('active')
         });
 
-}
+        if(!active){
+            audio.play();
+            $(item).addClass('active');
+        }
+
+    }
 
 </script>
 

@@ -6,14 +6,18 @@
     <li class="breadcrumb-item"><a href="{{ route('frontend.books.index') }}">الكتب</a></li>
     @php
     $parent = $book->category;
-    $up_parent = $parent->parentCategory;
+    $up_parent = $parent?->parentCategory;
     @endphp
-    @if ($up_parent)
+    @if (isset($up_parent))
         <li class="breadcrumb-item"><a
                 href="{{ route('frontend.books.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
         </li>
     @endif
-    </li>
+    @if (isset($parent))
+        <li class="breadcrumb-item"><a href="{{ route('frontend.books.category', $parent->id) }}">{{ $parent->name }}</a>
+        </li>
+    @endif
+
 @endsection
 
 
@@ -131,11 +135,11 @@
 
                                                     <span class="statistics-text">
 
-                                                        اجمالي مرات الاستماع
+                                                        اجمالي مرات القراءة
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">120,560</span>
+                                                    <span class="statistics-val">{{ $book->visits ?? '0'}}</span>
 
                                                 </div>
 

@@ -11,7 +11,7 @@ class CreateAudioBooksTable extends Migration
         Schema::create('audio_books', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->integer('visits')->nullable();
+            $table->integer('visits')->default(0);
             $table->longText('content');
             $table->boolean('approved')->default(0)->nullable();
             $table->timestamps();

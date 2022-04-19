@@ -123,8 +123,15 @@
 
 
                                                     </span>
+                                                    @php
+                                                        $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
+                                                        //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                        $audio_info->duration;// \\ duration in seconds
+
+
+                                                    @endphp
                                                     <span
-                                                        class="text">{{ $media->getCustomProperty('duration_field') }}</span>
+                                                        class="text">{{ gmdate("H:i:s", $audio_info->duration) }}</span>
 
                                                 </div>
 
@@ -184,7 +191,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">150</span>
+                                                    <span class="statistics-val">{{ $audio->files->count() }}</span>
 
                                                 </div>
 
@@ -199,7 +206,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">120,560</span>
+                                                    <span class="statistics-val">{{$audio->visits}} </span>
 
                                                 </div>
 

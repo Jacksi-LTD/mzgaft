@@ -21,23 +21,28 @@ class AudioBookController extends Controller
 {
     public function index()
     {
+        $categories = Category::where('type', 'audio_books')->get();
 
-        $audioBooks = AudioBook::with(['writer', 'category', 'created_by', 'media'])->get();
+        return view('frontend.audioBooks.index', compact('categories'));
+    }
 
-        $people = Person::get();
+    public function category(Category $category)
+    {
+        $audioBooks = AudioBook::with(['writer', 'category', 'created_by', 'media'])->paginate();
 
-        $categories = Category::get();
+        $some_audio_books = AudioBook::with(['writer', 'category', 'created_by', 'media'])->get();
 
-        $users = User::get();
-
-        return view('frontend.audioBooks.index', compact('audioBooks', 'categories', 'people', 'users'));
+        return view('frontend.audioBooks.category', compact('audioBooks','category', 'some_audio_books'));
     }
 
 
     public function show(AudioBook $audioBook)
     {
+        // $audioBookIn = $audioBook;
 
-        $audioBook->load('writer', 'category', 'created_by');
+        AudioBook::find($audioBook->id)->increment('visits');
+
+        $audioBook->load('writer', 'category', 'created_by', 'media.model');
 
         return view('frontend.audioBooks.show', compact('audioBook'));
     }

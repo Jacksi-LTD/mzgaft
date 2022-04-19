@@ -27,7 +27,7 @@ class HomeController
 
         $people = Person::where('type', 'audios')->withCount('audios')->get();
 
-        $first_audios = $people->offsetGet(1)->audios;
+        $first_audios = $people->first()->audios;
 
         $first_files = $first_audios->first()->files;
 

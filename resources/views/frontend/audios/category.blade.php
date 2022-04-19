@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('page_title', $category->name . ' - الصوتيات')
+@section('page_title', $category->name)
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">الصوتيات</a></li>
     </li>
@@ -161,7 +161,7 @@
                             </div>
                         @endunless
 
-                        <div class="box-wrap">
+                        <div class="box-wrap" style="display: none">
 
 
                             <div class="duplicated-box-wrapper">
@@ -215,22 +215,6 @@
                                                     </div>
 
                                                 </li>
-                                                <li class="list-item">
-
-                                                    <div class="statistics-item">
-
-                                                        <span class="statistics-text">
-
-                                                            اجمالي مرات الاستماع
-                                                            :
-
-                                                        </span>
-                                                        <span class="statistics-val">120,560</span>
-
-                                                    </div>
-
-                                                </li>
-
 
                                             </ul>
 

@@ -13,7 +13,7 @@ class CreateQuestionsTable extends Migration
             $table->string('title')->nullable();
             $table->longText('question');
             $table->longText('answer');
-            $table->integer('visits')->nullable();
+            $table->integer('visits')->default(0);
             $table->boolean('approved')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();

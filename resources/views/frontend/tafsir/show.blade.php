@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
 @section('content')
+@section('page_title', $surah->name)
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="/tafsir">التفسير</a></li>
+@endsection
     <!-- ***** surah-cols-section Start ***** -->
 
     <section class="section-style surah-cols section-cols">

@@ -13,6 +13,25 @@ class BookController extends Controller
 {
     public function index()
     {
+
+        $categories = Category::where('type', 'books')->get();
+
+        return view('frontend.books.index', compact('categories'));
+    }
+
+    public function category(Category $category)
+    {
+        $books = Book::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
+
+        
+
+        $some_books = Book::with(['writer', 'category', 'created_by', 'media'])->get();
+
+        return view('frontend.books.category', compact('books', 'category', 'some_books'));
+    }
+
+    public function index2()
+    {
         $books = Book::with(['writer', 'category', 'created_by', 'media'])->get();
 
         $people = Person::get();

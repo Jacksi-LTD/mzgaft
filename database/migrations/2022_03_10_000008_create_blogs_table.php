@@ -12,7 +12,7 @@ class CreateBlogsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->date('writing_date')->nullable();
-            $table->integer('visits')->nullable();
+            $table->integer('visits')->default(0);
             $table->longText('content');
             $table->boolean('approved')->default(0)->nullable();
             $table->timestamps();

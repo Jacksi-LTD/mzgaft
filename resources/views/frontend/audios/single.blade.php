@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-@section('page_title', substr($media->name, strpos($media->name, "_") + 1))
+@section('page_title', $media->name)
 @section('page_title', 'الصوتيات')
 
 
@@ -21,7 +21,7 @@
 
                             <div class="header-title ">
 
-                                {{ substr($media->name, strpos($media->name, "_") + 1) }}
+                                {{ $media->name }}
 
                             </div>
 
@@ -133,7 +133,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">120,560</span>
+                                                    <span class="statistics-val">{{ $audio->visits ?? '0'}}</span>
 
                                                 </div>
 

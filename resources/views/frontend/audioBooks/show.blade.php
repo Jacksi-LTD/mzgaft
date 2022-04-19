@@ -1,19 +1,22 @@
 @extends('layouts.frontend')
 @section('content')
 @section('page_title', $audioBook->title)
-@section('page_title', 'الكتب الصوتية')
+
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.audio-books.index') }}">الكتب الصوتية</a></li>
+    <li class="breadcrumb-item"><a href="/audio-books">الكتب الصوتية</a></li>
     @php
     $parent = $audioBook->category;
-    $up_parent = $parent->parentCategory;
+    $up_parent = $parent?->parentCategory;
     @endphp
-    @if ($up_parent)
+    @if (isset($up_parent))
         <li class="breadcrumb-item"><a
                 href="{{ route('frontend.audio-books.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
         </li>
     @endif
-    </li>
+    @if (isset($parent))
+        <li class="breadcrumb-item"><a href="{{ route('frontend.audio-books.category', $parent->id) }}">{{ $parent->name }}</a>
+        </li>
+    @endif
 @endsection
 
 
@@ -172,7 +175,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">120,560</span>
+                                                    <span class="statistics-val">{{ $audioBook->visits ?? '0'}}</span>
 
                                                 </div>
 

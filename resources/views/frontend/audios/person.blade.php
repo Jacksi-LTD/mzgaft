@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('page_title', $person->name . ' - الصوتيات')
+@section('page_title', $person->name)
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">الصوتيات</a></li>
     </li>
@@ -99,7 +99,7 @@
 
                     <div class="side-box-container">
 
-                        <div class="box-wrap">
+                        <div class="box-wrap" style="display: none">
 
 
                             <div class="duplicated-box-wrapper">

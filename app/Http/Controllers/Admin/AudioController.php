@@ -118,7 +118,6 @@ class AudioController extends Controller
     {
         $audio = Audio::create($request->all());
         $audio->syncFromMediaLibraryRequest($request->get('files'))
-                ->withCustomProperties('duration_field')
                 ->toMediaCollection('files');
         $audio->syncFromMediaLibraryRequest($request->get('images'))
                 ->toMediaCollection('images');
@@ -158,10 +157,10 @@ class AudioController extends Controller
 
     public function update(UpdateAudioRequest $request, Audio $audio)
     {
+
         $audio->update($request->all());
 
         $audio->syncFromMediaLibraryRequest($request->get('files'))
-                ->withCustomProperties('duration_field')
                 ->toMediaCollection('files');
         $audio->syncFromMediaLibraryRequest($request->get('images'))
                 ->toMediaCollection('images');

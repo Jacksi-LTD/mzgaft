@@ -464,7 +464,7 @@ footer{
 
 .duplicated-box.box-lg::before{
 
-    background-image: url(../img/box-bg1.svg);
+    /* background-image: url(../img/box-bg1.svg); */
 }
 
 .duplicated-box.box-md::before{

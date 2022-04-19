@@ -118,14 +118,20 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     // Audio
     Route::get('audios/category/{category}', 'AudioController@category')->name('audios.category');
     Route::get('audios/person/{people}', 'AudioController@people')->name('audios.people');
+    Route::get('audios/person-json/{people}', 'AudioController@people_json')->name('audios.people_json');
+    Route::get('audios/media-json/{audio}', 'AudioController@media_json')->name('audios.media_json');
     Route::get('audios/media/{media}', 'AudioController@single')->name('audios.single');
 
     Route::resource('audios', 'AudioController');
 
     // Book
+    Route::get('books/category/{category}', 'BookController@category')->name('books.category');
+
     Route::resource('books', 'BookController');
 
     // Audio Book
+    Route::get('audio-books/category/{category}', 'AudioBookController@category')->name('audio-books.category');
+
     Route::resource('audio-books', 'AudioBookController');
 
     // Tafsir

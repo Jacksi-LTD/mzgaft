@@ -70,7 +70,7 @@
 
         </div>
 
-        <div class="container">
+        <div class="container" style="margin-top: 24px;">
 
             <div class="articles-categories-container categories-container ">
 

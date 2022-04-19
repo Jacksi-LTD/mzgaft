@@ -68,7 +68,7 @@
                     name="files"
                     :model="$audio"
                     collection="files"
-                    fields-view="layouts.duration_field"
+                    {{-- fields-view="layouts.duration_field" --}}
                 />
                 <span class="help-block">{{ trans('cruds.audio.fields.files_helper') }}</span>
             </div>
