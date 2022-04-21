@@ -34,8 +34,6 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        abort_if(Gate::denies('blog_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         $blog->load('writer', 'category', 'created_by');
 
         return view('frontend.blogs.show', compact('blog'));
