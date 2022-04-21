@@ -17,13 +17,9 @@ class QuestionController extends Controller
 
         $some_questions = Question::with(['category', 'person', 'created_by'])->limit(5)->get();
 
-        $categories = Category::get();
+        $count = Question::count();
 
-        $people = Person::get();
-
-        $users = User::get();
-
-        return view('frontend.questions.index', compact('categories', 'people', 'questions', 'users', 'some_questions'));
+        return view('frontend.questions.index', compact('questions', 'count', 'some_questions'));
     }
 
     public function show(Question $question)

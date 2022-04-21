@@ -23,8 +23,6 @@ class BookController extends Controller
     {
         $books = Book::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
-        
-
         $some_books = Book::with(['writer', 'category', 'created_by', 'media'])->get();
 
         return view('frontend.books.category', compact('books', 'category', 'some_books'));
@@ -47,7 +45,9 @@ class BookController extends Controller
     {
         abort_if(Gate::denies('book_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $book->load('writer', 'category', 'created_by');
+        Book::find($book->id)->increment('visits');
+
+        $book->load('writer', 'category', 'created_by', 'media.model');
 
         return view('frontend.books.show', compact('book'));
     }

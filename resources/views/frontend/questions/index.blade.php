@@ -111,7 +111,7 @@
                                                             :
 
                                                         </span>
-                                                        <span class="statistics-val">150</span>
+                                                        <span class="statistics-val">{{ $count }}</span>
 
                                                     </div>
 
