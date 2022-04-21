@@ -43,8 +43,6 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        abort_if(Gate::denies('book_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         Book::find($book->id)->increment('visits');
 
         $book->load('writer', 'category', 'created_by', 'media.model');

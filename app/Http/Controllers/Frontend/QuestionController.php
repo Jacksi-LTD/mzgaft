@@ -24,8 +24,6 @@ class QuestionController extends Controller
 
     public function show(Question $question)
     {
-        abort_if(Gate::denies('question_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         $question->load('category', 'person', 'created_by');
 
         return view('frontend.questions.show', compact('question'));
