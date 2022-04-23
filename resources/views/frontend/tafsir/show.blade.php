@@ -160,7 +160,7 @@
                                 <p class="text-item" id="{{ $key + 1 }}">
 
                                     <span class="bold">{ {{ $aya->number }} } { {{ $aya->aya }} }</span>
-                                    {{ $aya->tafsir }}
+                                    {!! $aya->tafsir !!}
                                 </p>
                             @endforeach
 

@@ -203,7 +203,7 @@
 
                                     <p class="line-height-more">
 
-                                        {{ $aya->aya }}
+                                        {!! $aya->aya !!}
 
                                     </p>
 
@@ -646,7 +646,7 @@
                                                         </a>
 
                                                     </li>
-                                                @endforeach 
+                                                @endforeach
 												@endif
 
 
@@ -723,7 +723,7 @@
 
                                                 <div class="book-img">
 
-                                                    <img class="img-fluid" src="img/SeeretIbenHisham.png">
+                                                    <img class="img-fluid" src="{{ $book->image?->getUrl()}}">
                                                 </div>
                                                 <a class="book-name"
                                                     href="{{ route('frontend.books.show', $book->id) }}">
@@ -749,176 +749,6 @@
 
                                         </div>
                                     @endforeach
-                                    <div class="swiper-slide">
-
-                                        <div class="book-item">
-
-                                            <div class="book-img">
-
-                                                <img class="img-fluid" src="img/cover.png">
-                                            </div>
-                                            <a class="book-name" href="#">كتاب القرآن</a>
-                                            <div class="book-info">
-                                                <span>
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                        <path
-                                                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-
-                                                ابي معاذ طارق بن عوض الله
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="swiper-slide">
-
-                                        <div class="book-item">
-
-                                            <div class="book-img">
-
-                                                <img class="img-fluid" src="img/Sbukhari.png">
-                                            </div>
-                                            <a class="book-name" href="#">صحيح البخاري</a>
-                                            <div class="book-info">
-                                                <span>
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                        <path
-                                                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-
-                                                ابي عبدالله محمد بن اسماعيل
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="swiper-slide">
-
-                                        <div class="book-item">
-
-                                            <div class="book-img">
-
-                                                <img class="img-fluid" src="img/book1.png">
-                                            </div>
-                                            <a class="book-name" href="#">العقيدة الوسطية</a>
-                                            <div class="book-info">
-                                                <span>
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                        <path
-                                                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-
-                                                صالح بن فوزان بن عبدالله
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="swiper-slide">
-
-                                        <div class="book-item">
-
-                                            <div class="book-img">
-
-                                                <img class="img-fluid" src="img/book2.png">
-                                            </div>
-                                            <a class="book-name" href="#">الحيدة والاعتذار</a>
-                                            <div class="book-info">
-                                                <span>
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                        <path
-                                                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-
-                                                عبد العزيز الكناني
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="swiper-slide">
-
-                                        <div class="book-item">
-
-                                            <div class="book-img">
-
-                                                <img class="img-fluid" src="img/SeeretIbenHisham.png">
-                                            </div>
-                                            <a class="book-name" href="#">السيرة النبوية</a>
-                                            <div class="book-info">
-                                                <span>
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                        <path
-                                                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-
-                                                ابن هشام
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="swiper-slide">
-
-                                        <div class="book-item">
-
-                                            <div class="book-img">
-
-                                                <img class="img-fluid" src="img/cover.png">
-                                            </div>
-                                            <a class="book-name" href="#">كتاب القرآن</a>
-                                            <div class="book-info">
-                                                <span>
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                        <path
-                                                            d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-
-                                                ابي معاذ طارق بن عوض الله
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
 
                                 </div>
 
