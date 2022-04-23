@@ -203,14 +203,14 @@
 
                                     <p class="line-height-more">
 
-                                        {!! $aya->aya !!}
+                                        {{ $aya->aya }}
 
                                     </p>
 
                                 </div>
                                 <p class="text-details">
 
-                                    {{ $aya->tafsir }}
+                                    {!! $aya->tafsir !!}
 
                                 </p>
                                 <a class="more-details"
