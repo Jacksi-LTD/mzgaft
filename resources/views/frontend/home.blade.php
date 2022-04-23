@@ -606,7 +606,8 @@
 
                                             <ul class="body-list  lessons-list" id="audio_files">
                                                 {{-- @dd($first_audios) --}}
-                                                @foreach ($first_files as $key => $media)
+                                                @if(isset($first_files))
+												@foreach ($first_files as $key => $media)
                                                     <li class="list-item">
 
                                                         <a class="aduio-item item-content" href="#">
@@ -645,7 +646,8 @@
                                                         </a>
 
                                                     </li>
-                                                @endforeach
+                                                @endforeach 
+												@endif
 
 
 
