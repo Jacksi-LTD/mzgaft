@@ -13,7 +13,7 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        $questions = Question::with(['category', 'person', 'created_by'])->paginate();
+        $questions = Question::with(['category', 'person', 'created_by'])->orderBy('id', 'desc')->paginate();
 
         $some_questions = Question::with(['category', 'person', 'created_by'])->limit(5)->get();
 

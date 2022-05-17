@@ -69,6 +69,7 @@
                 name="files"/>
                 <span class="help-block">{{ trans('cruds.audio.fields.files_helper') }}</span>
             </div>
+            
             <div class="form-group">
                 <label for="images">{{ trans('cruds.audio.fields.images') }}</label>
                 <x-media-library-attachment

@@ -22,7 +22,7 @@ class StoreAudioRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'files' => [
                 'array',

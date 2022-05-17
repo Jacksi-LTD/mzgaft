@@ -26,7 +26,7 @@ class StorePageRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
         ];
     }

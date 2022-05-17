@@ -17,14 +17,14 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.question.fields.title_helper') }}</span>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="question">{{ trans('cruds.question.fields.question') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('question') ? 'is-invalid' : '' }}" name="question" id="question">{!! old('question') !!}</textarea>
                 @if($errors->has('question'))
                     <span class="text-danger">{{ $errors->first('question') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.question.fields.question_helper') }}</span>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="answer">{{ trans('cruds.question.fields.answer') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('answer') ? 'is-invalid' : '' }}" name="answer" id="answer">{!! old('answer') !!}</textarea>

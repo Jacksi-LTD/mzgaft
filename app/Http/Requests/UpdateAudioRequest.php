@@ -25,7 +25,7 @@ class UpdateAudioRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'files' => [
                 $this->validateMultipleMedia()

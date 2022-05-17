@@ -76,7 +76,7 @@ class QuestionController extends Controller
         }
 
         $categories = Category::get();
-        $people     = Person::get();
+        $people     = Person::where('type', 'questions')->get();
         $users      = User::get();
 
         return view('admin.questions.index', compact('categories', 'people', 'users'));
@@ -88,7 +88,7 @@ class QuestionController extends Controller
 
         $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $people = Person::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $people = Person::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.questions.create', compact('categories', 'people'));
     }
@@ -110,7 +110,7 @@ class QuestionController extends Controller
 
         $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $people = Person::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $people = Person::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $question->load('category', 'person', 'created_by');
 

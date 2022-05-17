@@ -19,10 +19,10 @@ class UpdateQuestionRequest extends FormRequest
         return [
             'title' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'question' => [
-                'required',
+                'nullable',
             ],
             'answer' => [
                 'required',

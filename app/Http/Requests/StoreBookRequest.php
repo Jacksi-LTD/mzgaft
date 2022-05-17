@@ -22,7 +22,7 @@ class StoreBookRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'image' => [
                 'required',

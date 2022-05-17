@@ -21,6 +21,7 @@ class Person extends Model
         'audios'      => 'صوتيات',
         'books'       => 'كتب',
         'audio_books' => 'كتب صوتية',
+        'questions' => 'اسئلة وأجوبة',
     ];
 
     public $table = 'people';

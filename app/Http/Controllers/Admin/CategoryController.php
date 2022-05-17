@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\CsvImportTrait;
+use App\Http\Requests\MassDestroyCategoryRequest;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
@@ -109,5 +110,22 @@ class CategoryController extends Controller
         $category->load('category', 'created_by', 'categoryCategories');
 
         return view('admin.categories.show', compact('category'));
+    }
+
+    public function destroy(Category $category)
+    {
+        abort_if(Gate::denies('category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $category->delete();
+
+        return back();
+    }
+
+
+    public function massDestroy(MassDestroyCategoryRequest $request)
+    {
+        Category::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

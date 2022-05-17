@@ -50,7 +50,7 @@
 
             <div class="container banner-content">
 
-                <a class="d-block" href="index.html">
+                <a class="d-block" href="{{route('frontend.home')}}">
 
                     <img class="img-fluid banner-logo" src="/img/logo1.svg"
                         alt="الموسوعة الاسلامية - Islamic Encyclopedia">

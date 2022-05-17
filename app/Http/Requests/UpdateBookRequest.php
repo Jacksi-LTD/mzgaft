@@ -22,7 +22,7 @@ class UpdateBookRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'image' => [
                 'required',

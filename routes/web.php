@@ -22,9 +22,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
     // Categories
+    Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');
     Route::post('categories/parse-csv-import', 'CategoryController@parseCsvImport')->name('categories.parseCsvImport');
     Route::post('categories/process-csv-import', 'CategoryController@processCsvImport')->name('categories.processCsvImport');
-    Route::resource('categories', 'CategoryController', ['except' => ['destroy']]);
+    Route::resource('categories', 'CategoryController');
 
     // Person
     Route::delete('people/destroy', 'PersonController@massDestroy')->name('people.massDestroy');

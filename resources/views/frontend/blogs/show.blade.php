@@ -44,16 +44,18 @@
                     <span class="writer-name">{{ $blog->writer?->name }}</span>
 
                 </div>
-                <div class="info-item article-date">
+                @if($blog->writing_date)
+                    <div class="info-item article-date">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
-                        <path id="clock"
-                            d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+                            <path id="clock"
+                                d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
+                        </svg>
 
-                    <span class="date">{{ $blog->writing_date }}</span>
+                        <span class="date">{{ $blog->writing_date }}</span>
 
-                </div>
+                    </div>
+                @endif
 
             </div>
             <div class="texts-container">

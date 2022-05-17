@@ -27,7 +27,7 @@ class BlogController extends Controller
     {
         $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->get();
 
-        $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate(1);
+        $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
         return view('frontend.blogs.category', compact('blogs', 'some_blogs', 'category'));
     }

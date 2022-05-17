@@ -137,10 +137,12 @@ class AudioBookController extends Controller
         foreach ($request->input('file', []) as $file) {
             $audioBook->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
         }
+        $audioBook->syncFromMediaLibraryRequest($request->get('audio'))
+                ->toMediaCollection('audio');
 
-        foreach ($request->input('audio', []) as $file) {
-            $audioBook->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('audio');
-        }
+        // foreach ($request->input('audio', []) as $file) {
+        //     $audioBook->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('audio');
+        // }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $audioBook->id]);
@@ -190,20 +192,22 @@ class AudioBookController extends Controller
                 $audioBook->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
             }
         }
+        $audioBook->syncFromMediaLibraryRequest($request->get('audio'))
+                ->toMediaCollection('audio');
 
-        if (count($audioBook->audio) > 0) {
-            foreach ($audioBook->audio as $media) {
-                if (!in_array($media->file_name, $request->input('audio', []))) {
-                    $media->delete();
-                }
-            }
-        }
-        $media = $audioBook->audio->pluck('file_name')->toArray();
-        foreach ($request->input('audio', []) as $file) {
-            if (count($media) === 0 || !in_array($file, $media)) {
-                $audioBook->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('audio');
-            }
-        }
+        // if (count($audioBook->audio) > 0) {
+        //     foreach ($audioBook->audio as $media) {
+        //         if (!in_array($media->file_name, $request->input('audio', []))) {
+        //             $media->delete();
+        //         }
+        //     }
+        // }
+        // $media = $audioBook->audio->pluck('file_name')->toArray();
+        // foreach ($request->input('audio', []) as $file) {
+        //     if (count($media) === 0 || !in_array($file, $media)) {
+        //         $audioBook->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('audio');
+        //     }
+        // }
 
         return redirect()->route('admin.audio-books.index');
     }

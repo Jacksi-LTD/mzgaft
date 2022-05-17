@@ -22,7 +22,7 @@ class UpdateAudioBookRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'image' => [
                 'required',

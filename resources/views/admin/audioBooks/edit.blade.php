@@ -79,15 +79,19 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.audioBook.fields.file_helper') }}</span>
             </div>
+
+
             <div class="form-group">
                 <label for="audio">{{ trans('cruds.audioBook.fields.audio') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('audio') ? 'is-invalid' : '' }}" id="audio-dropzone">
-                </div>
-                @if($errors->has('audio'))
-                    <span class="text-danger">{{ $errors->first('audio') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.audioBook.fields.audio_helper') }}</span>
+                <x-media-library-collection
+                    name="audio"
+                    :model="$audioBook"
+                    collection="audio"
+                    {{-- fields-view="layouts.duration_field" --}}
+                />
+                <span class="help-block">{{ trans('cruds.audio.fields.files_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

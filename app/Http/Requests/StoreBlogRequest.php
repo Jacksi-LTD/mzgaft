@@ -26,7 +26,7 @@ class StoreBlogRequest extends FormRequest
                 'nullable',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'files' => [
                 'array',

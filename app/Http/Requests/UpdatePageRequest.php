@@ -22,7 +22,7 @@ class UpdatePageRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
         ];
     }

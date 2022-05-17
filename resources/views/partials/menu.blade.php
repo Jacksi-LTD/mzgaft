@@ -83,33 +83,21 @@
                         </ul>
                     </li>
                 @endcan
-                @can('persons_menu_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/people*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-user-alt">
 
-                            </i>
-                            <p>
-                                {{ trans('cruds.personsMenu.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('person_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.people.index") }}" class="nav-link {{ request()->is("admin/people") || request()->is("admin/people/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-user-alt">
+                <ul class="nav nav-treeview">
+                    @can('person_access')
+                        <li class="nav-item">
+                            <a href="{{ route("admin.people.index") }}" class="nav-link {{ request()->is("admin/people") || request()->is("admin/people/*") ? "active" : "" }}">
+                                <i class="fa-fw nav-icon fas fa-user-alt">
 
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.person.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
+                                </i>
+                                <p>
+                                    {{ trans('cruds.person.title') }}
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
                 @can('tafsir_menu_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/surahs*") ? "menu-open" : "" }} {{ request()->is("admin/ayas*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
@@ -149,19 +137,8 @@
                         </ul>
                     </li>
                 @endcan
-                @can('blogsmenu_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/blogs*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-book-open">
 
-                            </i>
-                            <p>
-                                {{ trans('cruds.blogsmenu.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('blog_access')
+                @can('blog_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.blogs.index") }}" class="nav-link {{ request()->is("admin/blogs") || request()->is("admin/blogs/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-edit">
@@ -173,103 +150,43 @@
                                     </a>
                                 </li>
                             @endcan
-                        </ul>
-                    </li>
-                @endcan
-                @can('audio_menu_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/audios*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-file-audio">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.audioMenu.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
                             @can('audio_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.audios.index") }}" class="nav-link {{ request()->is("admin/audios") || request()->is("admin/audios/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-volume-up">
+                            <li class="nav-item">
+                                <a href="{{ route("admin.audios.index") }}" class="nav-link {{ request()->is("admin/audios") || request()->is("admin/audios/*") ? "active" : "" }}">
+                                    <i class="fa-fw nav-icon fas fa-volume-up">
 
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.audio.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
-                @can('books_menu_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/books*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-book">
+                                    </i>
+                                    <p>
+                                        {{ trans('cruds.audio.title') }}
+                                    </p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('book_access')
+                        <li class="nav-item">
+                            <a href="{{ route("admin.books.index") }}" class="nav-link {{ request()->is("admin/books") || request()->is("admin/books/*") ? "active" : "" }}">
+                                <i class="fa-fw nav-icon fas fa-book-open">
 
-                            </i>
-                            <p>
-                                {{ trans('cruds.booksMenu.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('book_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.books.index") }}" class="nav-link {{ request()->is("admin/books") || request()->is("admin/books/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-book-open">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.book.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
-                @can('audio_books_menu_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/audio-books*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
+                                </i>
+                                <p>
+                                    {{ trans('cruds.book.title') }}
+                                </p>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('audio_book_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.audio-books.index") }}" class="nav-link {{ request()->is("admin/audio-books") || request()->is("admin/audio-books/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fab fa-audible">
 
                             </i>
                             <p>
-                                {{ trans('cruds.audioBooksMenu.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                {{ trans('cruds.audioBook.title') }}
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            @can('audio_book_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.audio-books.index") }}" class="nav-link {{ request()->is("admin/audio-books") || request()->is("admin/audio-books/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fab fa-audible">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.audioBook.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
                     </li>
                 @endcan
-                @can('questions_menu_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/questions*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-question-circle">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.questionsMenu.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('question_access')
+                @can('question_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.questions.index") }}" class="nav-link {{ request()->is("admin/questions") || request()->is("admin/questions/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-question">
@@ -281,9 +198,6 @@
                                     </a>
                                 </li>
                             @endcan
-                        </ul>
-                    </li>
-                @endcan
                 @can('others_menu_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/pages*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">

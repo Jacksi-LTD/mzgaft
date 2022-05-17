@@ -22,7 +22,7 @@ class StoreAudioBookRequest extends FormRequest
                 'required',
             ],
             'content' => [
-                'required',
+                'nullable',
             ],
             'image' => [
                 'required',
