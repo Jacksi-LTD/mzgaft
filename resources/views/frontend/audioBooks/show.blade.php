@@ -82,7 +82,7 @@
                                             </button>
                                         </a>
 
-                                        <a href="{{ $audioBook->file->first()->getUrl() }}" target="_blank">
+                                        <a href="{{ $audioBook->file->first()?->getUrl() }}" target="_blank">
                                             <button class="perview-btn audio-btn   " type="button" s>
                                                 <i class="fa-solid fa-download"></i>
                                                 <span>PDF</span>
