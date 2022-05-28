@@ -15,7 +15,8 @@ class AudioController extends Controller
 
         $people = Person::where('type', 'audios')->get();
 
-        $categories = Category::where('type', 'audios')->get();
+        // $categories = Category::where('type', 'audios')->get();
+        $categories = Category::where(['type'=> 'audios','category_id'=>null])->get();
 
         return view('frontend.audios.index', compact('categories', 'people'));
     }

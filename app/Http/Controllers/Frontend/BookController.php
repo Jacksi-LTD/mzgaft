@@ -14,7 +14,8 @@ class BookController extends Controller
     public function index()
     {
 
-        $categories = Category::where('type', 'books')->get();
+        // $categories = Category::where('type', 'books')->get();
+        $categories = Category::where(['type'=> 'books','category_id'=>null])->get();
 
         return view('frontend.books.index', compact('categories'));
     }

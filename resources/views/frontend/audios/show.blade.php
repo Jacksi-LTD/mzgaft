@@ -90,10 +90,11 @@
                                     @foreach ($audio->files as $key => $media)
                                         <li class="list-item">
 
-                                            <div class="item-content">
+                                            <div class="item-content"
+                                            id="{{ $media->original_url }}" onclick="play_media(this)">
 
                                                 <a class="item-type item-link"
-                                                    href="{{ route('frontend.audios.single', $media->id) }}">
+                                                    href="#">
 
                                                     <span class="icon">
 
@@ -124,14 +125,15 @@
 
                                                     </span>
                                                     @php
-                                                        $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
-                                                        //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
-                                                        $audio_info->duration;// \\ duration in seconds
 
+                                                        if (isset($media)) {
+                                                            $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
+                                                            //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                            $audio_info->duration; // \\ duration in seconds
+                                                            echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
+                                                        }
 
                                                     @endphp
-                                                    <span
-                                                        class="text">{{ gmdate("H:i:s", $audio_info->duration) }}</span>
 
                                                 </div>
 
@@ -206,7 +208,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">{{$audio->visits}} </span>
+                                                    <span class="statistics-val">{{ $audio->visits }} </span>
 
                                                 </div>
 
@@ -242,6 +244,35 @@
 
 @section('scripts')
 <script>
+    var audio = new Audio()
+
+    function play_media(item) {
+
+        audio.pause();
+        audio = new Audio(item.id);
+
+        var active = false
+        if ($(item).hasClass('active')) {
+            active = true
+            $(item).removeClass('active');
+            audio.pause();
+        }
+
+        audio.onended = function() {
+            $(item).removeClass('active');
+        };
+
+        $(".lessons-list .item-content.play-media").each(function(index) {
+            $(this).removeClass('active')
+        });
+
+        if (!active) {
+            audio.play();
+            $(item).addClass('active');
+        }
+
+    }
+
     /*** noty general style ***/
     $(".download-btn").click(function() {
 

@@ -29,6 +29,7 @@
                 <p>{{ $question->title }}</p>
 
             </div>
+            @if($question->person)
             <div class="article-info">
 
                 <div class="info-item article-writer">
@@ -41,8 +42,9 @@
                     <span class="writer-name">{{ $question->person?->name }}</span>
 
                 </div>
-                
+
             </div>
+            @endif
             <div class="texts-container">
 
                 {!! $question->question !!}

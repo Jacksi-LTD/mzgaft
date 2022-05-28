@@ -21,7 +21,8 @@ class AudioBookController extends Controller
 {
     public function index()
     {
-        $categories = Category::where('type', 'audio_books')->get();
+        $categories = Category::where(['type'=> 'audio_books','category_id'=>null])->get();
+        // $categories = Category::where('type', 'audio_books')->get();
 
         return view('frontend.audioBooks.index', compact('categories'));
     }

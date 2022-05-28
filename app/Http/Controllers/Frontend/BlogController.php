@@ -17,7 +17,7 @@ class BlogController extends Controller
 
         $people = Person::get();
 
-        $categories = Category::where('type', 'blogs')->get();
+        $categories = Category::where(['type'=> 'blogs','category_id'=>null])->get();
         $users = User::get();
 
         return view('frontend.blogs.index', compact('blogs', 'categories', 'people', 'users'));
