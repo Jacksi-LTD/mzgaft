@@ -17,7 +17,6 @@ class Audio extends Model implements HasMedia
     use SoftDeletes;
     use MultiTenantModelTrait;
     use InteractsWithMedia;
-    use Auditable;
     use HasFactory;
 
     public $table = 'audios';

@@ -90,11 +90,10 @@
                                     @foreach ($audio->files as $key => $media)
                                         <li class="list-item">
 
-                                            <div class="item-content"
-                                            id="{{ $media->original_url }}" onclick="play_media(this)">
+                                            <div class="item-content" id="{{ $media->original_url }}"
+                                                onclick="play_media(this)">
 
-                                                <a class="item-type item-link"
-                                                    href="#">
+                                                <a class="item-type item-link" href="#">
 
                                                     <span class="icon">
 
@@ -126,11 +125,16 @@
                                                     </span>
                                                     @php
 
-                                                        if (isset($media)) {
-                                                            $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
-                                                            //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
-                                                            $audio_info->duration; // \\ duration in seconds
-                                                            echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
+                                                        if (isset($media) && file_exists($media->getPath())) {
+                                                            try {
+                                                                $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
+                                                                //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                                $audio_info->duration; // \\ duration in seconds
+                                                                echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
+                                                            } catch (SomeException $ignored) {
+                                                                // do nothing... php will ignore and continue
+                                                                // but maybe use "ignored" as name to silence IDE warnings.
+                                                            }
                                                         }
 
                                                     @endphp

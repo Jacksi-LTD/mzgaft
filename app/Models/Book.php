@@ -17,7 +17,6 @@ class Book extends Model implements HasMedia
     use SoftDeletes;
     use MultiTenantModelTrait;
     use InteractsWithMedia;
-    use Auditable;
     use HasFactory;
 
     public $table = 'books';
