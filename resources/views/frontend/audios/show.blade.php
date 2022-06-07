@@ -106,7 +106,7 @@
 
                                                     </span>
                                                     <span class="text">{{ $key + 1 }}
-                                                        {{ $media->name }} 
+                                                        {{ $media->name }}
                                                     </span>
 
                                                 </a>
@@ -124,16 +124,14 @@
 
                                                     </span>
                                                     @php
-
-                                                        if (isset($media)) {
-                                                            if (file_exists($media->getPath())) {
-                                                                $ext = strtolower(array_pop(explode('.', $media->getPath())));
-                                                                if (array_key_exists($ext, $mime_types)) {
-                                                                    $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
-                                                                    //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
-                                                                    $audio_info->duration; // \\ duration in seconds
-                                                                    echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
-                                                                }
+                                                        $path = $media->getPath();
+                                                        if (isset($media) && file_exists($path)) {
+                                                            $ext = strtolower(array_pop(explode('.', $path)));
+                                                            if (array_key_exists($ext, $mime_types)) {
+                                                                $audio_info = new \wapmorgan\Mp3Info\Mp3Info($path, true);
+                                                                //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                                $audio_info->duration; // \\ duration in seconds
+                                                                echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
                                                             }
                                                         }
 
