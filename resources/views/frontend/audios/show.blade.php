@@ -106,7 +106,7 @@
 
                                                     </span>
                                                     <span class="text">{{ $key + 1 }}
-                                                        {{ $media->name }}
+                                                        {{ $media->name }} 
                                                     </span>
 
                                                 </a>
@@ -134,7 +134,7 @@
                                                                     $audio_info->duration; // \\ duration in seconds
                                                                     echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
                                                                 }
-                                                            git }
+                                                            }
                                                         }
 
                                                     @endphp
