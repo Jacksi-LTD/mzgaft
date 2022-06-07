@@ -32,7 +32,6 @@
                 <div class="col-lg-4 half order-2 order-lg-1">
 
                     <div class="side-box-container">
-                        @dd($category->childCategories)
                         @if ($category->childCategories)
 
                             <div class="box-wrap">
