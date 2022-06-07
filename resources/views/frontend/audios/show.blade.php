@@ -126,10 +126,8 @@
                                                     @php
 
                                                         if (isset($media) && file_exists($media->getPath())) {
-                                                            $ext = strtolower(array_pop(explode('.', $$media->getPath())));
+                                                            $ext = strtolower(array_pop(explode('.', $media->getPath())));
                                                             if (array_key_exists($ext, $mime_types)) {
-                                                                return 'THIS IS AUDIO FILES';
-
                                                                 $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
                                                                 //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
                                                                 $audio_info->duration; // \\ duration in seconds
