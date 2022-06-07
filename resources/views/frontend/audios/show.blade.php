@@ -128,7 +128,7 @@
                                                         if (isset($media) && file_exists($path)) {
                                                             $tmp = explode('.', $path);
                                                             $ext = strtolower(array_pop($tmp));
-                                                            $mime_types = array('mp3' => 'audio/mpeg',)
+                                                            $mime_types = array('mp3' => 'audio/mpeg');
                                                             if (array_key_exists($ext, $mime_types)) {
                                                                 $audio_info = new \wapmorgan\Mp3Info\Mp3Info($path, true);
                                                                 //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
