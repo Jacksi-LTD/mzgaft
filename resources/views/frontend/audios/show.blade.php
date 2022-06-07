@@ -126,14 +126,14 @@
                                                     @php
 
                                                         if (isset($media) && file_exists($media->getPath())) {
-                                                            try {
+                                                            $ext = strtolower(array_pop(explode('.', $$media->getPath())));
+                                                            if (array_key_exists($ext, $mime_types)) {
+                                                                return 'THIS IS AUDIO FILES';
+
                                                                 $audio_info = new \wapmorgan\Mp3Info\Mp3Info($media->getPath(), true);
                                                                 //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
                                                                 $audio_info->duration; // \\ duration in seconds
                                                                 echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
-                                                            } catch (SomeException $ignored) {
-                                                                // do nothing... php will ignore and continue
-                                                                // but maybe use "ignored" as name to silence IDE warnings.
                                                             }
                                                         }
 
