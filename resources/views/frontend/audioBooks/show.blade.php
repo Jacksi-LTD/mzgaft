@@ -26,49 +26,51 @@
     <div class="container lectures-items">
         <div class="items-cols">
 
-        <div class="row">
+            <div class="row">
 
 
-            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="col-lg-8 mb-5 mb-lg-0">
 
-                <div class="duplicated-box-wrapper box-container">
+                    <div class="duplicated-box-wrapper box-container">
 
-                    <div class="duplicated-box box-lg lessons-style duplicated-box-2">
+                        <div class="duplicated-box box-lg lessons-style duplicated-box-2">
 
-                        <div class="box-header box-padding ">
+                            <div class="box-header box-padding ">
 
-                            <div class="header-title ">
+                                <div class="header-title ">
 
-                                {{ $audioBook->title }}
+                                    {{ $audioBook->title }}
+
+                                </div>
 
                             </div>
+                            <div class="box-body box-padding aduio_player">
 
-                        </div>
-                        <div class="box-body box-padding aduio_player">
+                                <div class="body-content ">
 
-                            <div class="body-content ">
-
-                                <div class="lesson-perview-area">
+                                    <div class="lesson-perview-area">
 
 
-                                    <div class="book-wrap">
+                                        <div class="book-wrap">
 
-                                        <div class="book-item">
-                                            <div class="book-img">
+                                            <div class="book-item">
+                                                <div class="book-img">
 
-                                                <img class="img-fluid" src="{{ $audioBook->image?->getUrl() }}">
+                                                    <img class="img-fluid"
+                                                        src="{{ $audioBook->image?->getUrl() }}">
+                                                </div>
                                             </div>
+
                                         </div>
+                                        <br>
 
-                                    </div>
-                                    <br>
+                                        <ul class="body-list  lessons-list">
+                                            @foreach ($audioBook->audio as $key => $audio)
+                                                <li class="list-item">
 
-                                    <ul class="body-list  lessons-list">
-                                        @foreach ($audioBook->audio as $key => $audio)
-                                            <li class="list-item">
-
-                                                <div id="{{ $audio->original_url }}" class="aduio-item item-content item-content audio play-media"
-                                                    onclick="play_media(this)">
+                                                    <div id="{{ $audio->original_url }}"
+                                                        class="aduio-item item-content item-content audio play-media"
+                                                        onclick="play_media(this)">
 
 
 
@@ -89,161 +91,166 @@
                                                                 </svg> </span> <span class="text">
 
                                                                 @php
-
-                                                                    if (isset($audio)) {
-                                                                        $audio_info = new \wapmorgan\Mp3Info\Mp3Info($audio->getPath(), true);
-                                                                        //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
-                                                                        $audio_info->duration; // \\ duration in seconds
-                                                                        echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
+                                                                    $path = $media->getPath();
+                                                                    if (isset($media) && file_exists($path)) {
+                                                                        $tmp = explode('.', $path);
+                                                                        $ext = strtolower(array_pop($tmp));
+                                                                        $mime_types = ['mp3' => 'audio/mpeg'];
+                                                                        if (array_key_exists($ext, $mime_types)) {
+                                                                            $audio_info = new \wapmorgan\Mp3Info\Mp3Info($path, true);
+                                                                            //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                                            $audio_info->duration; // \\ duration in seconds
+                                                                            echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
+                                                                        }
                                                                     }
 
                                                                 @endphp
 
                                                             </span>
                                                         </div>
+                                                    </div>
+
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                        <div class="perview-btns">
+
+
+                                            <a href="{{ $audioBook->audio->first()->getUrl() }}" target="_blank"
+                                                style="margin-left: 1.5rem;">
+                                                <button class="perview-btn download-btn noty-btn" type="button">
+
+                                                    <i class="fa-solid fa-download"></i>
+                                                    <span>تحميل</span>
+
+                                                </button>
+                                            </a>
+
+                                            <a href="{{ $audioBook->file->first()?->getUrl() }}" target="_blank">
+                                                <button class="perview-btn audio-btn   " type="button" s>
+                                                    <i class="fa-solid fa-download"></i>
+                                                    <span>PDF</span>
+                                                </button>
+                                            </a>
+
+                                        </div>
+
+                                        <div class="audio-area" id="audioArea">
+
+                                            <div class="audio-wrap">
+
+                                                <audio controls class="audio-item" id="audio-item">
+                                                    <source src="{{ $audioBook->audio->first()->getUrl() }}"
+                                                        type="audio/ogg">
+                                                    <source src="{{ $audioBook->audio->first()->getUrl() }}"
+                                                        type="audio/mpeg">
+                                                </audio>
+                                                <div class=" close-audio" id="closeAudio">
+
+                                                    <i class="fa-solid fa-xmark"></i>
+                                                    إغلاق
+
                                                 </div>
-
-                                            </li>
-                                        @endforeach
-                                    </ul>
-
-                                    <div class="perview-btns">
-
-
-                                        <a href="{{ $audioBook->audio->first()->getUrl() }}" target="_blank"
-                                            style="margin-left: 1.5rem;">
-                                            <button class="perview-btn download-btn noty-btn" type="button">
-
-                                                <i class="fa-solid fa-download"></i>
-                                                <span>تحميل</span>
-
-                                            </button>
-                                        </a>
-
-                                        <a href="{{ $audioBook->file->first()?->getUrl() }}" target="_blank">
-                                            <button class="perview-btn audio-btn   " type="button" s>
-                                                <i class="fa-solid fa-download"></i>
-                                                <span>PDF</span>
-                                            </button>
-                                        </a>
-
-                                    </div>
-
-                                    <div class="audio-area" id="audioArea">
-
-                                        <div class="audio-wrap">
-
-                                            <audio controls class="audio-item" id="audio-item">
-                                                <source src="{{ $audioBook->audio->first()->getUrl() }}"
-                                                    type="audio/ogg">
-                                                <source src="{{ $audioBook->audio->first()->getUrl() }}"
-                                                    type="audio/mpeg">
-                                            </audio>
-                                            <div class=" close-audio" id="closeAudio">
-
-                                                <i class="fa-solid fa-xmark"></i>
-                                                إغلاق
 
                                             </div>
 
                                         </div>
 
                                     </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <br>
-                        <div class="box-body box-padding">
-
-                            <div class="body-content">
-
-
-
-                            </div>
-
-                            <x-share-box />
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-            <div class="col-lg-4">
-
-                <div class="side-box-container">
-
-                    <div class="box-wrap">
-
-
-                        <div class="duplicated-box-wrapper">
-
-                            <div class="duplicated-box box-lg box-side side-statistics ">
-
-                                <div class="box-header box-padding ">
-
-                                    <div class="header-title ">
-
-                                        احصائيات
-
-                                    </div>
-
-
-                                </div>
-                                <div class="box-body box-padding">
-
-                                    <div class="body-content ">
-
-                                        <ul class="body-list statistics-list">
-
-                                            <li class="list-item">
-
-                                                <div class="statistics-item">
-
-                                                    <span class="statistics-text">
-
-                                                        اجمالي مرات الاستماع
-                                                        :
-
-                                                    </span>
-                                                    <span
-                                                        class="statistics-val">{{ $audioBook->visits ?? '0' }}</span>
-
-                                                </div>
-
-                                            </li>
-
-
-                                        </ul>
-
-                                    </div>
-
                                 </div>
 
                             </div>
 
 
+                            <br>
+                            <div class="box-body box-padding">
+
+                                <div class="body-content">
+
+
+
+                                </div>
+
+                                <x-share-box />
+                            </div>
+
                         </div>
+
 
 
                     </div>
 
 
                 </div>
+                <div class="col-lg-4">
+
+                    <div class="side-box-container">
+
+                        <div class="box-wrap">
+
+
+                            <div class="duplicated-box-wrapper">
+
+                                <div class="duplicated-box box-lg box-side side-statistics ">
+
+                                    <div class="box-header box-padding ">
+
+                                        <div class="header-title ">
+
+                                            احصائيات
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="box-body box-padding">
+
+                                        <div class="body-content ">
+
+                                            <ul class="body-list statistics-list">
+
+                                                <li class="list-item">
+
+                                                    <div class="statistics-item">
+
+                                                        <span class="statistics-text">
+
+                                                            اجمالي مرات الاستماع
+                                                            :
+
+                                                        </span>
+                                                        <span
+                                                            class="statistics-val">{{ $audioBook->visits ?? '0' }}</span>
+
+                                                    </div>
+
+                                                </li>
+
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
 
             </div>
-
 
         </div>
-
-    </div>
     </div>
 
 </section>

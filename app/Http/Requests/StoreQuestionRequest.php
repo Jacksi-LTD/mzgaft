@@ -19,7 +19,7 @@ class StoreQuestionRequest extends FormRequest
         return [
             'title' => [
                 'string',
-                'require',
+                'required',
             ],
             'question' => [
                 'nullable',

@@ -86,7 +86,7 @@ class QuestionController extends Controller
     {
         abort_if(Gate::denies('question_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $categories = Category::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $people = Person::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -108,7 +108,7 @@ class QuestionController extends Controller
     {
         abort_if(Gate::denies('question_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $categories = Category::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $people = Person::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

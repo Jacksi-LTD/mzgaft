@@ -351,7 +351,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'title'             => 'العنوان',
+            'title'             => 'السؤال',
             'title_helper'      => ' ',
             'question'          => 'السؤال',
             'question_helper'   => ' ',
