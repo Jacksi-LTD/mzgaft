@@ -40,8 +40,12 @@ class AudioBookController extends Controller
     public function show(AudioBook $audioBook)
     {
         // $audioBookIn = $audioBook;
-
-        AudioBook::find($audioBook->id)->increment('visits');
+        if(isset($audioBook->visits)){
+            AudioBook::find($audioBook->id)->increment('visits');
+        }else{
+            $audioBook->visits = 1;
+            $audioBook->save();
+        }
 
         $audioBook->load('writer', 'category', 'created_by', 'media.model');
 

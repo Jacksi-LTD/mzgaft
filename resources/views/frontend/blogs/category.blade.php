@@ -1,19 +1,19 @@
 @extends('layouts.frontend')
 @section('page_title', $category->name)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">المقالات</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.blogs.index') }}">المقالات</a></li>
     @php
     $parent = $category->parentCategory;
     $up_parent = $parent?->parentCategory;
     @endphp
     @if ($up_parent)
         <li class="breadcrumb-item"><a
-                href="{{ route('frontend.audios.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
+                href="{{ route('frontend.blogs.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
         </li>
     @endif
     @if ($parent)
         <li class="breadcrumb-item"><a
-                href="{{ route('frontend.audios.category', $parent->id) }}">{{ $parent->name }}</a>
+                href="{{ route('frontend.blogs.category', $parent->id) }}">{{ $parent->name }}</a>
         </li>
     @endif
     </li>

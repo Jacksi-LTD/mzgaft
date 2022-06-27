@@ -112,7 +112,7 @@
 
       if (confirm('{{ trans('global.areYouSure') }}')) {
         $.ajax({
-          headers: {'x-csrf-token': _token},
+          // headers: {'x-csrf-token': _token},
           method: 'POST',
           url: config.url,
           data: { ids: ids, _method: 'DELETE' }})
@@ -149,7 +149,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false

@@ -91,8 +91,8 @@
                                                                 </svg> </span> <span class="text">
 
                                                                 @php
-                                                                    $path = $media->getPath();
-                                                                    if (isset($media) && file_exists($path)) {
+                                                                    $path = $audio->getPath();
+                                                                    if (isset($audio) && file_exists($path)) {
                                                                         $tmp = explode('.', $path);
                                                                         $ext = strtolower(array_pop($tmp));
                                                                         $mime_types = ['mp3' => 'audio/mpeg'];

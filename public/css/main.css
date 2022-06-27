@@ -1796,6 +1796,7 @@ footer {
 
     flex-shrink: 0;
     margin-left: 6px;
+    margin-right: 6px;
     transition: inherit;
 
 }

@@ -44,7 +44,12 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        Book::find($book->id)->increment('visits');
+        if(isset($book->visits)){
+            Book::find($book->id)->increment('visits');
+        }else{
+            $book->visits = 1;
+            $book->save();
+        }
 
         $book->load('writer', 'category', 'created_by', 'media.model');
 

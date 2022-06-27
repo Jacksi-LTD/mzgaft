@@ -46,7 +46,7 @@ class QuestionController extends Controller
                 'deleteGate',
                 'crudRoutePart',
                 'row'
-            ));
+                ));
             });
 
             $table->editColumn('id', function ($row) {

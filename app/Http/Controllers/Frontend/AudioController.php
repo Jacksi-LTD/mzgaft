@@ -69,7 +69,12 @@ class AudioController extends Controller
 
     public function show(Audio $audio)
     {
-        Audio::find($audio->id)->increment('visits');
+        if(isset($audio->visits)){
+            Audio::find($audio->id)->increment('visits');
+        }else{
+            $audio->visits = 1;
+            $audio->save();
+        }
         $audio->load('writer', 'category', 'created_by', 'media.model');//->with('media.model')
         return view('frontend.audios.show', compact('audio'));
     }
