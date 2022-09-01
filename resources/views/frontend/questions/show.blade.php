@@ -3,7 +3,7 @@
 @section('page_title', $question->title)
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="/questions">الأسئلة والأجوبة</a></li>
+    <li class="breadcrumb-item"><a href="/questions">پرسیار و بەرسڤ</a></li>
     @php
     $parent = $question->category;
     $up_parent = $parent->parentCategory;
