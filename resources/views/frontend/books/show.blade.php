@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
 @section('page_title', $book->title)
-@section('page_title', 'الكتب الصوتية')
+@section('page_title', 'پەرتۆکێن دەنگی')
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('frontend.books.index') }}">الكتب</a></li>
     @php
@@ -117,7 +117,7 @@
 
                                     <div class="header-title ">
 
-                                        احصائيات
+                                        ئامار
 
                                     </div>
 
@@ -135,7 +135,7 @@
 
                                                     <span class="statistics-text">
 
-                                                        اجمالي مرات القراءة
+                                                        سەرجەمێ گوهداریکرنێ
                                                         :
 
                                                     </span>
@@ -189,7 +189,7 @@
             timeout: '2000',
             progressBar: true,
             closeWith: ['click'],
-            text: '<i class="fa-solid fa-circle-check ms-1"></i> تم تنزيل الحلقة بنجاح',
+            text: '<i class="fa-solid fa-circle-check ms-1"></i> سەرکەفتییانە هاتە دابەزاندن',
         }).show();
 
     });
