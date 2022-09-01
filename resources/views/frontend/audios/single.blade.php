@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
 @section('page_title', $media->name)
-@section('page_title', 'الصوتيات')
+@section('page_title', 'وانێن دەنگی')
 
 
 <section class="section-style lesson-section section-cols">
@@ -37,7 +37,7 @@
                                         <button class="perview-btn audio-btn   " type="button" id="playAudiobtn">
 
                                             <i class="fa-solid fa-play"></i>
-                                            <span>استماع</span>
+                                            <span>گوهدان</span>
 
                                         </button>
 
@@ -45,7 +45,7 @@
                                         <button class="perview-btn download-btn noty-btn" type="button">
 
                                             <i class="fa-solid fa-download"></i>
-                                            <span>تحميل</span>
+                                            <span>دابەزاندن</span>
 
                                         </button>
                                         </a>
@@ -62,7 +62,7 @@
                                             <div class=" close-audio" id="closeAudio">
 
                                                 <i class="fa-solid fa-xmark"></i>
-                                                إغلاق
+                                                گرتن
 
                                             </div>
 
@@ -111,7 +111,7 @@
 
                                     <div class="header-title ">
 
-                                        احصائيات
+                                        ئامار
 
                                     </div>
 
@@ -129,7 +129,7 @@
 
                                                     <span class="statistics-text">
 
-                                                        اجمالي مرات الاستماع
+                                                        هژمارا گوهداریکرنێ
                                                         :
 
                                                     </span>
