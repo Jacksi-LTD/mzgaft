@@ -48,7 +48,7 @@
                 <a class="d-block" href="{{ route('frontend.home') }}">
 
                     <img class="img-fluid banner-logo" src="img/logo1.svg"
-                        alt="الموسوعة الاسلامية - Islamic Encyclopedia">
+                        alt="مزگەفت">
 
                 </a>
 
@@ -99,7 +99,7 @@
 
                             <div class="header-title ">
 
-                                القائمة الرئيسية
+                                لیستا سەرەکی
 
                             </div>
 
@@ -113,37 +113,37 @@
 
                                     <div class="item-wrap">
 
-                                        <a class="menu-item active" href="#"><span>الرئيسية</span></a>
+                                        <a class="menu-item active" href="#"><span>سەرەکی</span></a>
 
                                     </div>
                                     <div class="item-wrap">
 
-                                        <a class="menu-item" href="#"> <span>تفسير القرآن</span></a>
+                                        <a class="menu-item" href="#"> <span>تەفسیرا قورئانێ</span></a>
 
                                     </div>
                                     <div class="item-wrap">
 
-                                        <a class="menu-item" href="#"><span>المقالات</span> </a>
+                                        <a class="menu-item" href="#"><span>گوتار</span> </a>
 
                                     </div>
                                     <div class="item-wrap">
 
-                                        <a class="menu-item" href="#"> <span>الصوتيات</span> </a>
+                                        <a class="menu-item" href="#"> <span>وانێن دەنگی</span> </a>
 
                                     </div>
                                     <div class="item-wrap">
 
-                                        <a class="menu-item" href="#"> <span> الكتب الصوتية </span></a>
+                                        <a class="menu-item" href="#"> <span>پەرتۆکێن دەنگی</span></a>
 
                                     </div>
                                     <div class="item-wrap">
 
-                                        <a class="menu-item" href="#"> <span>اسالة واجوبة</span> </a>
+                                        <a class="menu-item" href="#"> <span>پرسیار و بەرسڤ</span> </a>
 
                                     </div>
                                     <div class="item-wrap">
 
-                                        <a class="menu-item" href="#"> <span>الكتب</span></a>
+                                        <a class="menu-item" href="#"> <span>پەرتۆک</span></a>
 
                                     </div>
                                     <div class="item-wrap">
@@ -185,12 +185,12 @@
 
                             <div class="header-title ">
 
-                                تفسير القرآن
+                                تەفسیرا قورئانێ
 
                             </div>
                             <a class="header-more duplicated-more-btn " href="{{ route('frontend.tafsir.index') }}">
 
-                                <span class="title-text">المزيد</span>
+                                <span class="title-text">زێدەتر</span>
 
                             </a>
 
@@ -214,8 +214,7 @@
 
                                 </p>
                                 <a class="more-details"
-                                    href="{{ route('frontend.tafsir.show', $aya->surah_id) . '#' . $aya->number }}">اكمل
-                                    قراءة التفسير</a>
+                                    href="{{ route('frontend.tafsir.show', $aya->surah_id) . '#' . $aya->number }}">تەمامییا تەفسیرێ</a>
 
                                 <div class="info-wrap">
 
@@ -260,13 +259,13 @@
 
                                     <div class="header-title ">
 
-                                        المقالات
+                                        گوتار
 
                                     </div>
                                     <a class="header-more duplicated-more-btn "
                                         href="{{ route('frontend.blogs.index') }}">
 
-                                        <span class="title-text">المزيد</span>
+                                        <span class="title-text">زێدەتر</span>
 
                                     </a>
 
@@ -332,13 +331,13 @@
 
                                 <div class="header-title ">
 
-                                    اسالة واجوبة
+                                    پرسیار و بەرسڤ
 
                                 </div>
                                 <a class="header-more duplicated-more-btn "
                                     href="{{ route('frontend.questions.index') }}">
 
-                                    <span class="title-text">المزيد</span>
+                                    <span class="title-text">زێدەتر</span>
 
                                 </a>
 
@@ -422,12 +421,12 @@
 
                 <div class="header-title ">
 
-                    الصوتيات والمحاضرات
+                    وانە
 
                 </div>
                 <a class="header-more duplicated-more-btn " href="{{ route('frontend.audios.index') }}">
 
-                    <span class="title-text">المزيد</span>
+                    <span class="title-text">زێدەتر</span>
 
                 </a>
 
@@ -445,9 +444,9 @@
                                 <div class="lectures-items-banner">
                                     <div class="lectures-items-title ">
 
-                                        <div class="title-item me-1">المحاضرين</div>
-                                        <div class="title-item">الدروس</div>
-                                        <div class="title-item">الحلقات</div>
+                                        <div class="title-item me-1">ماموستا</div>
+                                        <div class="title-item">وانە</div>
+                                        <div class="title-item">خەلەکە</div>
 
                                     </div>
                                 </div>
@@ -692,12 +691,12 @@
 
                 <div class="header-title ">
 
-                    الكتب
+                    پەرتۆک
 
                 </div>
                 <a class="header-more duplicated-more-btn " href="{{ route('frontend.books.index') }}">
 
-                    <span class="title-text">المزيد</span>
+                    <span class="title-text">زێدەتر</span>
 
                 </a>
 
@@ -784,7 +783,7 @@
 
             <a class="d-block" href="#">
                 <img class="img-fluid footer-img" src="img/logo2.png"
-                    alt="الموسوعة الاسلامية - Islamic Encyclopedia">
+                    alt="سایتێ مزگەفت - Mzgaft Site">
             </a>
 
             <p class="footer-about">
