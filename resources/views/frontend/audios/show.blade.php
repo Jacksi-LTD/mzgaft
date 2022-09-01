@@ -2,7 +2,7 @@
 @section('content')
 @section('page_title', $audio->title)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">الصوتيات</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">وانێن دەنگی</a></li>
     @php
     $parent = $audio->category;
     $up_parent = $parent->parentCategory;
@@ -181,7 +181,7 @@
 
                                         <div class="header-title ">
 
-                                            احصائيات
+                                            ئامار
 
                                         </div>
 
@@ -199,7 +199,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            الحلقات
+                                                            خەلەکە
                                                             :
 
                                                         </span>
@@ -215,7 +215,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي مرات الاستماع
+                                                            سەرجەمێ گوهداریکرنێ
                                                             :
 
                                                         </span>
@@ -296,7 +296,7 @@
             timeout: '2000',
             progressBar: true,
             closeWith: ['click'],
-            text: '<i class="fa-solid fa-circle-check ms-1"></i> تم تنزيل الحلقة بنجاح',
+            text: '<i class="fa-solid fa-circle-check ms-1"></i> سەرکەفتییانە هاتە دابەزاندن',
 
 
 
