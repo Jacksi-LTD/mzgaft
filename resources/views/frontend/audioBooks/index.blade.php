@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('page_title', 'الكتب الصوتية')
+@section('page_title', 'پەرتۆکێن دەنگی')
 
 @section('content')
     <!-- ***** articles-categories-section Start ***** -->
@@ -16,7 +16,7 @@
 
                         <div class="header-title ">
 
-                            بحسب التصنيف:
+                            لدویڤ بابەتان:
 
                         </div>
 
