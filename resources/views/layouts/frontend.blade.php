@@ -53,7 +53,7 @@
                 <a class="d-block" href="{{route('frontend.home')}}">
 
                     <img class="img-fluid banner-logo" src="/img/logo1.svg"
-                        alt="الموسوعة الاسلامية - Islamic Encyclopedia">
+                        alt="سایتێ مزگەفت - Mzgaft Site">
 
                 </a>
 
@@ -102,7 +102,7 @@
                 <nav class="breadcrumb-nav" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
 
-                        <li class="breadcrumb-item"><a href="/">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="/">سەرەکی</a></li>
                         @yield('breadcrumb')
                         <li class="breadcrumb-item active" aria-current="page">@yield('page_title')</li>
 
@@ -141,7 +141,7 @@
 
                     <p class="footer-about">
 
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
+                        هناك| حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
                         الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها
                     </p>
 
