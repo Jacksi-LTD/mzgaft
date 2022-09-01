@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('page_title', $category->name)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">الصوتيات</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">وانێن دەنگی</a></li>
     </li>
 @endsection
 @section('content')
@@ -23,7 +23,7 @@
 
                                 <div class="header-title ">
 
-                                    دروس {{ $category->name }}
+                                    وانە {{ $category->name }}
 
                                 </div>
 
@@ -109,8 +109,8 @@
 
                                                 <div class="header-title ">
 
-                                                    الاقسام الفرعية
-
+                                                    بەشێن لاوەکی
+                                                    
                                                 </div>
 
 
@@ -176,7 +176,7 @@
 
                                         <div class="header-title ">
 
-                                            احصائيات
+                                            ئامار
 
                                         </div>
 
@@ -194,7 +194,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي الدروس
+                                                            سەرجەمێ وانان
                                                             :
 
                                                         </span>
@@ -209,7 +209,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي الحلقات
+                                                            سەرجەمێ خەلەکان
                                                             :
 
                                                         </span>
@@ -244,7 +244,7 @@
 
                                         <div class="header-title ">
 
-                                            حلقات مختارة
+                                           خەلەکێن ژێگرتی
 
                                         </div>
 
