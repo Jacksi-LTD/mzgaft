@@ -3,7 +3,7 @@
 @section('page_title', $audioBook->title)
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="/audio-books">الكتب الصوتية</a></li>
+    <li class="breadcrumb-item"><a href="/audio-books">پەرتۆکێن دەنگی</a></li>
     @php
     $parent = $audioBook->category;
     $up_parent = $parent?->parentCategory;
@@ -122,7 +122,7 @@
                                                 <button class="perview-btn download-btn noty-btn" type="button">
 
                                                     <i class="fa-solid fa-download"></i>
-                                                    <span>تحميل</span>
+                                                    <span>دابەزاندن</span>
 
                                                 </button>
                                             </a>
@@ -149,7 +149,7 @@
                                                 <div class=" close-audio" id="closeAudio">
 
                                                     <i class="fa-solid fa-xmark"></i>
-                                                    إغلاق
+                                                    گرتن
 
                                                 </div>
 
@@ -198,7 +198,7 @@
 
                                         <div class="header-title ">
 
-                                            احصائيات
+                                            ئامار
 
                                         </div>
 
@@ -216,7 +216,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي مرات الاستماع
+                                                            سەرجەمێ گوهداریکرنێ
                                                             :
 
                                                         </span>
@@ -272,7 +272,7 @@
             timeout: '2000',
             progressBar: true,
             closeWith: ['click'],
-            text: '<i class="fa-solid fa-circle-check ms-1"></i> تم تنزيل الحلقة بنجاح',
+            text: '<i class="fa-solid fa-circle-check ms-1"></i> سەرکەفتییانە هاتە دابەزاندن',
         }).show();
 
     });
