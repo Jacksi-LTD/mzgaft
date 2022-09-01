@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('page_title','المقالات')
+@section('page_title','گوتار')
 
 @section('content')
 
@@ -19,7 +19,7 @@
 
                         <div class="header-title ">
 
-                            أقسام المقالات
+                            بەشێن گوتاران
 
                         </div>
 
