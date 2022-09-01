@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('page_title', 'اسئلة وأجوبة')
+@section('page_title', 'پرسیار و بەرسڤ')
 
 @section('content')
 
@@ -21,7 +21,7 @@
 
                                 <div class="header-title ">
 
-                                    اسئلة وأجوبة
+                                    پرسیار و بەرسڤ
 
                                 </div>
 
@@ -89,7 +89,7 @@
 
                                         <div class="header-title ">
 
-                                            احصائيات
+                                            ئامار
 
                                         </div>
 
@@ -107,7 +107,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي الأسئلة
+                                                            سەرجەمێ پرسیاران
                                                             :
 
                                                         </span>
@@ -142,7 +142,7 @@
 
                                         <div class="header-title ">
 
-                                            اسئلة وأجوبة
+                                            پرسیار و بەرسڤ
 
 
                                         </div>
