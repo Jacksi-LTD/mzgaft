@@ -3,7 +3,7 @@
 @section('page_title', $surah->name)
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="/tafsir">التفسير</a></li>
+    <li class="breadcrumb-item"><a href="/tafsir">تەفسیر</a></li>
 @endsection
     <!-- ***** surah-cols-section Start ***** -->
 
@@ -29,7 +29,7 @@
 
                                         <div class="header-title ">
 
-                                            السور
+                                            سوڕەت
 
                                         </div>
 
@@ -82,7 +82,7 @@
 
                                         <div class="header-title ">
 
-                                            الآيات
+                                            ئایەت
 
                                         </div>
 
@@ -106,7 +106,7 @@
 
                                                                 <a class="item-link active" href="#{{ $key + 1 }}">
 
-                                                                    الآية {{ $key + 1 }}
+                                                                    ئایەت {{ $key + 1 }}
 
                                                                 </a>
                                                             </div>
@@ -143,13 +143,13 @@
 
                             <div class="info-item ">
 
-                                النزول :
+                                هاتناخوارێ :
                                 <span>{{ App\Models\Surah::DOWNLOAD_RADIO[$surah->download] ?? '' }}</span>
                             </div>
                             <div class="info-item ">
 
 
-                                عدد الآيات :
+                                هژمارا ئایەتان :
                                 <span>{{ $surah->number }}</span>
                             </div>
 
@@ -173,18 +173,18 @@
 
                                 <i class="fa-solid fa-angle-right"></i>
 
-                                السورة السابقة
+                                سوڕەتا پێشتر
 
-                                <span>({{ $prev ? $prev->name : 'لايوجد' }})</span>
+                                <span>({{ $prev ? $prev->name : 'نینە' }})</span>
 
 
                             </a>
                             <a class="arrow-item next-btn {{ !$next ? 'disabled' : '' }}"
                                 href="{{ $next ? route('frontend.tafsir.show', $next->id) : '#' }}">
 
-                                السورة التالية
+                                سوڕەتا پاشتر
 
-                                <span>({{ $next ? $next->name : 'لايوجد' }})</span>
+                                <span>({{ $next ? $next->name : 'نینە' }})</span>
 
                                 <i class="fa-solid fa-angle-left"></i>
 
