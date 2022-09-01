@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('page_title', 'التفسير')
+@section('page_title', 'تەفسیر')
 
 @section('content')
     <!-- ***** articles-categories-section Start ***** -->
@@ -15,7 +15,7 @@
 
                         <div class="header-title ">
 
-                            قائمة السور
+                            لیستا سوڕەتان
 
                         </div>
 
@@ -53,7 +53,7 @@
 
                             </div>
 
-                            {{-- <button class="load-more-btn loading-btn" type="button">تحميل المزيد</button> --}}
+                            {{-- <button class="load-more-btn loading-btn" type="button">زێدەتر ببینە</button> --}}
 
                         </div>
 
