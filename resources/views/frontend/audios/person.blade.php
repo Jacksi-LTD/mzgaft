@@ -25,7 +25,7 @@
 
                                 <div class="header-title ">
 
-                                    دروس {{ $person->name }}
+                                    وانە {{ $person->name }}
 
                                 </div>
 
@@ -110,7 +110,7 @@
 
                                         <div class="header-title ">
 
-                                            احصائيات
+                                            ئامار
 
                                         </div>
 
@@ -128,7 +128,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي الدروس
+                                                            سەرجەمێ وانان
                                                             :
 
                                                         </span>
@@ -143,7 +143,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي الحلقات
+                                                            سەرجەمێ خەلەکان
                                                             :
 
                                                         </span>
@@ -158,7 +158,7 @@
 
                                                         <span class="statistics-text">
 
-                                                            اجمالي مرات الاستماع
+                                                            سەرجەمێ گوهداریکرنێ
                                                             :
 
                                                         </span>
@@ -194,7 +194,7 @@
 
                                         <div class="header-title ">
 
-                                            حلقات مختارة
+                                            خەلەکێن ژێگرتی
 
                                         </div>
 
