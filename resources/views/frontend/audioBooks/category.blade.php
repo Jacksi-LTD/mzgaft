@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('page_title', $category->name)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="/audio-books">الكتب الصوتية</a></li>
+    <li class="breadcrumb-item"><a href="/audio-books">پەرتۆکێن دەنگی</a></li>
 @endsection
 @section('content')
     <section class="section-style books-section">
@@ -14,7 +14,7 @@
                 <div class="box-header box-padding space-between">
 
                     <div class="header-title ">
-                        الكتب
+                        پەرتۆک
                     </div>
 
 
