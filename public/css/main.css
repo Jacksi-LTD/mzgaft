@@ -46,11 +46,11 @@ body#noScroll {
 :root {
 
 
-    --clr-1: #8BC34A;
-    --clr-1-hover: #59813F;
+    --clr-1: #82AECF;
+    --clr-1-hover: #44578A;
 
-    --gradient-clr-1: #375B0C;
-    --gradient-clr-2: #8BC34A;
+    --gradient-clr-1: #44578A;
+    --gradient-clr-2: #82AECF;
 
     --clr-text-main: #111A0E;
     --clr-text1: #6E6E6E;
