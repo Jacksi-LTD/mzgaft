@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Audio;
+use App\Models\AudioBook;
 use App\Models\Category;
 use App\Models\Person;
 use App\Models\User;
@@ -82,7 +83,7 @@ class AudioController extends Controller
         if (isset(request()->audio)) {
             $audio = Audio::find(request()->audio);
         } else {
-            $audio = Audio::find(request()->audioBook);
+            $audio = AudioBook::find(request()->audioBook);
         }
         return view('frontend.audios.single', compact('media', 'audio'));
     }
