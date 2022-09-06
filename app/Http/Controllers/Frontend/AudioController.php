@@ -79,6 +79,7 @@ class AudioController extends Controller
 
     public function single(Media $media)
     {
-        return view('frontend.audios.single', compact('media'));
+
+        return view('frontend.audios.single', compact('media','audio'));
     }
 }

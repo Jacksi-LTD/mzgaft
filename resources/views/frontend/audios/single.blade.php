@@ -4,7 +4,6 @@
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">وانێن دەنگی</a></li>
     @php
-        $audio = $media->audio;
         $parent = $audio->category;
         $up_parent = $parent->parentCategory;
         $person = $audio->writer;
