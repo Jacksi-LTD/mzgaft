@@ -1,7 +1,30 @@
 @extends('layouts.frontend')
 @section('content')
 @section('page_title', $media->name)
-@section('page_title', 'وانێن دەنگی')
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">وانێن دەنگی</a></li>
+    @php
+        $audio = $media->audio;
+        $parent = $audio->category;
+        $up_parent = $parent->parentCategory;
+        $person = $audio->writer;
+    @endphp
+    @if ($up_parent)
+        <li class="breadcrumb-item"><a
+                href="{{ route('frontend.audios.category', $up_parent->id) }}">{{ $up_parent->name }}</a>
+        </li>
+    @endif
+    @if ($parent)
+        <li class="breadcrumb-item"><a href="{{ route('frontend.audios.category', $parent->id) }}">{{ $parent->name }}</a>
+        </li>
+    @endif
+    @if ($person)
+        <li class="breadcrumb-item"><a href="{{ route('frontend.audios.people', $person->id) }}">{{ $person->name }}</a>
+        </li>
+    @endif
+
+    </li>
+@endsection
 
 
 <section class="section-style lesson-section section-cols">
