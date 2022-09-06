@@ -29,7 +29,7 @@
 
             <div class="row">
 
-                <div class="col-lg-4 half order-2 order-lg-1">
+                <div class="col-lg-4 half order-1 order-lg-1">
 
                     <div class="side-box-container">
                         @if ($category->childCategories)
@@ -171,7 +171,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-8 half order-1 order-lg-2">
+                <div class="col-lg-8 half order-2 order-lg-2">
 
                     <div class="duplicated-box-wrapper box-container ">
 
