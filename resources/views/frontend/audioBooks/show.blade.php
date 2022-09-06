@@ -71,7 +71,7 @@
                                                     <div class="item-content">
 
                                                         <a class="item-type item-link"
-                                                            href="{{ route('frontend.audios.single', [$media->id, 'audioBook='.$audio->id]) }}" target="_blank">
+                                                            href="{{ route('frontend.audios.single', [$media->id, 'audioBook='.$audioBook->id]) }}" target="_blank">
 
                                                             <span class="icon">
 
