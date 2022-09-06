@@ -2,11 +2,11 @@
 @section('content')
 @section('page_title', $audio->title)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">الصوتيات</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.audios.index') }}">وانێن دەنگی</a></li>
     @php
-    $parent = $audio->category;
-    $up_parent = $parent->parentCategory;
-    $person = $audio->writer;
+        $parent = $audio->category;
+        $up_parent = $parent->parentCategory;
+        $person = $audio->writer;
     @endphp
     @if ($up_parent)
         <li class="breadcrumb-item"><a
@@ -14,8 +14,7 @@
         </li>
     @endif
     @if ($parent)
-        <li class="breadcrumb-item"><a
-                href="{{ route('frontend.audios.category', $parent->id) }}">{{ $parent->name }}</a>
+        <li class="breadcrumb-item"><a href="{{ route('frontend.audios.category', $parent->id) }}">{{ $parent->name }}</a>
         </li>
     @endif
     @if ($person)
@@ -54,7 +53,8 @@
 
                                 <div class="info-item article-writer">
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="15"
+                                        viewBox="0 0 13 15">
                                         <path id="user"
                                             d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z" />
                                     </svg>
@@ -93,7 +93,7 @@
                                             <div class="item-content">
 
                                                 <a class="item-type item-link"
-                                                    href="{{ route('frontend.audios.single', $media->id) }}">
+                                                    href="{{ route('frontend.audios.single', $media->id) }}" target="_blank">
 
                                                     <span class="icon">
 
@@ -113,18 +113,32 @@
 
                                                 <div class="item-type sub-content">
 
-                                                    <span class="icon">
+                                                    @php
+                                                        $flag = false;
+                                                        $path = $media->getPath();
+                                                        if (isset($media) && file_exists($path)) {
+                                                            $tmp = explode('.', $path);
+                                                            $ext = strtolower(array_pop($tmp));
+                                                            $mime_types = ['mp3' => 'audio/mpeg'];
+                                                            if (array_key_exists($ext, $mime_types)) {
+                                                                $audio_info = new \wapmorgan\Mp3Info\Mp3Info($path, true);
+                                                                //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                                $audio_info->duration; // \\ duration in seconds
+                                                                $flag = true;
+                                                                echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
+                                                            }
+                                                        }
 
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                                                            viewBox="0 0 15 15">
-                                                            <path id="clock"
-                                                                d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
-                                                        </svg>
-
-
-                                                    </span>
-                                                    <span
-                                                        class="text">{{ $media->getCustomProperty('duration_field') }}</span>
+                                                    @endphp
+                                                    @if ($flag)
+                                                        <span class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="15" viewBox="0 0 15 15">
+                                                                <path id="clock"
+                                                                    d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
+                                                            </svg>
+                                                        </span>
+                                                    @endif
 
                                                 </div>
 
