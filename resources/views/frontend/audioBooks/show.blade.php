@@ -65,49 +65,61 @@
                                         <br>
 
                                         <ul class="body-list  lessons-list">
-                                            @foreach ($audioBook->audio as $key => $audio)
+                                            @foreach ($audioBook->audio as $key => $media)
                                                 <li class="list-item">
 
-                                                    <div id="{{ $audio->original_url }}"
-                                                        class="aduio-item item-content item-content audio play-media"
-                                                        onclick="play_media(this)">
+                                                    <div class="item-content">
 
+                                                        <a class="item-type item-link"
+                                                            href="{{ route('frontend.audios.single', [$media->id, 'audioBook='.$audio->id]) }}" target="_blank">
 
+                                                            <span class="icon">
 
-                                                        <div class="item-type item-link">
-                                                            <span class="icon"> </span>
-                                                            <span class="text">
-                                                                {{ $audio->name }}
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="13.717"
+                                                                    height="16" viewBox="0 0 13.717 16">
+                                                                    <path id="play"
+                                                                        d="M12.895,38.536A1.72,1.72,0,0,1,13.717,40a1.628,1.628,0,0,1-.822,1.432L2.609,47.72a1.648,1.648,0,0,1-1.733.064A1.715,1.715,0,0,1,0,46.287V33.714a1.715,1.715,0,0,1,2.609-1.463Z"
+                                                                        transform="translate(0 -31.999)" />
+                                                                </svg>
+
+                                                            </span>
+                                                            <span class="text">{{ $key + 1 }}
+                                                                {{ $media->name }}
                                                             </span>
 
-                                                        </div>
+                                                        </a>
 
-                                                        <div class="item-type sub-content"> <span
-                                                                class="icon">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15"
-                                                                    height="15" viewBox="0 0 15 15">
-                                                                    <path id="clock"
-                                                                        d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
-                                                                </svg> </span> <span class="text">
+                                                        <div class="item-type sub-content">
 
-                                                                @php
-                                                                    $path = $audio->getPath();
-                                                                    if (isset($audio) && file_exists($path)) {
-                                                                        $tmp = explode('.', $path);
-                                                                        $ext = strtolower(array_pop($tmp));
-                                                                        $mime_types = ['mp3' => 'audio/mpeg'];
-                                                                        if (array_key_exists($ext, $mime_types)) {
-                                                                            $audio_info = new \wapmorgan\Mp3Info\Mp3Info($path, true);
-                                                                            //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
-                                                                            $audio_info->duration; // \\ duration in seconds
-                                                                            echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
-                                                                        }
+                                                            @php
+                                                                $flag = false;
+                                                                $path = $media->getPath();
+                                                                if (isset($media) && file_exists($path)) {
+                                                                    $tmp = explode('.', $path);
+                                                                    $ext = strtolower(array_pop($tmp));
+                                                                    $mime_types = ['mp3' => 'audio/mpeg'];
+                                                                    if (array_key_exists($ext, $mime_types)) {
+                                                                        $audio_info = new \wapmorgan\Mp3Info\Mp3Info($path, true);
+                                                                        //$audio = new \wapmorgan\Mp3Info\Mp3Info($fileName, true);
+                                                                        $audio_info->duration; // \\ duration in seconds
+                                                                        $flag = true;
+                                                                        echo '<span class="text">' . gmdate('H:i:s', $audio_info->duration) . '</span>';
                                                                     }
+                                                                }
 
-                                                                @endphp
+                                                            @endphp
+                                                            @if ($flag)
+                                                                <span class="icon">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                        height="15" viewBox="0 0 15 15">
+                                                                        <path id="clock"
+                                                                            d="M6.8,3.516a.7.7,0,0,1,1.406,0V7.125l2.5,1.664a.679.679,0,0,1,.17.976.645.645,0,0,1-.949.17L7.11,8.06A.642.642,0,0,1,6.8,7.474ZM7.5,0A7.5,7.5,0,1,1,0,7.5,7.5,7.5,0,0,1,7.5,0ZM1.406,7.5A6.094,6.094,0,1,0,7.5,1.406,6.093,6.093,0,0,0,1.406,7.5Z" />
+                                                                    </svg>
+                                                                </span>
+                                                            @endif
 
-                                                            </span>
                                                         </div>
+
                                                     </div>
 
                                                 </li>

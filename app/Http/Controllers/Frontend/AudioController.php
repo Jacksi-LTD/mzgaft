@@ -79,7 +79,11 @@ class AudioController extends Controller
 
     public function single(Media $media)
     {
-        $audio = Audio::find(request()->audio);
-        return view('frontend.audios.single', compact('media','audio'));
+        if (isset(request()->audio)) {
+            $audio = Audio::find(request()->audio);
+        } else {
+            $audio = Audio::find(request()->audioBook);
+        }
+        return view('frontend.audios.single', compact('media', 'audio'));
     }
 }
