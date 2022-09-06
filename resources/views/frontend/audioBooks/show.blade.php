@@ -128,17 +128,6 @@
 
                                         <div class="perview-btns">
 
-
-                                            <a href="{{ $audioBook->audio->first()->getUrl() }}" target="_blank"
-                                                style="margin-left: 1.5rem;">
-                                                <button class="perview-btn download-btn noty-btn" type="button">
-
-                                                    <i class="fa-solid fa-download"></i>
-                                                    <span>دابەزاندن</span>
-
-                                                </button>
-                                            </a>
-
                                             <a href="{{ $audioBook->file->first()?->getUrl() }}" target="_blank">
                                                 <button class="perview-btn audio-btn   " type="button" s>
                                                     <i class="fa-solid fa-download"></i>
