@@ -12,11 +12,10 @@ class AudioController extends Controller
 {
     public function index()
     {
+        $people = Person::where('type', 'audios')->orderBy('id', 'DESC')->get();
 
-        $people = Person::where('type', 'audios')->get();
-
-        // $categories = Category::where('type', 'audios')->get();
-        $categories = Category::where(['type'=> 'audios','category_id'=>null])->get();
+        // $categories = Category::where('type', 'audios')->orderBy('id', 'DESC')->get();
+        $categories = Category::where(['type'=> 'audios','category_id'=>null])->orderBy('id', 'DESC')->get();
 
         return view('frontend.audios.index', compact('categories', 'people'));
     }
@@ -25,7 +24,7 @@ class AudioController extends Controller
     {
         $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
-        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->get();
+        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
 
         return view('frontend.audios.category', compact('audios', 'some_audios', 'category'));
     }
@@ -36,7 +35,7 @@ class AudioController extends Controller
 
         $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->paginate();
 
-        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->get();
+        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
 
         $category = Category::where('type', 'audios')->first();
 
@@ -47,7 +46,7 @@ class AudioController extends Controller
     {
         $person = Person::findOrFail($person_id);
 
-        $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->withCount('media')->get();
+        $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->withCount('media')->orderBy('id', 'DESC')->get();
 
         return $audios;
     }
@@ -56,8 +55,7 @@ class AudioController extends Controller
         //Audio::find($audio->id)->increment('visits');
         //$audio->load('writer', 'category', 'created_by');
         $files = $audio->files;
-        $files->map(function ($item)
-        {
+        $files->map(function ($item) {
             $audio_info = new \wapmorgan\Mp3Info\Mp3Info($item->getPath(), true);
             $audio_info->duration;// \\ duration in seconds
             $item['duration'] = gmdate("H:i:s", $audio_info->duration);
@@ -69,9 +67,9 @@ class AudioController extends Controller
 
     public function show(Audio $audio)
     {
-        if(isset($audio->visits)){
+        if (isset($audio->visits)) {
             Audio::find($audio->id)->increment('visits');
-        }else{
+        } else {
             $audio->visits = 1;
             $audio->save();
         }
@@ -79,8 +77,8 @@ class AudioController extends Controller
         return view('frontend.audios.show', compact('audio'));
     }
 
-    public function single(Media $media){
-
+    public function single(Media $media)
+    {
         return view('frontend.audios.single', compact('media'));
     }
 }

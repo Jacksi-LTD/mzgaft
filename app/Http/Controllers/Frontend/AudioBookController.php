@@ -21,8 +21,8 @@ class AudioBookController extends Controller
 {
     public function index()
     {
-        $categories = Category::where(['type'=> 'audio_books','category_id'=>null])->get();
-        // $categories = Category::where('type', 'audio_books')->get();
+        $categories = Category::where(['type'=> 'audio_books','category_id'=>null])->orderBy('id', 'DESC')->get();
+        // $categories = Category::where('type', 'audio_books')->orderBy('id', 'DESC')->get();
 
         return view('frontend.audioBooks.index', compact('categories'));
     }
@@ -31,18 +31,18 @@ class AudioBookController extends Controller
     {
         $audioBooks = AudioBook::with(['writer', 'category', 'created_by', 'media'])->paginate();
 
-        $some_audio_books = AudioBook::with(['writer', 'category', 'created_by', 'media'])->get();
+        $some_audio_books = AudioBook::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
 
-        return view('frontend.audioBooks.category', compact('audioBooks','category', 'some_audio_books'));
+        return view('frontend.audioBooks.category', compact('audioBooks', 'category', 'some_audio_books'));
     }
 
 
     public function show(AudioBook $audioBook)
     {
         // $audioBookIn = $audioBook;
-        if(isset($audioBook->visits)){
+        if (isset($audioBook->visits)) {
             AudioBook::find($audioBook->id)->increment('visits');
-        }else{
+        } else {
             $audioBook->visits = 1;
             $audioBook->save();
         }

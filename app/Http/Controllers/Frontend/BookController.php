@@ -13,9 +13,8 @@ class BookController extends Controller
 {
     public function index()
     {
-
-        // $categories = Category::where('type', 'books')->get();
-        $categories = Category::where(['type'=> 'books','category_id'=>null])->get();
+        // $categories = Category::where('type', 'books')->orderBy('id', 'DESC')->get();
+        $categories = Category::where(['type'=> 'books','category_id'=>null])->orderBy('id', 'DESC')->get();
 
         return view('frontend.books.index', compact('categories'));
     }
@@ -24,14 +23,14 @@ class BookController extends Controller
     {
         $books = Book::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
-        $some_books = Book::with(['writer', 'category', 'created_by', 'media'])->get();
+        $some_books = Book::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
 
         return view('frontend.books.category', compact('books', 'category', 'some_books'));
     }
 
     public function index2()
     {
-        $books = Book::with(['writer', 'category', 'created_by', 'media'])->get();
+        $books = Book::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
 
         $people = Person::get();
 
@@ -44,9 +43,9 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        if(isset($book->visits)){
+        if (isset($book->visits)) {
             Book::find($book->id)->increment('visits');
-        }else{
+        } else {
             $book->visits = 1;
             $book->save();
         }

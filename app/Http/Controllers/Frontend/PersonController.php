@@ -21,7 +21,7 @@ class PersonController extends Controller
     {
         abort_if(Gate::denies('person_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $people = Person::with(['created_by'])->get();
+        $people = Person::with(['created_by'])->orderBy('id', 'DESC')->get();
 
         $users = User::get();
 

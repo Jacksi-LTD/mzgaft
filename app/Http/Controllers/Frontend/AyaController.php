@@ -14,7 +14,7 @@ class AyaController extends Controller
     {
         abort_if(Gate::denies('aya_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $ayas = Aya::with(['surah', 'created_by'])->get();
+        $ayas = Aya::with(['surah', 'created_by'])->orderBy('id', 'DESC')->get();
 
         $surahs = Surah::get();
 

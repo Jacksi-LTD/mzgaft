@@ -11,34 +11,32 @@ class HomeController
 {
     public function index()
     {
-
-
         $blogs = Blog::with('writer')->inRandomOrder()
             ->limit(5)
-            ->get();
+            ->orderBy('id', 'DESC')->get();
 
         $questions = Question::with('person')->inRandomOrder()
             ->limit(5)
-            ->get();
+            ->orderBy('id', 'DESC')->get();
 
         $aya = Aya::with('surah')->inRandomOrder()
             ->limit(1)
-            ->get()->first();
+            ->orderBy('id', 'DESC')->get()->first();
 
-        $people = Person::where('type', 'audios')->withCount('audios')->get();
+        $people = Person::where('type', 'audios')->withCount('audios')->orderBy('id', 'DESC')->get();
 
         $first_audios = $people?->first()->audios;
 
         $first_files = $first_audios?->first()?->files;
 
-        $books = Book::with('writer')->limit(10)->get();
+        $books = Book::with('writer')->limit(10)->orderBy('id', 'DESC')->get();
 
         return view('frontend.home', compact('blogs', 'questions', 'aya', 'books', 'people', 'first_audios', 'first_files'));
     }
 
     public function person(Person $person)
     {
-        // $people = Person::where('type', 'audios')->withCount('audios')->get();
+        // $people = Person::where('type', 'audios')->withCount('audios')->orderBy('id', 'DESC')->get();
 
         $audios = $person->audios;
     }

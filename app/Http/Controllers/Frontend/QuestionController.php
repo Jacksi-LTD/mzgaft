@@ -15,7 +15,7 @@ class QuestionController extends Controller
     {
         $questions = Question::with(['category', 'person', 'created_by'])->orderBy('id', 'desc')->paginate();
 
-        $some_questions = Question::with(['category', 'person', 'created_by'])->limit(5)->get();
+        $some_questions = Question::with(['category', 'person', 'created_by'])->limit(5)->orderBy('id', 'DESC')->get();
 
         $count = Question::count();
 

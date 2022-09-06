@@ -9,7 +9,7 @@ class TafsirController extends Controller
 {
     public function index()
     {
-        $surahs = Surah::with(['created_by'])->get();
+        $surahs = Surah::with(['created_by'])->orderBy('id', 'DESC')->get();
 
         $users = User::get();
 
@@ -20,7 +20,7 @@ class TafsirController extends Controller
     {
         $surah = Surah::findOrFail($id);
 
-        $surahs = Surah::with(['created_by'])->get();
+        $surahs = Surah::with(['created_by'])->orderBy('id', 'DESC')->get();
 
         $surah->load('created_by', 'surahAyas');
 
