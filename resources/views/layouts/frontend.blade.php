@@ -136,7 +136,7 @@
 
                     <a class="d-block" href="#">
                         <img class="img-fluid footer-img" src="/img/logo2.png"
-                            alt="الموسوعة الاسلامية - Islamic Encyclopedia">
+                            alt="سایتێ مزگەفت - Mzgaft Site">
                     </a>
 
                     <p class="footer-about">
