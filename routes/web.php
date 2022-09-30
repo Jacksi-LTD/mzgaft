@@ -133,6 +133,9 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     // Audio Book
     Route::get('audio-books/category/{category}', 'AudioBookController@category')->name('audio-books.category');
 
+        // Audio Book
+        Route::get('questions/category/{category}', 'QuestionController@category')->name('questions.category');
+
     Route::resource('audio-books', 'AudioBookController');
 
     // Tafsir
