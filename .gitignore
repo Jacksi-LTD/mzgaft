@@ -1,3 +1,4 @@
+composer.lock
 storage/*
 /node_modules
 /public/hot

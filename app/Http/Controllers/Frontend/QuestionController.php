@@ -13,13 +13,23 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        $questions = Question::with(['category', 'person', 'created_by'])->orderBy('id', 'desc')->paginate();
+        $categories = Category::where(['type'=> 'questions','category_id'=>null])->orderBy('id', 'DESC')->get();
 
-        $some_questions = Question::with(['category', 'person', 'created_by'])->limit(5)->orderBy('id', 'DESC')->get();
+        return view('frontend.questions.index', compact('categories'));
+    }
+
+    public function category(Category $category)
+    {
+        //dd($category->id);
+        $questions = Question::with(['person', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
+
+        //dd($questions);
+
+        $some_questions = Question::with(['person', 'category', 'created_by', 'media'])->limit(5)->orderBy('id', 'DESC')->get();
 
         $count = Question::count();
 
-        return view('frontend.questions.index', compact('questions', 'count', 'some_questions'));
+        return view('frontend.questions.category', compact('questions', 'count', 'some_questions'));
     }
 
     public function show(Question $question)

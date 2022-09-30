@@ -29,7 +29,7 @@ class AudioBookController extends Controller
 
     public function category(Category $category)
     {
-        $audioBooks = AudioBook::with(['writer', 'category', 'created_by', 'media'])->paginate();
+        $audioBooks = AudioBook::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
         $some_audio_books = AudioBook::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
 
