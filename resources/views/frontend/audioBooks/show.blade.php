@@ -142,9 +142,9 @@
                                             <div class="audio-wrap">
 
                                                 <audio controls class="audio-item" id="audio-item">
-                                                    <source src="{{ $audioBook->audio->first()->getUrl() }}"
+                                                    <source src="{{ $audioBook->audio->first()?->getUrl() }}"
                                                         type="audio/ogg">
-                                                    <source src="{{ $audioBook->audio->first()->getUrl() }}"
+                                                    <source src="{{ $audioBook->audio->first()?->getUrl() }}"
                                                         type="audio/mpeg">
                                                 </audio>
                                                 <div class=" close-audio" id="closeAudio">
