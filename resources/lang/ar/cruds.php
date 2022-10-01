@@ -189,6 +189,8 @@ return [
             'deleted_at_helper'   => ' ',
             'approved'            => 'مقبول',
             'approved_helper'     => ' ',
+            'favorite'            => 'مفضل',
+            'favorite_helper'     => ' ',
             'created_by'          => 'Created By',
             'created_by_helper'   => ' ',
             'files'               => 'ملفات',
@@ -215,6 +217,9 @@ return [
             'content_helper'    => ' ',
             'approved'          => 'مقبول',
             'approved_helper'   => ' ',
+            'favorite'            => 'مفضل',
+            'favorite_helper'     => ' ',
+
             'files'             => 'ملفات',
             'files_helper'      => 'إحتياط*',
             'images'            => 'صور',
@@ -247,6 +252,8 @@ return [
             'content_helper'    => ' ',
             'approved'          => 'مقبول',
             'approved_helper'   => ' ',
+            'favorite'            => 'مفضل',
+            'favorite_helper'     => ' ',
             'image'             => 'صورة الكتاب',
             'image_helper'      => ' ',
             'file'              => 'تحميل الكتاب',
@@ -283,6 +290,9 @@ return [
             'content_helper'    => ' ',
             'approved'          => 'مقبول',
             'approved_helper'   => ' ',
+            'favorite'            => 'مفضل',
+            'favorite_helper'     => ' ',
+
             'image'             => 'صورة الكتاب',
             'image_helper'      => ' ',
             'file'              => 'تحميل الكتاب',
@@ -373,6 +383,9 @@ return [
             'created_by_helper' => ' ',
             'approved'          => 'مقبول',
             'approved_helper'   => ' ',
+            'favorite'            => 'مفضل',
+            'favorite_helper'     => ' ',
+
         ],
     ],
     'page' => [

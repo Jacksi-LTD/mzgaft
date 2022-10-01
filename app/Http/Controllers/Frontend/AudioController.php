@@ -25,7 +25,7 @@ class AudioController extends Controller
     {
         $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
-        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
+        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
 
         return view('frontend.audios.category', compact('audios', 'some_audios', 'category'));
     }
@@ -36,7 +36,7 @@ class AudioController extends Controller
 
         $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->paginate();
 
-        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
+        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
 
         $category = Category::where('type', 'audios')->first();
 

@@ -25,7 +25,7 @@ class QuestionController extends Controller
 
         //dd($questions);
 
-        $some_questions = Question::with(['person', 'category', 'created_by', 'media'])->limit(5)->orderBy('id', 'DESC')->get();
+        $some_questions = Question::with(['person', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
 
         $count = Question::count();
 

@@ -50,12 +50,6 @@
                             {{ trans('cruds.audioBook.fields.image') }}
                         </th>
                         <th>
-                            {{ trans('cruds.audioBook.fields.file') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.audioBook.fields.audio') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -86,10 +80,6 @@
                                     <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
                         </td>
                         <td>
                         </td>
@@ -187,18 +177,7 @@
                         sortable: false,
                         searchable: false
                     },
-                    {
-                        data: 'file',
-                        name: 'file',
-                        sortable: false,
-                        searchable: false
-                    },
-                    {
-                        data: 'audio',
-                        name: 'audio',
-                        sortable: false,
-                        searchable: false
-                    },
+                    
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

@@ -69,6 +69,18 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.audio.fields.approved_helper') }}</span>
                 </div>
+                <div class="form-group">
+                    <div class="form-check {{ $errors->has('favorite') ? 'is-invalid' : '' }}">
+                        <input type="hidden" name="favorite" value="0">
+                        <input class="form-check-input" type="checkbox" name="favorite" id="favorite" value="1"
+                            {{ $audio->favorite || old('favorite', 0) === 1 ? 'checked' : '' }}>
+                        <label class="form-check-label" for="favorite">{{ trans('cruds.blog.fields.favorite') }}</label>
+                    </div>
+                    @if ($errors->has('favorite'))
+                        <span class="text-danger">{{ $errors->first('favorite') }}</span>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.blog.fields.favorite_helper') }}</span>
+                </div>
 
                 <div class="form-group">
                     <label for="files">{{ trans('cruds.audio.fields.files') }}</label>

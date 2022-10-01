@@ -25,7 +25,7 @@ class BlogController extends Controller
 
     public function category(Category $category)
     {
-        $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->orderBy('id', 'DESC')->get();
+        $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
 
         $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 

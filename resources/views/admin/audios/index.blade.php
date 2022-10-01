@@ -44,9 +44,6 @@
                             {{ trans('cruds.audio.fields.approved') }}
                         </th>
                         <th>
-                            {{ trans('cruds.audio.fields.files') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.audio.fields.images') }}
                         </th>
                         <th>
@@ -80,8 +77,6 @@
                                     <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                        </td>
-                        <td>
                         </td>
                         <td>
                         </td>
@@ -172,12 +167,6 @@
                     {
                         data: 'approved',
                         name: 'approved'
-                    },
-                    {
-                        data: 'files',
-                        name: 'files',
-                        sortable: false,
-                        searchable: false
                     },
                     {
                         data: 'images',

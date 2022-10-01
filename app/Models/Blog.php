@@ -43,12 +43,16 @@ class Blog extends Model implements HasMedia
         'category_id',
         'content',
         'approved',
+        'favorite',
         'created_at',
         'updated_at',
         'deleted_at',
         'created_by_id',
     ];
-
+    public function scopeFavorite($query)
+    {
+     return $query->where('favorite', '=', 1);
+    }
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
