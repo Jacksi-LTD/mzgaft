@@ -15,8 +15,7 @@
                             @method('PUT')
                             @csrf
                             <div class="form-group">
-                                <label class="required"
-                                    for="title">{{ trans('cruds.audioBook.fields.title') }}</label>
+                                <label class="required" for="title">{{ trans('cruds.audioBook.fields.title') }}</label>
                                 <input class="form-control" type="text" name="title" id="title"
                                     value="{{ old('title', $audioBook->title) }}" required>
                                 @if ($errors->has('title'))
@@ -83,8 +82,7 @@
                                 <span class="help-block">{{ trans('cruds.audioBook.fields.approved_helper') }}</span>
                             </div>
                             <div class="form-group">
-                                <label class="required"
-                                    for="image">{{ trans('cruds.audioBook.fields.image') }}</label>
+                                <label class="required" for="image">{{ trans('cruds.audioBook.fields.image') }}</label>
                                 <div class="needsclick dropzone" id="image-dropzone">
                                 </div>
                                 @if ($errors->has('image'))
@@ -214,7 +212,7 @@
     <script>
         Dropzone.options.imageDropzone = {
             url: '{{ route('frontend.audio-books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             maxFiles: 1,
             addRemoveLinks: true,
@@ -222,7 +220,7 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },
@@ -269,13 +267,13 @@
         var uploadedFileMap = {}
         Dropzone.options.fileDropzone = {
             url: '{{ route('frontend.audio-books.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="file[]" value="' + response.name + '">')
@@ -325,13 +323,13 @@
         var uploadedAudioMap = {}
         Dropzone.options.audioDropzone = {
             url: '{{ route('frontend.audio-books.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="audio[]" value="' + response.name + '">')

@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('page_title', 'الكتب')
+@section('page_title', 'پەرتۆک')
 
 @section('content')
     <!-- ***** articles-categories-section Start ***** -->

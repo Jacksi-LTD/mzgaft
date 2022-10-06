@@ -28,8 +28,8 @@
                 </div>
                 <div class="form-group">
                     <label for="writer_id">{{ trans('cruds.blog.fields.writer') }}</label>
-                    <select class="form-control select2 {{ $errors->has('writer') ? 'is-invalid' : '' }}"
-                        name="writer_id" id="writer_id">
+                    <select class="form-control select2 {{ $errors->has('writer') ? 'is-invalid' : '' }}" name="writer_id"
+                        id="writer_id">
                         @foreach ($writers as $id => $entry)
                             <option value="{{ $id }}" {{ old('writer_id') == $id ? 'selected' : '' }}>
                                 {{ $entry }}</option>
@@ -98,8 +98,7 @@
                 </div>
                 <div class="form-group">
                     <label for="images">{{ trans('cruds.blog.fields.images') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}"
-                        id="images-dropzone">
+                    <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}" id="images-dropzone">
                     </div>
                     @if ($errors->has('images'))
                         <span class="text-danger">{{ $errors->first('images') }}</span>
@@ -201,13 +200,13 @@
         var uploadedFilesMap = {}
         Dropzone.options.filesDropzone = {
             url: '{{ route('admin.blogs.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="files[]" value="' + response.name + '">')
@@ -257,14 +256,14 @@
         var uploadedImagesMap = {}
         Dropzone.options.imagesDropzone = {
             url: '{{ route('admin.blogs.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },

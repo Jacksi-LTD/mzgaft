@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('page_title', $category->name)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.blogs.index') }}">المقالات</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.blogs.index') }}">گوتار</a></li>
     @php
         $parent = $category->parentCategory;
         $up_parent = $parent?->parentCategory;
@@ -180,7 +180,7 @@
 
                                 <div class="header-title ">
 
-                                    المقالات
+                                    گوتار
 
                                 </div>
 

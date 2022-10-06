@@ -3,10 +3,10 @@
 @section('page_title', $blog->title)
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="/blogs">المقالات</a></li>
+    <li class="breadcrumb-item"><a href="/blogs">گوتار</a></li>
     @php
-    $parent = $blog->category;
-    $up_parent = $parent?->parentCategory;
+        $parent = $blog->category;
+        $up_parent = $parent?->parentCategory;
     @endphp
     @if (isset($up_parent))
         <li class="breadcrumb-item"><a
@@ -44,7 +44,7 @@
                     <span class="writer-name">{{ $blog->writer?->name }}</span>
 
                 </div>
-                @if($blog->writing_date)
+                @if ($blog->writing_date)
                     <div class="info-item article-date">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">

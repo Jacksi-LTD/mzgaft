@@ -1,8 +1,8 @@
 @extends('layouts.frontend')
 @section('page_title', $category->name)
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="/books">الكتب</a></li>
-    
+    <li class="breadcrumb-item"><a href="/books">پەرتۆک</a></li>
+
 @endsection
 
 
@@ -18,7 +18,7 @@
                 <div class="box-header box-padding space-between">
 
                     <div class="header-title ">
-                        الكتب
+                        پەرتۆک
                     </div>
 
 
@@ -39,8 +39,7 @@
 
                                                 <img class="img-fluid" src="{{ $book->image?->getUrl() }}">
                                             </div>
-                                            <a class="book-name"
-                                                href="{{ route('frontend.books.show', $book->id) }}">
+                                            <a class="book-name" href="{{ route('frontend.books.show', $book->id) }}">
 
                                                 {{ $book->title }}
                                             </a>

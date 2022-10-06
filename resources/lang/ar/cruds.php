@@ -90,24 +90,24 @@ return [
         ],
     ],
     'blogsmenu' => [
-        'title'          => 'قائمة المقالات',
-        'title_singular' => 'قائمة المقالات',
+        'title'          => 'قائمة گوتار',
+        'title_singular' => 'قائمة گوتار',
     ],
     'audioMenu' => [
-        'title'          => 'قائمة الصوتيات',
-        'title_singular' => 'قائمة الصوتيات',
+        'title'          => 'قائمة وانێن دەنگی',
+        'title_singular' => 'قائمة وانێن دەنگی',
     ],
     'booksMenu' => [
-        'title'          => 'قائمة الكتب',
-        'title_singular' => 'قائمة الكتب',
+        'title'          => 'قائمة پەرتۆک',
+        'title_singular' => 'قائمة پەرتۆک',
     ],
     'audioBooksMenu' => [
-        'title'          => 'قائمة الكتب الصوتية',
-        'title_singular' => 'قائمة الكتب الصوتية',
+        'title'          => 'قائمة  پەرتۆکێن دەنگی',
+        'title_singular' => 'قائمة  پەرتۆکێن دەنگی',
     ],
     'questionsMenu' => [
-        'title'          => 'قائمة الأسئلة والأجوبة',
-        'title_singular' => 'قائمة الأسئلة والأجوبة',
+        'title'          => 'قائمة پرسیار و بەرسڤ',
+        'title_singular' => 'قائمة پرسیار و بەرسڤ',
     ],
     'tafsirMenu' => [
         'title'          => 'قائمة التفسير',
@@ -164,8 +164,8 @@ return [
         ],
     ],
     'blog' => [
-        'title'          => 'المقالات',
-        'title_singular' => 'المقالات',
+        'title'          => 'گوتار',
+        'title_singular' => 'گوتار',
         'fields'         => [
             'id'                  => 'ID',
             'id_helper'           => ' ',
@@ -200,8 +200,8 @@ return [
         ],
     ],
     'audio' => [
-        'title'          => 'الصوتيات',
-        'title_singular' => 'الصوتيات',
+        'title'          => 'وانێن دەنگی',
+        'title_singular' => 'وانێن دەنگی',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -235,8 +235,8 @@ return [
         ],
     ],
     'book' => [
-        'title'          => 'الكتب',
-        'title_singular' => 'الكتب',
+        'title'          => 'پەرتۆک',
+        'title_singular' => 'پەرتۆک',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -273,8 +273,8 @@ return [
         ],
     ],
     'audioBook' => [
-        'title'          => 'الكتب الصوتية',
-        'title_singular' => 'الكتب الصوتية',
+        'title'          => ' پەرتۆکێن دەنگی',
+        'title_singular' => ' پەرتۆکێن دەنگی',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -356,8 +356,8 @@ return [
         ],
     ],
     'question' => [
-        'title'          => 'الأسئلة والأجوبة',
-        'title_singular' => 'الأسئلة والأجوبة',
+        'title'          => 'پرسیار و بەرسڤ',
+        'title_singular' => 'پرسیار و بەرسڤ',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',

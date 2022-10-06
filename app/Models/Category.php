@@ -20,7 +20,7 @@ class Category extends Model
         'audios' => 'صوتيات',
         'books' => 'كتب',
         'audio_books' => 'كتب صوتية',
-        'questions' => 'الأسئلة',
+        'questions' => 'پرسیار',
     ];
 
     public $table = 'categories';

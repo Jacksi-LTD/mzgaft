@@ -191,7 +191,7 @@
     <script>
         Dropzone.options.imageDropzone = {
             url: '{{ route('admin.audio-books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             maxFiles: 1,
             addRemoveLinks: true,
@@ -199,7 +199,7 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },
@@ -246,13 +246,13 @@
         var uploadedFileMap = {}
         Dropzone.options.fileDropzone = {
             url: '{{ route('admin.audio-books.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="file[]" value="' + response.name + '">')
@@ -302,13 +302,13 @@
         var uploadedAudioMap = {}
         Dropzone.options.audioDropzone = {
             url: '{{ route('admin.audio-books.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="audio[]" value="' + response.name + '">')

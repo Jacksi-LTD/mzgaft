@@ -28,8 +28,8 @@
                                 <label for="writer_id">{{ trans('cruds.book.fields.writer') }}</label>
                                 <select class="form-control select2" name="writer_id" id="writer_id">
                                     @foreach ($writers as $id => $entry)
-                                        <option value="{{ $id }}"
-                                            {{ old('writer_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                        <option value="{{ $id }}" {{ old('writer_id') == $id ? 'selected' : '' }}>
+                                            {{ $entry }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('writer'))
@@ -221,7 +221,7 @@
     <script>
         Dropzone.options.imageDropzone = {
             url: '{{ route('frontend.books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             maxFiles: 1,
             addRemoveLinks: true,
@@ -229,7 +229,7 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },
@@ -275,14 +275,14 @@
     <script>
         Dropzone.options.fileDropzone = {
             url: '{{ route('frontend.books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             maxFiles: 1,
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').find('input[name="file"]').remove()
@@ -326,13 +326,13 @@
         var uploadedFilesMap = {}
         Dropzone.options.filesDropzone = {
             url: '{{ route('frontend.books.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="files[]" value="' + response.name + '">')
@@ -382,14 +382,14 @@
         var uploadedImagesMap = {}
         Dropzone.options.imagesDropzone = {
             url: '{{ route('frontend.books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },

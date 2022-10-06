@@ -3,10 +3,10 @@
 @section('page_title', $book->title)
 @section('page_title', 'پەرتۆکێن دەنگی')
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.books.index') }}">الكتب</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.books.index') }}">پەرتۆک</a></li>
     @php
-    $parent = $book->category;
-    $up_parent = $parent?->parentCategory;
+        $parent = $book->category;
+        $up_parent = $parent?->parentCategory;
     @endphp
     @if (isset($up_parent))
         <li class="breadcrumb-item"><a
@@ -139,7 +139,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">{{ $book->visits ?? '0'}}</span>
+                                                    <span class="statistics-val">{{ $book->visits ?? '0' }}</span>
 
                                                 </div>
 

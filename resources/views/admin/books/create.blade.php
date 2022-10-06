@@ -95,8 +95,7 @@
                 </div>
                 <div class="form-group">
                     <label for="images">{{ trans('cruds.book.fields.images') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}"
-                        id="images-dropzone">
+                    <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}" id="images-dropzone">
                     </div>
                     @if ($errors->has('images'))
                         <span class="text-danger">{{ $errors->first('images') }}</span>
@@ -197,7 +196,7 @@
     <script>
         Dropzone.options.imageDropzone = {
             url: '{{ route('admin.books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             maxFiles: 1,
             addRemoveLinks: true,
@@ -205,7 +204,7 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },
@@ -251,14 +250,14 @@
     <script>
         Dropzone.options.fileDropzone = {
             url: '{{ route('admin.books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             maxFiles: 1,
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').find('input[name="file"]').remove()
@@ -302,13 +301,13 @@
         var uploadedFilesMap = {}
         Dropzone.options.filesDropzone = {
             url: '{{ route('admin.books.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="files[]" value="' + response.name + '">')
@@ -358,14 +357,14 @@
         var uploadedImagesMap = {}
         Dropzone.options.imagesDropzone = {
             url: '{{ route('admin.books.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },

@@ -211,13 +211,13 @@
         var uploadedFilesMap = {}
         Dropzone.options.filesDropzone = {
             url: '{{ route('frontend.blogs.storeMedia') }}',
-            maxFilesize: 10000, // MB
+            maxFilesize: 99999, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000
+                size: 99999
             },
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="files[]" value="' + response.name + '">')
@@ -267,14 +267,14 @@
         var uploadedImagesMap = {}
         Dropzone.options.imagesDropzone = {
             url: '{{ route('frontend.blogs.storeMedia') }}',
-            maxFilesize: 1000, // MB
+            maxFilesize: 99999, // MB
             acceptedFiles: '.jpeg,.jpg,.png,.gif',
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 1000,
+                size: 99999,
                 width: 4096,
                 height: 4096
             },
