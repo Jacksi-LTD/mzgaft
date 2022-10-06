@@ -356,7 +356,7 @@ a:hover {
 .top-banner .banner-logo {
 
     display: block;
-    max-height: 165px;
+    max-height: 125px;
     margin: 0 auto;
     text-align: center;
 }
@@ -2001,7 +2001,7 @@ footer {
 
     .top-banner .banner-logo {
 
-        max-height: 135px;
+        max-height: 115px;
     }
 
     .main-menu-container .main-menu-items .menu-item {

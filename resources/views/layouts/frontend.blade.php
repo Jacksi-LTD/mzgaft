@@ -52,7 +52,7 @@
 
                 <a class="d-block" href="{{route('frontend.home')}}">
 
-                    <img class="img-fluid banner-logo" src="/img/logo1.svg"
+                    <img class="img-fluid banner-logo" src="/img/logo1.png"
                         alt="سایتێ مزگەفت - Mzgaft Site">
 
                 </a>
