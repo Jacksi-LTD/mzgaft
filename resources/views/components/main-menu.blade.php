@@ -21,7 +21,7 @@
                     <div class="item-wrap">
 
                         <a class="menu-item {{ request()->is('/') ? 'active' : '' }}"
-                            href="{{ route('frontend.home') }}"><span>الرئيسية</span></a>
+                            href="{{ route('frontend.home') }}"><span>سەرەکی</span></a>
 
                     </div>
                     <div class="item-wrap">
