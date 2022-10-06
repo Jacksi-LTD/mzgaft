@@ -58,7 +58,7 @@
                     <div class="item-wrap">
 
                         <a class="menu-item {{ request()->is('questions*') ? 'active' : '' }}"
-                            href="{{ route('frontend.questions.index') }}"> <span>اسالة واجوبة</span> </a>
+                            href="{{ route('frontend.questions.index') }}"> <span>پرسیار و بەرسڤ</span> </a>
 
                     </div>
 
