@@ -10,7 +10,7 @@
                       minimum-scale=1.0, maximum-scale=1.0,
                       user-scalable=no">
 
-    <meta name="theme-color" content="#8BC34A">
+    <meta name="theme-color" content="#323C79">
 
     <title>{{ trans('panel.site_title') }}</title>
 

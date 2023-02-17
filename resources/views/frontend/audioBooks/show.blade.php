@@ -68,7 +68,7 @@
                                             @foreach ($audioBook->audio as $key => $media)
                                                 <li class="list-item">
 
-                                                    <div class="item-content">
+                                                    <div class="item-content" onclick="location.href='{{ route('frontend.audios.single', [$media->id, 'audioBook='.$audioBook->id]) }}';" style="cursor:pointer;">
 
                                                         <a class="item-type item-link"
                                                             href="{{ route('frontend.audios.single', [$media->id, 'audioBook='.$audioBook->id]) }}" target="_blank">
@@ -125,6 +125,7 @@
                                                 </li>
                                             @endforeach
                                         </ul>
+                                        @if(null !== $audioBook->file->first()?->getUrl())
 
                                         <div class="perview-btns">
 
@@ -136,6 +137,7 @@
                                             </a>
 
                                         </div>
+                                        @endif
 
                                         <div class="audio-area" id="audioArea">
 

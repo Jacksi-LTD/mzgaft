@@ -21,14 +21,15 @@ class QuestionController extends Controller
     public function category(Category $category)
     {
         //dd($category->id);
-        $questions = Question::with(['person', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
+        $questions = Question::with(['person', 'category', 'created_by', 'media'])->where('category_id', $category->id);
 
         //dd($questions);
 
         $some_questions = Question::with(['person', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
 
-        $count = Question::count();
+        $count = $questions->count();
 
+        $questions = $questions->paginate();
         return view('frontend.questions.category', compact('questions', 'count', 'some_questions'));
     }
 

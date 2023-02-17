@@ -90,10 +90,9 @@
                                     @foreach ($audio->files as $key => $media)
                                         <li class="list-item">
 
-                                            <div class="item-content">
-
+                                            <div class="item-content" onclick="location.href='{{ route('frontend.audios.single', [$media->id, 'audio='.$audio->id]) }}';" style="cursor:pointer;">
                                                 <a class="item-type item-link"
-                                                    href="{{ route('frontend.audios.single', [$media->id, 'audio='.$audio->id]) }}" target="_blank">
+                                                href="{{ route('frontend.audios.single', [$media->id, 'audio='.$audio->id]) }}" target="_blank">
 
                                                     <span class="icon">
 
@@ -109,7 +108,7 @@
                                                         {{ $media->name }}
                                                     </span>
 
-                                                </a>
+
 
                                                 <div class="item-type sub-content">
 
@@ -142,8 +141,8 @@
 
                                                 </div>
 
+                                            </a>
                                             </div>
-
                                         </li>
                                     @endforeach
                                 </ul>
