@@ -30,7 +30,7 @@ class QuestionController extends Controller
         $count = $questions->count();
 
         $questions = $questions->paginate();
-        return view('frontend.questions.category', compact('questions', 'count', 'some_questions'));
+        return view('frontend.questions.category', compact('questions', 'count', 'some_questions','category'));
     }
 
     public function show(Question $question)
