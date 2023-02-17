@@ -197,7 +197,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">150</span>
+                                                    <span class="statistics-val">{{$audio->files->count()}}</span>
 
                                                 </div>
 
@@ -212,7 +212,7 @@
                                                         :
 
                                                     </span>
-                                                    <span class="statistics-val">120,560</span>
+                                                    <span class="statistics-val">{{$audio->visits}}</span>
 
                                                 </div>
 
