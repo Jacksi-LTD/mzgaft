@@ -55,8 +55,8 @@
                 <div class="fixed-social-list">
 
                     <a class="list-item" href="https://www.youtube.com/@mzgaft_site"><i class="fa-brands fa-youtube"></i></a>
-                    <a class="list-item" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a class="list-item" href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="list-item" href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a class="list-item" href="https://www.instagram.com/mzgaft_site/"><i class="fa-brands fa-instagram"></i></a>
                     <a class="list-item" href="https://t.me/mzgaft_site"><i class="fa-brands fa-telegram"></i></a>
                     <a class="list-item" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 
@@ -792,11 +792,11 @@
 
             <div class="fixed-social-list">
 
-                <a class="list-item" href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a class="list-item" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a class="list-item" href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a class="list-item" href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a class="list-item" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+               <a class="list-item" href="https://www.youtube.com/@mzgaft_site"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="list-item" href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a class="list-item" href="https://www.instagram.com/mzgaft_site/"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="list-item" href="https://t.me/mzgaft_site"><i class="fa-brands fa-telegram"></i></a>
+                    <a class="list-item" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 
             </div>
 
