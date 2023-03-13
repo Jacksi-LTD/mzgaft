@@ -55,6 +55,9 @@ class QuestionController extends Controller
             $table->editColumn('title', function ($row) {
                 return $row->title ? $row->title : '';
             });
+            $table->editColumn('answer', function ($row) {
+                return $row->answer ? $row->answer : '';
+            })->escapeColumns([]);
             $table->addColumn('category_name', function ($row) {
                 return $row->category ? $row->category->name : '';
             });

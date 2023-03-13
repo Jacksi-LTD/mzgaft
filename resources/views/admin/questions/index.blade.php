@@ -32,6 +32,9 @@
                         {{ trans('cruds.question.fields.title') }}
                     </th>
                     <th>
+                        {{ trans('cruds.question.fields.answer') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.question.fields.category') }}
                     </th>
                     <th>
@@ -49,6 +52,9 @@
                 </tr>
                 <tr>
                     <td>
+                    </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -134,6 +140,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
+{ data: 'answer', name: 'answer' },
 { data: 'category_name', name: 'category.name' },
 { data: 'person_name', name: 'person.name' },
 { data: 'visits', name: 'visits' },
