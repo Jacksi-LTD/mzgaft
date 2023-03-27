@@ -17,7 +17,7 @@ class BlogController extends Controller
 
         $people = Person::get();
 
-        $categories = Category::where(['type'=> 'blogs','category_id'=>null])->orderBy('id', 'DESC')->get();
+        $categories = Category::where(['type'=> 'blogs','category_id'=>null])->orderBy('created_at', 'DESC')->get();
         $users = User::get();
 
         return view('frontend.blogs.index', compact('blogs', 'categories', 'people', 'users'));
@@ -25,7 +25,7 @@ class BlogController extends Controller
 
     public function category(Category $category)
     {
-        $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
+        $some_blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('created_at', 'DESC')->get();
 
         $blogs = Blog::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 

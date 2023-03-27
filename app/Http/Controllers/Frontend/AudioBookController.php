@@ -21,8 +21,8 @@ class AudioBookController extends Controller
 {
     public function index()
     {
-        $categories = Category::where(['type'=> 'audio_books','category_id'=>null])->orderBy('id', 'DESC')->get();
-        // $categories = Category::where('type', 'audio_books')->orderBy('id', 'DESC')->get();
+        $categories = Category::where(['type'=> 'audio_books','category_id'=>null])->orderBy('created_at', 'DESC')->get();
+        // $categories = Category::where('type', 'audio_books')->orderBy('created_at', 'DESC')->get();
 
         return view('frontend.audioBooks.index', compact('categories'));
     }
@@ -31,7 +31,7 @@ class AudioBookController extends Controller
     {
         $audioBooks = AudioBook::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
-        $some_audio_books = AudioBook::with(['writer', 'category', 'created_by', 'media'])->orderBy('id', 'DESC')->get();
+        $some_audio_books = AudioBook::with(['writer', 'category', 'created_by', 'media'])->orderBy('created_at', 'DESC')->get();
 
         return view('frontend.audioBooks.category', compact('audioBooks', 'category', 'some_audio_books'));
     }

@@ -13,10 +13,10 @@ class AudioController extends Controller
 {
     public function index()
     {
-        $people = Person::where('type', 'audios')->orderBy('id', 'DESC')->get();
+        $people = Person::where('type', 'audios')->orderBy('created_at', 'DESC')->get();
 
-        // $categories = Category::where('type', 'audios')->orderBy('id', 'DESC')->get();
-        $categories = Category::where(['type'=> 'audios','category_id'=>null])->orderBy('id', 'DESC')->get();
+        // $categories = Category::where('type', 'audios')->orderBy('created_at', 'DESC')->get();
+        $categories = Category::where(['type'=> 'audios','category_id'=>null])->orderBy('created_at', 'DESC')->get();
 
         return view('frontend.audios.index', compact('categories', 'people'));
     }
@@ -25,7 +25,7 @@ class AudioController extends Controller
     {
         $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('category_id', $category->id)->paginate();
 
-        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
+        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('created_at', 'DESC')->get();
 
         return view('frontend.audios.category', compact('audios', 'some_audios', 'category'));
     }
@@ -36,7 +36,7 @@ class AudioController extends Controller
 
         $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->paginate();
 
-        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
+        $some_audios = Audio::with(['writer', 'category', 'created_by', 'media'])->favorite()->orderBy('created_at', 'DESC')->get();
 
         $category = Category::where('type', 'audios')->first();
 
@@ -47,7 +47,7 @@ class AudioController extends Controller
     {
         $person = Person::findOrFail($person_id);
 
-        $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->withCount('media')->orderBy('id', 'DESC')->get();
+        $audios = Audio::with(['writer', 'category', 'created_by', 'media'])->where('writer_id', $person->id)->withCount('media')->orderBy('created_at', 'DESC')->get();
 
         return $audios;
     }

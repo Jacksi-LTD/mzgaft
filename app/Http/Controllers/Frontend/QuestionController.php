@@ -13,7 +13,7 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        $categories = Category::where(['type'=> 'questions','category_id'=>null])->orderBy('id', 'DESC')->get();
+        $categories = Category::where(['type'=> 'questions','category_id'=>null])->orderBy('created_at', 'DESC')->get();
 
         return view('frontend.questions.index', compact('categories'));
     }
@@ -25,12 +25,12 @@ class QuestionController extends Controller
 
         //dd($questions);
 
-        $some_questions = Question::with(['person', 'category', 'created_by', 'media'])->favorite()->orderBy('id', 'DESC')->get();
+        $some_questions = Question::with(['person', 'category', 'created_by', 'media'])->favorite()->orderBy('created_at', 'DESC')->get();
 
         $count = $questions->count();
 
         $questions = $questions->paginate();
-        return view('frontend.questions.category', compact('questions', 'count', 'some_questions','category'));
+        return view('frontend.questions.category', compact('questions', 'count', 'some_questions', 'category'));
     }
 
     public function show(Question $question)

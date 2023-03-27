@@ -13,7 +13,7 @@ class SurahController extends Controller
     {
         abort_if(Gate::denies('surah_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $surahs = Surah::with(['created_by'])->orderBy('id', 'DESC')->get();
+        $surahs = Surah::with(['created_by'])->orderBy('created_at', 'DESC')->get();
 
         $users = User::get();
 

@@ -7,6 +7,7 @@ use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Category extends Model
 {
@@ -40,6 +41,11 @@ class Category extends Model
         'deleted_at',
         'created_by_id',
     ];
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('created_at', 'asc')->get();
+    }
 
     public function category()
     {
