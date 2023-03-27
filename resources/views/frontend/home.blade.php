@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
 
-    <link rel="icon" href="img/logo2.png" sizes="16x16 32x32 48x48 64x64">
+    <link rel="icon" href="/favicon.jpg" sizes="16x16 32x32 48x48 64x64">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -60,6 +60,11 @@
                     <a class="list-item" href="https://t.me/mzgaft_site"><i class="fa-brands fa-telegram"></i></a>
                     <a class="list-item" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 
+                </div>
+                <div class="fixed-social-list">
+                    <script async src="https://cse.google.com/cse.js?cx=e7b93c7af49284538">
+                    </script>
+                    <div class="gcse-search"></div>
                 </div>
             </div>
         </div>

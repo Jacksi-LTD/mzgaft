@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
 
-    <link rel="icon" href="/img/logo2.png" sizes="16x16 32x32 48x48 64x64">
+    <link rel="icon" href="/favicon.jpg" sizes="16x16 32x32 48x48 64x64">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 

@@ -28,7 +28,78 @@
 
             <div class="row">
 
-                <div class="col-lg-4 half order-1 order-lg-1">
+
+                <div class="col-lg-8 half order-1 order-lg-1">
+
+                    <div class="duplicated-box-wrapper box-container ">
+
+                        <div class="duplicated-box box-lg article-style article-category-style">
+
+                            <div class="box-header box-padding ">
+
+                                <div class="header-title ">
+
+                                    گوتار
+
+                                </div>
+
+
+                            </div>
+                            <div class="box-body box-padding">
+
+                                <div class="body-content ">
+
+                                    <ul class="body-list articles-list">
+                                        @foreach ($blogs as $blog)
+                                            <li class="list-item">
+
+                                                <div class="item-wrap">
+
+                                                    <div class="item-icon">
+
+                                                        <img class="img-fluid" src="/img/main-icon.png">
+                                                    </div>
+                                                    <div class="item-content">
+
+                                                        <a class="item-link"
+                                                            href="{{ route('frontend.blogs.show', $blog->id) }}">{{ $blog->title }}</a>
+
+                                                        <div class="item-info">
+
+                                                            <span>
+
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                                                    <path
+                                                                        d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z" />
+                                                                </svg>
+
+
+                                                            </span>
+                                                            {{ $blog->writer?->name }}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {{ $blogs->links() }}
+
+
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4 half order-2 order-lg-2">
 
                     <div class="side-box-container">
                         @if ($category->childCategories)
@@ -170,77 +241,6 @@
                     </div>
 
                 </div>
-                <div class="col-lg-8 half order-2 order-lg-2">
-
-                    <div class="duplicated-box-wrapper box-container ">
-
-                        <div class="duplicated-box box-lg article-style article-category-style">
-
-                            <div class="box-header box-padding ">
-
-                                <div class="header-title ">
-
-                                    گوتار
-
-                                </div>
-
-
-                            </div>
-                            <div class="box-body box-padding">
-
-                                <div class="body-content ">
-
-                                    <ul class="body-list articles-list">
-                                        @foreach ($blogs as $blog)
-                                            <li class="list-item">
-
-                                                <div class="item-wrap">
-
-                                                    <div class="item-icon">
-
-                                                        <img class="img-fluid" src="/img/main-icon.png">
-                                                    </div>
-                                                    <div class="item-content">
-
-                                                        <a class="item-link"
-                                                            href="{{ route('frontend.blogs.show', $blog->id) }}">{{ $blog->title }}</a>
-
-                                                        <div class="item-info">
-
-                                                            <span>
-
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                                                    <path
-                                                                        d="M6.5,7.5A3.75,3.75,0,1,0,2.786,3.75,3.732,3.732,0,0,0,6.5,7.5ZM7.971,8.907H5.029A5.054,5.054,0,0,0,0,13.984,1.011,1.011,0,0,0,1.006,15H11.995A1.009,1.009,0,0,0,13,13.984,5.054,5.054,0,0,0,7.971,8.907Z" />
-                                                                </svg>
-
-
-                                                            </span>
-                                                            {{ $blog->writer?->name }}
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </li>
-                                        @endforeach
-
-                                    </ul>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        {{ $blogs->links() }}
-
-
-                    </div>
-
-
-                </div>
-
             </div>
 
         </div>

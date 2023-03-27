@@ -68,3 +68,35 @@ $('.scrollup').click(function(e){
 
 
 
+$('.date').datetimepicker({
+    format: 'YYYY-MM-DD',
+    locale: 'en',
+    icons: {
+      up: 'fas fa-chevron-up',
+      down: 'fas fa-chevron-down',
+      previous: 'fas fa-chevron-left',
+      next: 'fas fa-chevron-right'
+    }
+  })
+
+  $('.datetime').datetimepicker({
+    format: 'YYYY-MM-DD HH:mm:ss',
+    locale: 'en',
+    sideBySide: true,
+    icons: {
+      up: 'fas fa-chevron-up',
+      down: 'fas fa-chevron-down',
+      previous: 'fas fa-chevron-left',
+      next: 'fas fa-chevron-right'
+    }
+  })
+
+  $('.timepicker').datetimepicker({
+    format: 'HH:mm:ss',
+    icons: {
+      up: 'fas fa-chevron-up',
+      down: 'fas fa-chevron-down',
+      previous: 'fas fa-chevron-left',
+      next: 'fas fa-chevron-right'
+    }
+  })
