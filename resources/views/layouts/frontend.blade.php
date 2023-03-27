@@ -134,15 +134,14 @@
 
                 <div class="footer-content">
 
-                    <a class="d-block" href="#">
+                    <a class="d-block" href="/">
                         <img class="img-fluid footer-img" src="/img/logo2.png"
                             alt="سایتێ مزگەفت - Mzgaft Site">
                     </a>
 
                     <p class="footer-about">
 
-                        هناك| حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل
-                        الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها
+                        مزگەفت مالێن خودێ نە لسەر ئەردی و موسلمان هەمی قەستدکەنێ بێ جوداهی، مەژی دڤێت سایتێ مزگەفت ببیتە مالەک بۆ هەمی موسلمانان
                     </p>
 
                     <div class="fixed-social-list">

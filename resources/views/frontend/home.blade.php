@@ -374,7 +374,7 @@
 
 
                                                                 </span>
-                                                                {{ $question->person?->name }}
+                                                                {{-- {{ $question->person?->name }} --}}
                                                             </div>
                                                         @endauth
                                                 </div>

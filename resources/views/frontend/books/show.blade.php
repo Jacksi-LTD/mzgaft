@@ -27,7 +27,68 @@
 
         <div class="row">
 
+            <div class="col-lg-4 half">
 
+                <div class="side-box-container">
+
+                    <div class="box-wrap">
+
+
+                        <div class="duplicated-box-wrapper">
+
+                            <div class="duplicated-box box-lg box-side side-statistics  duplicated-box-2 ">
+
+                                <div class="box-header box-padding ">
+
+                                    <div class="header-title ">
+
+                                        ئامار
+
+                                    </div>
+
+
+                                </div>
+                                <div class="box-body box-padding">
+
+                                    <div class="body-content ">
+
+                                        <ul class="body-list statistics-list">
+
+                                            <li class="list-item">
+
+                                                <div class="statistics-item">
+
+                                                    <span class="statistics-text">
+
+                                                        سەرجەمێ گوهداریکرنێ
+                                                        :
+
+                                                    </span>
+                                                    <span class="statistics-val">{{ $book->visits ?? '0' }}</span>
+
+                                                </div>
+
+                                            </li>
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
             <div class="col-lg-8 half">
 
                 <div class="duplicated-box-wrapper box-container">
@@ -102,68 +163,7 @@
 
 
             </div>
-            <div class="col-lg-4 half">
 
-                <div class="side-box-container">
-
-                    <div class="box-wrap">
-
-
-                        <div class="duplicated-box-wrapper">
-
-                            <div class="duplicated-box box-lg box-side side-statistics  duplicated-box-2 ">
-
-                                <div class="box-header box-padding ">
-
-                                    <div class="header-title ">
-
-                                        ئامار
-
-                                    </div>
-
-
-                                </div>
-                                <div class="box-body box-padding">
-
-                                    <div class="body-content ">
-
-                                        <ul class="body-list statistics-list">
-
-                                            <li class="list-item">
-
-                                                <div class="statistics-item">
-
-                                                    <span class="statistics-text">
-
-                                                        سەرجەمێ گوهداریکرنێ
-                                                        :
-
-                                                    </span>
-                                                    <span class="statistics-val">{{ $book->visits ?? '0' }}</span>
-
-                                                </div>
-
-                                            </li>
-
-
-                                        </ul>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
 
 
         </div>

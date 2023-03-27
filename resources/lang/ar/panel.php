@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'الموسوعة الإسلامية',
+    'site_title' => 'مزگەفت',
 ];
