@@ -31,6 +31,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.person.fields.type_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label for="created_at">{{ trans('cruds.person.fields.created_at') }}</label>
+                <input class="form-control datetime {{ $errors->has('created_at') ? 'is-invalid' : '' }}" type="text" name="created_at" id="created_at" value="{{ old('created_at', $person->created_at) }}">
+                @if($errors->has('created_at'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('created_at') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.person.fields.created_at_helper') }}</span>
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
