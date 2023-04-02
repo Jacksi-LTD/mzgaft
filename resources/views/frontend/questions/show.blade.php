@@ -29,7 +29,7 @@
                 <p>{{ $question->title }}</p>
 
             </div>
-            @if($question->person)
+            @if($question->person && false)
             <div class="article-info">
 
                 <div class="info-item article-writer" onclick="showHideFunction()">
