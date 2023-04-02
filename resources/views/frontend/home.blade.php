@@ -33,14 +33,14 @@
 
 </head>
 <!-- Google tag (gtag.js) -->
-{{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-02RPG5GDB1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-02RPG5GDB1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];ص
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-02RPG5GDB1');
-</script> --}}
+</script>
 <body>
 
 
@@ -69,11 +69,7 @@
                     <a class="list-item" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 
                 </div>
-                <div class="fixed-social-list">
-                    <script async src="https://cse.google.com/cse.js?cx=e7b93c7af49284538">
-                    </script>
-                    <div class="gcse-search"></div>
-                </div>
+                
             </div>
         </div>
 

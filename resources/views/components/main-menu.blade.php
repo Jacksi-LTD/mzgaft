@@ -1,13 +1,17 @@
 <div class="main-menu-container ">
 
-    <div class="duplicated-box box-lg">
+    <div class="duplicated-box box-lg parent-box ">
 
-        <div class="box-header box-padding">
+        <div class="box-header box-padding space-between">
 
             <div class="header-title ">
 
                 لیستا سەرەکی
-
+            </div>
+            <div class="header-more">
+                    <script async src="https://cse.google.com/cse.js?cx=e7b93c7af49284538">
+                    </script>
+                    <div class="gcse-search"></div>
             </div>
 
         </div>
