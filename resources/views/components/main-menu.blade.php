@@ -65,6 +65,12 @@
                             href="{{ route('frontend.questions.index') }}"> <span>پرسیار و بەرسڤ</span> </a>
 
                     </div>
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('pages*') ? 'active' : '' }}"
+                            href="/pages/about-us"> <span>ماڵپەرێ مزگەفت</span> </a>
+
+                    </div>
 
                 </div>
 

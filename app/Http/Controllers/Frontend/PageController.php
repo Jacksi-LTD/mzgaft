@@ -17,10 +17,11 @@ class PageController extends Controller
         return view('frontend.pages.index', compact('pages'));
     }
 
-    public function show(Page $page)
+    public function show($slug)
     {
-        abort_if(Gate::denies('page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $page = Page::where('slug', $slug)->first();
+        
         return view('frontend.pages.show', compact('page'));
     }
 }

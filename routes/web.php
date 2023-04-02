@@ -151,6 +151,6 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     Route::resource('questions', 'QuestionController');
 
     // Page
-    Route::resource('pages', 'PageController');
+    Route::get('/pages/{slug}', 'PageController@show');
 
 });

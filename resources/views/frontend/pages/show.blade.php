@@ -1,67 +1,56 @@
 @extends('layouts.frontend')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+@section('page_title', $page->title)
 
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('global.show') }} {{ trans('cruds.page.title') }}
-                </div>
+{{-- @section('breadcrumb')
+    <li class="breadcrumb-item"><a href="/pages/about-us">ماڵپەرێ مزگەفت</a></li>
+    </li>
+@endsection --}}
 
-                <div class="card-body">
-                    <div class="form-group">
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.pages.index') }}">
-                                {{ trans('global.back_to_list') }}
-                            </a>
-                        </div>
-                        <table class="table table-bordered table-striped">
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.page.fields.id') }}
-                                    </th>
-                                    <td>
-                                        {{ $page->id }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.page.fields.title') }}
-                                    </th>
-                                    <td>
-                                        {{ $page->title }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.page.fields.slug') }}
-                                    </th>
-                                    <td>
-                                        {{ $page->slug }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.page.fields.content') }}
-                                    </th>
-                                    <td>
-                                        {{ $page->content }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.pages.index') }}">
-                                {{ trans('global.back_to_list') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- ***** article-detalis-section Start ***** -->
+
+<section class="section-style article-detalis-section">
+
+    <div class="container">
+
+        <div class="article-detalis-box">
+
+            <div class="article-title">
+
+                <p>{{ $page->title }}</p>
+
             </div>
+            <div class="texts-container">
+
+                {!! $page->content !!}
+
+            </div>
+            <x-share-box />
 
         </div>
+
+
+
+
     </div>
-</div>
+
+</section>
+
+<!-- ***** article-detalis-section End ***** -->
+
 @endsection
+
+@section('scripts')
+<script>
+    function showHideFunction() {
+  var x = document.getElementById("person");
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+  } else {
+    x.style.visibility = "hidden";
+  }
+}
+</script>
+@endsection
+
+
