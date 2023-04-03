@@ -682,7 +682,7 @@ footer {
     font-size: 14px;
     font-weight: bold;
     padding: .75rem;
-    min-height: 50px;
+    min-height: 66px;
     padding-right: calc(45px - 5px);
     z-index: 1;
 }
