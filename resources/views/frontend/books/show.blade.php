@@ -60,7 +60,7 @@
 
                                                     <span class="statistics-text">
 
-                                                        سەرجەمێ گوهداریکرنێ
+                                                        سەرەدان
                                                         :
 
                                                     </span>
