@@ -46,7 +46,7 @@
 
                                     <div class="header-title ">
 
-                                        احصائيات
+                                        ئامار
 
                                     </div>
 
@@ -64,7 +64,7 @@
 
                                                     <span class="statistics-text">
 
-                                                        الحلقات
+                                                        هژمارا وانا
                                                         :
 
                                                     </span>
@@ -79,7 +79,7 @@
 
                                                     <span class="statistics-text">
 
-                                                        اجمالي مرات الاستماع
+                                                        سەرجەمێ گوهداریکرنێ
                                                         :
 
                                                     </span>
