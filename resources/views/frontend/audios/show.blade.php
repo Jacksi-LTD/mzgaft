@@ -260,7 +260,7 @@
             timeout: '2000',
             progressBar: true,
             closeWith: ['click'],
-            text: '<i class="fa-solid fa-circle-check ms-1"></i> تم تنزيل الحلقة بنجاح',
+            text: '<i class="fa-solid fa-circle-check ms-1"></i> ب سەرکەفتییانە هاتە خوارێ',
 
 
 
