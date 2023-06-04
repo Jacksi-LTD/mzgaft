@@ -32,6 +32,9 @@
                             {{ trans('cruds.blog.fields.title') }}
                         </th>
                         <th>
+                            {{ trans('cruds.blog.fields.content') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.blog.fields.writing_date') }}
                         </th>
                         <th>
@@ -61,6 +64,8 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -161,6 +166,11 @@
                     {
                         data: 'title',
                         name: 'title'
+                    },
+                    },
+                    {
+                        data: 'content',
+                        name: 'content'
                     },
                     {
                         data: 'writing_date',
