@@ -56,7 +56,7 @@ class BlogController extends Controller
             });
             $table->editColumn('content', function ($row) {
                 return $row->content ? $row->content : '';
-            });
+            })->escapeColumns([]);
 
             $table->editColumn('visits', function ($row) {
                 return $row->visits ? $row->visits : '';
