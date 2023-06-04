@@ -167,7 +167,6 @@
                         data: 'title',
                         name: 'title'
                     },
-                    },
                     {
                         data: 'content',
                         name: 'content'
