@@ -71,7 +71,7 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="category_categories">
-            @includeIf('admin.categories.relationships.categoryCategories', ['categories' => $category->categoryCategories])
+            @includeIf('admin.categories.relationships.categoryCategories', ['categories' => $category->childCategories])
         </div>
     </div>
 </div>

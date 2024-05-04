@@ -37,7 +37,7 @@
                     <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach($categories as $id => $entry)
 
-                        <option class="{{$entry->type}}" value="{{ $id }}" {{ old('category_id') == $id ? '' : '' }}>{{ $entry->name }}</option>
+                        <option class="{{$entry->type}}" value="{{ $entry->id }}" {{ old('category_id') == $id ? '' : '' }}>{{ $entry->name }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('category'))
