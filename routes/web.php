@@ -27,6 +27,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('categories/process-csv-import', 'CategoryController@processCsvImport')->name('categories.processCsvImport');
     Route::resource('categories', 'CategoryController');
 
+   //attentions
+    Route::resource('attentions', 'AttentionsController');
+
+    //suggestions
+    Route::resource('suggestions', 'SuggestionsController');
+    //chapters
+    Route::delete('chapters/destroy', 'ChapterController@massDestroy')->name('chapters.massDestroy');
+    Route::resource('chapters', 'ChapterController');
+    //hadith
+    Route::delete('hadith/destroy', 'HadithController@massDestroy')->name('hadith.massDestroy');
+    Route::post('get/chapters', 'HadithController@get_chapters');
+    Route::resource('hadith', 'HadithController');
+    //donations
+    Route::resource('donations', 'DonationsController');
+
+    //advice
+    Route::resource('advice', 'AdviceController');
     // Person
     Route::delete('people/destroy', 'PersonController@massDestroy')->name('people.massDestroy');
     Route::post('people/parse-csv-import', 'PersonController@parseCsvImport')->name('people.parseCsvImport');
@@ -65,6 +82,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('audio-books/process-csv-import', 'AudioBookController@processCsvImport')->name('audio-books.processCsvImport');
     Route::resource('audio-books', 'AudioBookController');
 
+    //youtubevideos
+    Route::delete('youtubevideos/destroy', 'AudioYoutubeController@massDestroy')->name('youtubevideos.massDestroy');
+    Route::post('youtubevideos/media', 'AudioYoutubeController@storeMedia')->name('youtubevideos.storeMedia');
+    Route::post('youtubevideos/ckmedia', 'AudioYoutubeController@storeCKEditorImages')->name('youtubevideos.storeCKEditorImages');
+    Route::resource('youtubevideos', 'AudioYoutubeController');
+
     // Surah
     Route::delete('surahs/destroy', 'SurahController@massDestroy')->name('surahs.massDestroy');
     Route::post('surahs/parse-csv-import', 'SurahController@parseCsvImport')->name('surahs.parseCsvImport');
@@ -81,6 +104,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Question
     Route::delete('questions/destroy', 'QuestionController@massDestroy')->name('questions.massDestroy');
+    Route::post('get/sub_cats', 'QuestionController@sub_cats');
     Route::post('questions/media', 'QuestionController@storeMedia')->name('questions.storeMedia');
     Route::post('questions/ckmedia', 'QuestionController@storeCKEditorImages')->name('questions.storeCKEditorImages');
     Route::post('questions/parse-csv-import', 'QuestionController@parseCsvImport')->name('questions.parseCsvImport');

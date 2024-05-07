@@ -36,6 +36,7 @@
             <div class="form-group">
                 <label for="category_id">{{ trans('cruds.question.fields.category') }}</label>
                 <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
+                    <option  value=""></option>
                     @foreach($categories as $id => $entry)
                         <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -45,6 +46,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.question.fields.category_helper') }}</span>
             </div>
+
+            <div id="sub_cat"></div>
+
             <div class="form-group">
                 <label for="person_id">{{ trans('cruds.question.fields.person') }}</label>
                 <select class="form-control select2 {{ $errors->has('person') ? 'is-invalid' : '' }}" name="person_id" id="person_id">
@@ -157,6 +161,26 @@
     );
   }
 });
+</script>
+
+<script>
+    $('#category_id').on('change',function () {
+
+        var category_id = $('#category_id option:selected').val();
+        $.ajax({
+            url:'{{url('admin/get/sub_cats')}}',
+            dataType:'html',
+            type:'post',
+            data:{category_id:category_id,_token:'{{csrf_token()}}'},
+            beforeSend: function()
+            {
+                //$('#sub_cat').removeClass('hidden');
+            },success: function(data)
+            {
+                $('#sub_cat').html(data);
+            }
+        });
+    });
 </script>
 
 @endsection

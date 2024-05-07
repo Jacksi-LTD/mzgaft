@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.question.title') }}
+        {{ trans('global.show') }} {{ trans('app.hadith') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.questions.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.hadith.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,80 +17,66 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.question.fields.id') }}
+                            {{ trans('cruds.audioBook.fields.id') }}
                         </th>
                         <td>
-                            {{ $question->id }}
+                            {{ $show->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.question.fields.title') }}
+                            {{ trans('cruds.audioBook.fields.title') }}
                         </th>
                         <td>
-                            {{ $question->title }}
+                            {{ $show->title }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.question.fields.question') }}
+                            {{ trans('app.number') }}
                         </th>
                         <td>
-                            {!! $question->question !!}
+                            {{ $show->number }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.question.fields.answer') }}
+                            {{ trans('cruds.audioBook.fields.category') }}
                         </th>
                         <td>
-                            {!! $question->answer !!}
+                            {{ $show->category->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.question.fields.category') }}
+                            {{ trans('app.chapter') }}
                         </th>
                         <td>
-                            {{ $question->category->name ?? '' }}
+                            {{ $show->chapter->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('app.subcategory') }}
+                            {{ trans('app.narrated_by') }}
                         </th>
                         <td>
-                            {{ $question->sub->name ?? '' }}
+                            {{ $show->narrated_by }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.question.fields.person') }}
+                            {{ trans('cruds.audioBook.fields.content') }}
                         </th>
                         <td>
-                            {{ $question->person->name ?? '' }}
+                            {!! $show->details !!}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.question.fields.visits') }}
-                        </th>
-                        <td>
-                            {{ $question->visits }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.question.fields.approved') }}
-                        </th>
-                        <td>
-                            <input type="checkbox" disabled="disabled" {{ $question->approved ? 'checked' : '' }}>
-                        </td>
-                    </tr>
+
+
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.questions.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.hadith.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

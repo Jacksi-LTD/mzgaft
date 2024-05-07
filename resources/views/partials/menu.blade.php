@@ -252,6 +252,109 @@
                         </ul>
                     </li>
                 @endcan
+
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.attentions.index') }}"
+                       class="nav-link {{ request()->is('admin/attentions') || request()->is('admin/attentions/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-bell">
+
+                        </i>
+                        <p>
+                            {{ trans('app.attentions') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.suggestions.index') }}"
+                       class="nav-link {{ request()->is('admin/suggestions') || request()->is('admin/suggestions/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-plus">
+
+                        </i>
+                        <p>
+                            {{ trans('app.suggestions') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.donations.index') }}"
+                       class="nav-link {{ request()->is('admin/donations') || request()->is('admin/donations/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-heart">
+
+                        </i>
+                        <p>
+                            {{ trans('app.donations') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.advice.index') }}"
+                       class="nav-link {{ request()->is('admin/advice') || request()->is('admin/advice/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-file">
+
+                        </i>
+                        <p>
+                            {{ trans('app.advice') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.youtubevideos.index') }}"
+                       class="nav-link {{ request()->is('admin/youtubevideos') || request()->is('admin/youtubevideos/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-video">
+
+                        </i>
+                        <p>
+                            {{ trans('app.youtubevideos') }}
+                        </p>
+                    </a>
+                </li>
+
+
+                <li
+                        class="nav-item has-treeview {{ request()->is('admin/hadith*') ? 'menu-open' : '' }} {{ request()->is('admin/chapters*') ? 'menu-open' : '' }}">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="fa-fw nav-icon fas fa-file">
+
+                        </i>
+                        <p>
+                            {{ trans('app.hadith') }}
+                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{ route('admin.chapters.index') }}"
+                                   class="nav-link {{ request()->is('admin/chapters') || request()->is('admin/chapters/*') ? 'active' : '' }}">
+                                    <i class="fa-fw nav-icon fas fa-list">
+
+                                    </i>
+                                    <p>
+                                        {{ trans('app.chapters') }}
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.hadith.index') }}"
+                                   class="nav-link {{ request()->is('admin/hadith') || request()->is('admin/hadith/*') ? 'active' : '' }}">
+                                    <i class="fa-fw nav-icon fas fa-list">
+
+                                    </i>
+                                    <p>
+                                        {{ trans('app.hadith') }}
+                                    </p>
+                                </a>
+                            </li>
+
+
+                    </ul>
+                </li>
+
                 @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">

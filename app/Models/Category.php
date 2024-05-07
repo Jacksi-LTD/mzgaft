@@ -22,6 +22,8 @@ class Category extends Model
         'books' => 'كتب',
         'audio_books' => 'كتب صوتية',
         'questions' => 'پرسیار',
+        'hadith' => 'حديث',
+        'youtubevideos' => 'فيديوهات يوتيوب',
     ];
 
     public $table = 'categories';

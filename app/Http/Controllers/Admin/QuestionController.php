@@ -89,11 +89,18 @@ class QuestionController extends Controller
     {
         abort_if(Gate::denies('question_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $categories = Category::where('type', 'questions')->where('category_id',null)->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $people = Person::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.questions.create', compact('categories', 'people'));
+    }
+
+    public function sub_cats(Request $request){
+
+        $subs=Category::where('category_id',$request->category_id)->get();
+
+        return view('admin.questions.ajax',compact('subs'));
     }
 
     public function store(StoreQuestionRequest $request)
@@ -111,13 +118,15 @@ class QuestionController extends Controller
     {
         abort_if(Gate::denies('question_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $categories = Category::where('type', 'questions')->where('category_id',null)->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $people = Person::where('type', 'questions')->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $question->load('category', 'person', 'created_by');
 
-        return view('admin.questions.edit', compact('categories', 'people', 'question'));
+        $subs=Category::where('category_id',$question->category_id)->get();
+
+        return view('admin.questions.edit', compact('categories', 'people', 'question','subs'));
     }
 
     public function update(UpdateQuestionRequest $request, Question $question)

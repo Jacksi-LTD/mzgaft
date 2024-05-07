@@ -40,6 +40,7 @@ class Question extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'created_by_id',
+        'sub_id',
     ];
     public function scopeFavorite($query)
     {
@@ -55,6 +56,11 @@ class Question extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function sub()
+    {
+        return $this->belongsTo(Category::class, 'sub_id','id');
     }
 
     public function person()
