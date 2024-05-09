@@ -9,6 +9,7 @@
             </div>
         </div>
     @endcan
+
     <div class="card">
         <div class="card-header">
             {{ trans('app.tajweeds books') }} {{ trans('global.list') }}
