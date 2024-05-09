@@ -66,7 +66,7 @@ class PermissionsController extends Controller
     {
         $permission = Permission::create($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->back();
     }
 
     public function edit(Permission $permission)
