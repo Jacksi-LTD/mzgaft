@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyAudioBookRequest;
+use App\Http\Requests\MassDestroyHadithRequest;
 use App\Http\Requests\StoreAudioBookRequest;
 use App\Http\Requests\StoreHadithRequest;
 use App\Http\Requests\UpdateAudioBookRequest;
@@ -141,7 +142,7 @@ class HadithController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyAudioBookRequest $request)
+    public function massDestroy(MassDestroyHadithRequest $request)
     {
         Hadith::whereIn('id', request('ids'))->delete();
 

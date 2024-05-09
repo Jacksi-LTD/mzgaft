@@ -355,6 +355,31 @@
                     </ul>
                 </li>
 
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.prayer.index') }}"
+                       class="nav-link {{ request()->is('admin/prayer') || request()->is('admin/prayer/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-book">
+
+                        </i>
+                        <p>
+                            {{ trans('app.prayer books') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.tajweeds.index') }}"
+                       class="nav-link {{ request()->is('admin/tajweeds') || request()->is('admin/tajweeds/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-book">
+
+                        </i>
+                        <p>
+                            {{ trans('app.tajweeds books') }}
+                        </p>
+                    </a>
+                </li>
+
                 @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">

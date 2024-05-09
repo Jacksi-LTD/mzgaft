@@ -18,6 +18,8 @@ return [
     'hadith'   => 'الحديث',
     'chapters'   => 'الابواب',
     'chapter'   => 'باب',
+    'tajweeds books'   => 'كتب التجويد',
+    'prayer books'   => 'كتب الصلاة والوضوء',
     'narrated_by'   => 'رواه',
     'suggestions'   => 'الاقتراحات',
 ];

@@ -32,6 +32,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     //suggestions
     Route::resource('suggestions', 'SuggestionsController');
+    //PrayerController
+    Route::post('prayer/media', 'PrayerController@storeMedia')->name('prayer.storeMedia');
+    Route::delete('prayer/destroy', 'PrayerController@massDestroy')->name('prayer.massDestroy');
+    Route::resource('prayer', 'PrayerController');
+    //tajweeds
+    Route::post('tajweeds/media', 'TajweedController@storeMedia')->name('tajweeds.storeMedia');
+    Route::delete('tajweeds/destroy', 'TajweedController@massDestroy')->name('tajweeds.massDestroy');
+    Route::resource('tajweeds', 'TajweedController');
+
     //chapters
     Route::delete('chapters/destroy', 'ChapterController@massDestroy')->name('chapters.massDestroy');
     Route::resource('chapters', 'ChapterController');

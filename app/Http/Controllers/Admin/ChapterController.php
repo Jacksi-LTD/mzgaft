@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\ChapterRequest;
 use App\Http\Requests\MassDestroyAudioBookRequest;
+use App\Http\Requests\MassDestroyChaptersRequest;
 use App\Http\Requests\StoreAudioBookRequest;
 use App\Http\Requests\StoreYoutubeRequest;
 use App\Http\Requests\UpdateAudioBookRequest;
@@ -121,7 +122,7 @@ class ChapterController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyAudioBookRequest $request)
+    public function massDestroy(MassDestroyChaptersRequest $request)
     {
         Chapter::whereIn('id', request('ids'))->delete();
 
