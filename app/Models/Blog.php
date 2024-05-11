@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Blog extends Model implements HasMedia
 {
@@ -53,6 +54,14 @@ class Blog extends Model implements HasMedia
     {
      return $query->where('favorite', '=', 1);
     }
+
+    public function image(): Attribute
+    {
+        return Attribute::get(function () {
+            return $this->getFirstMediaUrl('images');
+        });
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);

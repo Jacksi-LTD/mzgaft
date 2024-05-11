@@ -1,5 +1,5 @@
 <?php
-
+/*
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
@@ -45,4 +45,17 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Page
     Route::apiResource('pages', 'PageApiController');
+});
+*/
+Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], function () {
+
+
+    //categories/blogs
+    Route::get('categories/blogs', 'BlogsApiController@categories');
+    Route::get('blogs/category/{id}', 'BlogsApiController@by_category');
+    Route::apiResource('blogs', 'BlogsApiController');
+
+
+    Route::apiResource('advice', 'AdviceApiController');
+    Route::apiResource('attentions', 'AttentaionsApiController');
 });
