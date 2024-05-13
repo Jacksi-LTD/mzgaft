@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Donation extends Model implements HasMedia
@@ -25,16 +26,11 @@ class Donation extends Model implements HasMedia
         return $query->orderBy('created_at', 'asc')->get();
     }
 
-    public function getImageAttribute()
+    public function image(): Attribute
     {
-        $file = $this->getMedia('image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
-
-        return $file;
+        return Attribute::get(function () {
+            return $this->getFirstMediaUrl('image');
+        });
     }
 
     protected $appends = [

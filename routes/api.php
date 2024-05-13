@@ -55,6 +55,37 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
     Route::get('blogs/category/{id}', 'BlogsApiController@by_category');
     Route::apiResource('blogs', 'BlogsApiController');
 
+    Route::get('categories/hadith', 'HadithApiController@categories');
+    Route::get('category/{id}/chapters', 'HadithApiController@chapters');
+    Route::apiResource('hadith', 'HadithApiController');
+
+
+    Route::apiResource('suggestions', 'SuggestionsApiController');
+
+    Route::apiResource('donations', 'DonationApiController');
+
+
+    Route::get('categories/questions', 'QuestionsApiController@categories');
+    Route::get('sub_categories/{id}/questions', 'QuestionsApiController@sub_categories');
+    Route::apiResource('questions', 'QuestionsApiController');
+
+    Route::apiResource('books', 'BooksApiController');
+    Route::apiResource('pages', 'PagesApiController');
+
+
+    Route::get('acoustics_teachers', 'AudioApiController@acoustics_teachers');
+    Route::get('categories/audios', 'AudioApiController@categories');
+    Route::apiResource('audios', 'AudioApiController');
+
+
+    ///cahpters/audiobooks
+    Route::get('cahpters/audiobooks', 'AudioBooksApiController@categories');
+    Route::apiResource('audiobooks', 'AudioBooksApiController');
+
+
+
+    Route::get('categories/youtube_videos', 'YoutubeApiController@categories');
+    Route::apiResource('youtube_videos', 'YoutubeApiController');
 
     Route::apiResource('advice', 'AdviceApiController');
     Route::apiResource('attentions', 'AttentaionsApiController');

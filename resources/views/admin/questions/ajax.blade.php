@@ -1,6 +1,7 @@
 <div class="form-group">
     <label for="category_id">{{ trans('app.subcategory') }}</label>
     <select class="form-control select2 {{ $errors->has('sub_id') ? 'is-invalid' : '' }}" name="sub_id" id="sub_id">
+        <option value=""></option>
         @foreach($subs as $sub)
             <option value="{{$sub->id}}" {{ old('sub_id') == $sub->id ? 'selected' : '' }}>{{ $sub->name }}</option>
         @endforeach
