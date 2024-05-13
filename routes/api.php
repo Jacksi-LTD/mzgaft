@@ -49,7 +49,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 */
 Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], function () {
 
-
     //categories/blogs
     Route::get('categories/blogs', 'BlogsApiController@categories');
     Route::get('blogs/category/{id}', 'BlogsApiController@by_category');
