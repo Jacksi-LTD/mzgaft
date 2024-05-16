@@ -69,6 +69,10 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
     Route::apiResource('questions', 'QuestionsApiController');
 
     Route::apiResource('books', 'BooksApiController');
+
+    Route::get('categories/products', 'ProductsApiController@categories');
+    Route::apiResource('products', 'ProductsApiController');
+
     Route::apiResource('pages', 'PagesApiController');
 
 
@@ -80,6 +84,13 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
     ///cahpters/audiobooks
     Route::get('cahpters/audiobooks', 'AudioBooksApiController@categories');
     Route::apiResource('audiobooks', 'AudioBooksApiController');
+
+
+    Route::apiResource('orders', 'OrdersApiController');
+
+
+    Route::apiResource('prayer', 'PrayerApiController');
+    Route::apiResource('tajweed', 'TajweedApiController');
 
 
 

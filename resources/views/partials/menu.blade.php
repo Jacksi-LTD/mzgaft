@@ -380,6 +380,30 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.product.index') }}"
+                       class="nav-link {{ request()->is('admin/product') || request()->is('admin/product/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-box">
+
+                        </i>
+                        <p>
+                            {{ trans('app.products') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.orders.index') }}"
+                       class="nav-link {{ request()->is('admin/orders') || request()->is('admin/orders/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-list">
+
+                        </i>
+                        <p>
+                            {{ trans('app.orders') }}
+                        </p>
+                    </a>
+                </li>
+
                 @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">

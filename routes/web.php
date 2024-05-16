@@ -83,6 +83,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('books/process-csv-import', 'BookController@processCsvImport')->name('books.processCsvImport');
     Route::resource('books', 'BookController');
 
+    Route::delete('product/destroy', 'ProductController@massDestroy')->name('product.massDestroy');
+    Route::post('product/media', 'ProductController@storeMedia')->name('product.storeMedia');
+    Route::resource('product', 'ProductController');
+
+    Route::resource('orders', 'OrdersController');
+
     // Audio Book
     Route::delete('audio-books/destroy', 'AudioBookController@massDestroy')->name('audio-books.massDestroy');
     Route::post('audio-books/media', 'AudioBookController@storeMedia')->name('audio-books.storeMedia');

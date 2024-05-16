@@ -23,6 +23,7 @@ class Category extends Model
         'audio_books' => 'كتب صوتية',
         'questions' => 'پرسیار',
         'hadith' => 'حديث',
+        'product' => 'منتج',
         'youtubevideos' => 'فيديوهات يوتيوب',
     ];
 
