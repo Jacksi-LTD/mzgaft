@@ -25,7 +25,6 @@ class PersonController extends Controller
         if ($request->ajax()) {
             $query = Person::with(['created_by'])->select(sprintf('%s.*', (new Person())->table));
             $table = Datatables::of($query);
-
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
