@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-header">
-            {{ trans('app.suggestions') }} {{ trans('global.list') }}
+            {{ trans('app.contact_us') }} {{ trans('global.list') }}
         </div>
 
         <div class="card-body">
@@ -24,6 +24,9 @@
                         {{ trans('app.phone') }}
                     </th>
                     <th>
+                        {{ trans('app.email') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -39,6 +42,7 @@
                     <td>
 
                     </td>
+                    <td></td>
 
                     <td>
                     </td>
@@ -63,12 +67,13 @@
                 serverSide: true,
                 retrieve: true,
                 aaSorting: [],
-                ajax: "{{ route('admin.suggestions.index') }}",
+                ajax: "{{ route('admin.contact_us.index') }}",
                 columns: [
                     { data: 'placeholder', name: 'placeholder' },
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
                     { data: 'phone', name: 'phone' },
+                    { data: 'email', name: 'email' },
                     { data: 'actions', name: '{{ trans('global.actions') }}' }
                 ],
                 orderCellsTop: true,

@@ -93,6 +93,9 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
     Route::apiResource('tajweed', 'TajweedApiController');
 
 
+    Route::apiResource('contact_us', 'Contact_usApiController');
+
+
 
     Route::get('categories/youtube_videos', 'YoutubeApiController@categories');
     Route::apiResource('youtube_videos', 'YoutubeApiController');
