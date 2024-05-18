@@ -65,6 +65,21 @@
                             href="{{ route('frontend.questions.index') }}"> <span>پرسیار و بەرسڤ</span> </a>
 
                     </div>
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('hadith*') ? 'active' : '' }}"
+                           href="{{ route('frontend.hadith.index') }}"> <span>{{trans('app.hadith')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('youtubevideos*') ? 'active' : '' }}"
+                           href="{{ route('frontend.youtubevideos.index') }}"> <span>{{trans('app.youtubevideos')}}</span> </a>
+
+                    </div>
+
                     <div class="item-wrap">
 
                         <a class="menu-item {{ request()->is('pages*') ? 'active' : '' }}"

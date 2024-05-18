@@ -171,6 +171,13 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
 
     Route::resource('books', 'BookController');
 
+    Route::get('youtubevideos/category/{category}', 'YouTubeVideosController@category')->name('youtubevideos.category');
+    Route::resource('youtubevideos', 'YouTubeVideosController');
+
+    Route::get('hadith/category/{category}', 'HadithController@category')->name('hadith.category');
+    Route::get('hadith/subcategory/{category}', 'HadithController@subcategory')->name('hadith.subcategory');
+    Route::resource('hadith', 'HadithController');
+
     // Audio Book
     Route::get('audio-books/category/{category}', 'AudioBookController@category')->name('audio-books.category');
 
