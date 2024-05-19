@@ -80,6 +80,14 @@
 
                     </div>
 
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('attentions*') ? 'active' : '' }}"
+                           href="{{ route('frontend.attentions.index') }}"> <span>{{trans('app.attentions')}}</span> </a>
+
+                    </div>
+
                     <div class="item-wrap">
 
                         <a class="menu-item {{ request()->is('pages*') ? 'active' : '' }}"

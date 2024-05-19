@@ -171,6 +171,9 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
 
     Route::resource('books', 'BookController');
 
+
+    Route::resource('attentions', 'AttentionsController');
+
     Route::get('youtubevideos/category/{category}', 'YouTubeVideosController@category')->name('youtubevideos.category');
     Route::resource('youtubevideos', 'YouTubeVideosController');
 
