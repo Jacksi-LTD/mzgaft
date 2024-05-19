@@ -801,6 +801,13 @@
 
                 <div class="fixed-social-list">
 
+                    <a class="list-item" href="{{url('/contact_us')}}">{{trans('app.contact_us')}}</a>
+                    <a class="list-item" href="#">{{trans('app.suggestions')}}</a>
+
+                </div>
+                <hr/>
+                <div class="fixed-social-list">
+
                     <a class="list-item" href="https://www.youtube.com/@mzgaft_site"><i class="fa-brands fa-youtube"></i></a>
                     <a class="list-item" href="#"><i class="fa-brands fa-tiktok"></i></a>
                     <a class="list-item" href="https://www.instagram.com/mzgaft_site/"><i class="fa-brands fa-instagram"></i></a>
@@ -808,6 +815,7 @@
                     <a class="list-item" href="#"><i class="fa-brands fa-facebook-f"></i></a>
 
                 </div>
+
 
 
             </div>

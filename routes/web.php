@@ -146,6 +146,8 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 // Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['auth']], function () {
 Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('contact_us', 'HomeController@contact_us');
+    Route::post('contact_us', 'HomeController@contact_store');
 
     // Categories
     Route::resource('categories', 'CategoryController', ['except' => ['destroy']]);

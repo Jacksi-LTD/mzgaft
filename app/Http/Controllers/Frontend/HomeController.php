@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Aya;
 use App\Models\Blog;
 use App\Models\Book;
+use App\Models\ContactUs;
 use App\Models\Person;
 use App\Models\Question;
+use Illuminate\Http\Request;
 
 class HomeController
 {
@@ -39,5 +41,19 @@ class HomeController
         // $people = Person::where('type', 'audios')->withCount('audios')->orderBy('created_at', 'DESC')->get();
 
         $audios = $person->audios;
+    }
+
+
+    public function contact_us(){
+
+
+        return view('frontend.contact_us');
+    }
+
+    public function contact_store(Request $request){
+
+        $store=ContactUs::create($request->all());
+        return redirect()->back()
+            ->with('success', trans('app.Your message has been sent successfully'));
     }
 }
