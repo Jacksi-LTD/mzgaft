@@ -43,10 +43,10 @@ class Prayer extends Model implements HasMedia
     }
 
 
+
+
     public function getFileAttribute()
     {
-        return $this->getMedia('file')->last();
+        return $this->getMedia('file');
     }
-
-
 }

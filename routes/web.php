@@ -174,6 +174,8 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
 
     Route::resource('attentions', 'AttentionsController');
     Route::resource('prayer', 'PrayerController');
+    Route::resource('tajweed', 'TajweedController');
+    Route::resource('donations', 'DonationsController');
 
     Route::get('youtubevideos/category/{category}', 'YouTubeVideosController@category')->name('youtubevideos.category');
     Route::resource('youtubevideos', 'YouTubeVideosController');

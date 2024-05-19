@@ -129,7 +129,7 @@
                         sortable: false,
                         searchable: false
                     },
-                    
+
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

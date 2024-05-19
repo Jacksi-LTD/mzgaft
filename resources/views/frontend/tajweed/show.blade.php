@@ -1,9 +1,9 @@
 @extends('layouts.frontend')
 @section('content')
-@section('page_title', $prayer->title)
-@section('page_title', trans('app.prayer books'))
+@section('page_title', $tajweed->title)
+@section('page_title', trans('app.tajweeds books'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('frontend.prayer.index') }}">{{trans('app.prayer books')}}</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('frontend.tajweed.index') }}">{{trans('app.tajweeds books')}}</a></li>
 
 
 
@@ -26,7 +26,7 @@
 
                             <div class="header-title ">
 
-                                {{ $prayer->title }}
+                                {{ $tajweed->title }}
 
                             </div>
 
@@ -43,7 +43,7 @@
                                         <div class="book-item">
                                             <div class="book-img">
 
-                                                <img class="img-fluid" src="{{ $prayer->image?->getUrl() }}">
+                                                <img class="img-fluid" src="{{ @$tajweed->image->url }}">
                                             </div>
                                         </div>
 
@@ -51,7 +51,7 @@
 
                                     <div class="perview-btns">
 
-                                        <a href="{{$prayer->file->last()->getUrl()}}" target="_blank">
+                                        <a href="{{$tajweed->file->last()->getUrl()}}" target="_blank">
                                             <button class="perview-btn audio-btn   " type="button" s>
                                                 <i class="fa-solid fa-download"></i>
                                                 <span>PDF</span>

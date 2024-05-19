@@ -81,8 +81,22 @@
                     </div>
                     <div class="item-wrap">
 
+                        <a class="menu-item {{ request()->is('tajweed*') ? 'active' : '' }}"
+                           href="{{ route('frontend.tajweed.index') }}"> <span>{{trans('app.tajweeds books')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
                         <a class="menu-item {{ request()->is('prayer*') ? 'active' : '' }}"
                            href="{{ route('frontend.prayer.index') }}"> <span>{{trans('app.prayer books')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('donations*') ? 'active' : '' }}"
+                           href="{{ route('frontend.donations.index') }}"> <span>{{trans('app.donations')}}</span> </a>
 
                     </div>
 

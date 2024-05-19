@@ -53,8 +53,8 @@
                         </th>
                         <td>
                             @if($show->image)
-                                <a href="{{ $show->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $show->image->getUrl('thumb') }}">
+                                <a href="{{ $show->image }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $show->image }}">
                                 </a>
                             @endif
                         </td>
