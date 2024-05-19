@@ -79,7 +79,12 @@
                            href="{{ route('frontend.youtubevideos.index') }}"> <span>{{trans('app.youtubevideos')}}</span> </a>
 
                     </div>
+                    <div class="item-wrap">
 
+                        <a class="menu-item {{ request()->is('prayer*') ? 'active' : '' }}"
+                           href="{{ route('frontend.prayer.index') }}"> <span>{{trans('app.prayer books')}}</span> </a>
+
+                    </div>
 
                     <div class="item-wrap">
 
