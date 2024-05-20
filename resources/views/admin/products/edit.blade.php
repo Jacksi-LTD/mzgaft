@@ -27,7 +27,7 @@
                             name="category_id" id="category_id">
                         @foreach ($categories as $id => $entry)
                             <option value="{{ $id }}"
-                                    {{ (old('category_id') ? old('category_id') : $book->category->id ?? '') == $id ? 'selected' : '' }}>
+                                    {{ (old('category_id') ? old('category_id') : $product->category->id ?? '') == $id ? 'selected' : '' }}>
                                 {{ $entry }}</option>
                         @endforeach
                     </select>

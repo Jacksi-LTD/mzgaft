@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     @yield('styles')
 
@@ -154,7 +154,7 @@
                     <div class="fixed-social-list">
 
                         <a class="list-item" href="{{url('/contact_us')}}">{{trans('app.contact_us')}}</a>
-                        <a class="list-item" href="#">{{trans('app.suggestions')}}</a>
+                        <a class="list-item" href="{{url('/suggestions')}}">{{trans('app.suggestions')}}</a>
 
                     </div>
                     <hr/>

@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('contact_us', 'ContactusController');
 
+
     // Audio Book
     Route::delete('audio-books/destroy', 'AudioBookController@massDestroy')->name('audio-books.massDestroy');
     Route::post('audio-books/media', 'AudioBookController@storeMedia')->name('audio-books.storeMedia');
@@ -148,6 +149,8 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('contact_us', 'HomeController@contact_us');
     Route::post('contact_us', 'HomeController@contact_store');
+    Route::get('suggestions', 'HomeController@suggestions');
+    Route::post('suggestions', 'HomeController@suggestions_store');
 
     // Categories
     Route::resource('categories', 'CategoryController', ['except' => ['destroy']]);
@@ -173,8 +176,21 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
 
     Route::resource('books', 'BookController');
 
+    //products
+    Route::get('product/category/{category}', 'ProductController@category')->name('product.category');
+    Route::post('store_cart', 'ProductController@store_cart')->name('store_cart');
+    Route::get('cart', 'ProductController@show_cart');
+    Route::post('cart', 'ProductController@update_cart');
+    Route::get('order', 'ProductController@order');
+    Route::post('order', 'ProductController@store_order');
+    Route::get('cart/remove/{id}', 'ProductController@cart_remove');
+    Route::get('success_order', 'ProductController@success_order');
+
+    Route::resource('product', 'ProductController');
+
 
     Route::resource('attentions', 'AttentionsController');
+    Route::resource('advice', 'AdviceController');
     Route::resource('prayer', 'PrayerController');
     Route::resource('tajweed', 'TajweedController');
     Route::resource('donations', 'DonationsController');

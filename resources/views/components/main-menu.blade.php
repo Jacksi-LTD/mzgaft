@@ -8,11 +8,15 @@
 
                 لیستا سەرەکی
             </div>
-            <div class="header-more">
+            <div style="display: flex;" class="header-more">
                     <script async src="https://cse.google.com/cse.js?cx=e7b93c7af49284538">
                     </script>
                     <div class="gcse-search"></div>
+
+                <a style="margin-top: 14px;" href="{{url('/cart')}}"><img style="height: 30px;" src="{{asset('/img/cart.png')}}"> {{trans('app.cart')}} </a>
             </div>
+
+
 
         </div>
         <div class="box-body box-padding">
@@ -104,6 +108,20 @@
 
                         <a class="menu-item {{ request()->is('attentions*') ? 'active' : '' }}"
                            href="{{ route('frontend.attentions.index') }}"> <span>{{trans('app.attentions')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('product*') ? 'active' : '' }}"
+                           href="{{ route('frontend.product.index') }}"> <span>{{trans('app.products')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('advice*') ? 'active' : '' }}"
+                           href="{{ route('frontend.advice.index') }}"> <span>{{trans('app.advice')}}</span> </a>
 
                     </div>
 

@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\ContactUs;
 use App\Models\Person;
 use App\Models\Question;
+use App\Models\Suggestion;
 use Illuminate\Http\Request;
 
 class HomeController
@@ -55,5 +56,17 @@ class HomeController
         $store=ContactUs::create($request->all());
         return redirect()->back()
             ->with('success', trans('app.Your message has been sent successfully'));
+    }
+
+    public function suggestions(){
+
+        return view('frontend.suggestions.index');
+    }
+
+    public function suggestions_store(Request $request){
+        $store=Suggestion::create($request->all());
+        return redirect()->back()
+            ->with('success', trans('app.Your message has been sent successfully'));
+
     }
 }

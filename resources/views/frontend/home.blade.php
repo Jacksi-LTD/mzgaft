@@ -802,7 +802,7 @@
                 <div class="fixed-social-list">
 
                     <a class="list-item" href="{{url('/contact_us')}}">{{trans('app.contact_us')}}</a>
-                    <a class="list-item" href="#">{{trans('app.suggestions')}}</a>
+                    <a class="list-item" href="{{url('/suggestions')}}">{{trans('app.suggestions')}}</a>
 
                 </div>
                 <hr/>
