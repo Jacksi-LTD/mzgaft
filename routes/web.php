@@ -30,6 +30,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
    //attentions
     Route::resource('attentions', 'AttentionsController');
 
+
+    Route::resource('god_names', 'NamesController');
+
+    Route::delete('remembrances/destroy', 'RemembrancesController@massDestroy')->name('remembrances.massDestroy');
+    Route::resource('remembrances', 'RemembrancesController');
+
+
+    Route::resource('pleads', 'PleadsController');
+
     //suggestions
     Route::resource('suggestions', 'SuggestionsController');
     //PrayerController
@@ -157,6 +166,11 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
 
     // Person
     Route::resource('people', 'PersonController');
+
+    Route::resource('pleads', 'PleadsController');
+    Route::resource('god_names', 'NamesController');
+    Route::get('remembrances/category/{category}', 'RemembrancesController@category')->name('remembrances.category');
+    Route::resource('remembrances', 'RemembrancesController');
 
     // Blog
     Route::get('blogs/category/{category}', 'BlogController@category')->name('blogs.category');

@@ -25,6 +25,7 @@ class Category extends Model
         'hadith' => 'حديث',
         'product' => 'منتج',
         'youtubevideos' => 'فيديوهات يوتيوب',
+        'remembrance' => 'الاذكار',
     ];
 
     public $table = 'categories';

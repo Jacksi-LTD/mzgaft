@@ -416,7 +416,45 @@
                     </a>
                 </li>
 
-                @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
+                <li class="nav-item">
+                    <a href="{{ route('admin.god_names.index') }}"
+                       class="nav-link {{ request()->is('admin/god_names') || request()->is('admin/god_names/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-list">
+
+                        </i>
+                        <p>
+                            {{ trans('app.god_names') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.remembrances.index') }}"
+                       class="nav-link {{ request()->is('admin/remembrances') || request()->is('admin/remembrances/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-list">
+
+                        </i>
+                        <p>
+                            {{ trans('app.remembrances') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.pleads.index') }}"
+                       class="nav-link {{ request()->is('admin/pleads') || request()->is('admin/pleads/*') ? 'active' : '' }}">
+                        <i class="fa-fw nav-icon fas fa-list">
+
+                        </i>
+                        <p>
+                            {{ trans('app.pleads') }}
+                        </p>
+                    </a>
+                </li>
+
+
+
+            @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'active' : '' }}"

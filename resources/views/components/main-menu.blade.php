@@ -120,6 +120,26 @@
 
                     <div class="item-wrap">
 
+                        <a class="menu-item {{ request()->is('pleads*') ? 'active' : '' }}"
+                           href="{{ route('frontend.pleads.index') }}"> <span>{{trans('app.pleads')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('god_names*') ? 'active' : '' }}"
+                           href="{{ route('frontend.god_names.index') }}"> <span>{{trans('app.god_names')}}</span> </a>
+
+                    </div>
+                    <div class="item-wrap">
+
+                        <a class="menu-item {{ request()->is('remembrances*') ? 'active' : '' }}"
+                           href="{{ route('frontend.remembrances.index') }}"> <span>{{trans('app.remembrances')}}</span> </a>
+
+                    </div>
+
+                    <div class="item-wrap">
+
                         <a class="menu-item {{ request()->is('advice*') ? 'active' : '' }}"
                            href="{{ route('frontend.advice.index') }}"> <span>{{trans('app.advice')}}</span> </a>
 
