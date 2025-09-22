@@ -21,14 +21,15 @@ class BlogsApiController extends Controller
 
     public function index()
     {
-        $blogs=Blog::orderBy('id','desc')->paginate(6);
+        $blogs = Blog::orderBy('id', 'desc')->paginate(6);
         return JsonResponse::success(BlogResource::collection($blogs));
     }
 
 
-    public function categories(){
+    public function categories()
+    {
 
-      $cats=Category::where('type','blogs')->get();
+        $cats = Category::where('type', 'blogs')->get();
         return JsonResponse::success(CategoryResource::collection($cats));
     }
 
@@ -38,11 +39,10 @@ class BlogsApiController extends Controller
         return JsonResponse::success(BlogResource::make($blog));
     }
 
-    public function by_category($id){
+    public function by_category($id)
+    {
 
-        $blogs=Blog::where('category_id',$id)->orderBy('id','desc')->get();
+        $blogs = Blog::where('category_id', $id)->orderBy('id', 'desc')->get();
         return JsonResponse::success(BlogResource::collection($blogs));
     }
-
-
 }

@@ -25,9 +25,7 @@ class PrayerApiController extends Controller
 
     public function index()
     {
-        $prayers=  Prayer::paginate(6);
-
-        //$books=Book::where('approved',true)->orderBy('id','desc')->paginate(6);
+        $prayers = Prayer::paginate(6);
         return JsonResponse::success(PrayerResource::collection($prayers));
     }
 
@@ -35,22 +33,5 @@ class PrayerApiController extends Controller
     {
         return JsonResponse::success(PrayerResource::make($prayer));
     }
-
-     /*
-    public function categories(){
-
-      $cats=Category::where('type','blogs')->get();
-        return JsonResponse::success(CategoryResource::collection($cats));
-    }
-
-
-
-
-    public function by_category($id){
-
-        $blogs=Blog::where('category_id',$id)->orderBy('id','desc')->get();
-        return JsonResponse::success(BlogResource::collection($blogs));
-    }*/
-
 
 }

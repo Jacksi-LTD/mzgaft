@@ -23,16 +23,21 @@ class BooksApiController extends Controller
 
     public function index()
     {
-        $books=  Book::query()->where('approved',true)
+        $books = Book::query()
+            ->where('approved', true)
             ->when(request()->filled('most_read'), function ($query) {
                 return $query->orderBy('visits', 'desc');
             })
             ->when(request()->filled('recent'), function ($query) {
                 return $query->orderBy('id', 'desc');
             })
+            ->when(\request()->filled("language"), function ($query) {
+//                return $query->where('language', \request('language'));
+                return $query;
+                // TODO: handle language filter properly in books section
+            })
             ->paginate(6);
 
-        //$books=Book::where('approved',true)->orderBy('id','desc')->paginate(6);
         return JsonResponse::success(BooksResource::collection($books));
     }
 
@@ -41,21 +46,26 @@ class BooksApiController extends Controller
         return JsonResponse::success(BooksResource::make($book));
     }
 
-     /*
-    public function categories(){
-
-      $cats=Category::where('type','blogs')->get();
+    public function categories()
+    {
+        $cats = Category::where('type', 'books')->get();
         return JsonResponse::success(CategoryResource::collection($cats));
     }
 
-
-
-
-    public function by_category($id){
-
-        $blogs=Blog::where('category_id',$id)->orderBy('id','desc')->get();
-        return JsonResponse::success(BlogResource::collection($blogs));
-    }*/
-
+    public function by_category($id)
+    {
+        $bookType = Category::where('id', $id)->where("type", "books")->first();
+        if (!$bookType) {
+            return JsonResponse::fail("Category not found", 404);
+        }
+        $books = Book::where('category_id', $id)->where('approved', true)->orderBy('id', 'desc')->get();
+        return JsonResponse::success([
+            "book_type" => [
+                "id" => $bookType->id,
+                "title" => $bookType->name,
+            ],
+            "books" => BooksResource::collection($books)
+        ]);
+    }
 
 }

@@ -26,6 +26,7 @@ class Book extends Model implements HasMedia
         'file',
         'files',
         'images',
+        'audio_file',
     ];
 
     protected $dates = [
@@ -95,6 +96,11 @@ class Book extends Model implements HasMedia
         });
 
         return $files;
+    }
+
+    public function getAudioFileAttribute()
+    {
+        return $this->getMedia('audio_file');
     }
 
     public function created_by()

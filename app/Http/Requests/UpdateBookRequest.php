@@ -25,10 +25,10 @@ class UpdateBookRequest extends FormRequest
                 'nullable',
             ],
             'image' => [
-                'required',
+                'nullable',
             ],
             'file' => [
-                'required',
+                'nullable',
             ],
             'files' => [
                 'array',

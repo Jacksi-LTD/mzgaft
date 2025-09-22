@@ -29,13 +29,12 @@ class AudioBooksApiController extends Controller
 
     public function index()
     {
-        $audiobooks=  AudioBook::query()->where('approved',true)
+        $audiobooks = AudioBook::query()
+            ->where('approved', true)
             ->when(request()->filled('chapter_id'), function ($query) {
                 return $query->where('category_id', request('chapter_id'));
             })
             ->paginate(6);
-
-        //$books=Book::where('approved',true)->orderBy('id','desc')->paginate(6);
         return JsonResponse::success(AudioBooksResource::collection($audiobooks));
     }
 
@@ -44,16 +43,11 @@ class AudioBooksApiController extends Controller
         return JsonResponse::success(BooksResource::make($book));
     }
 
-
-
-    public function categories(){
-
-      $cats=Category::where('type','audio_books')->get();
+    public function categories()
+    {
+        $cats = Category::where('type', 'audio_books')->get();
         return JsonResponse::success(CategoryResource::collection($cats));
     }
-
-
-
 
 
 }

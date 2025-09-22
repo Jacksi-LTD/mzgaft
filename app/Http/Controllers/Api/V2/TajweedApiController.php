@@ -17,9 +17,7 @@ class TajweedApiController extends Controller
 
     public function index()
     {
-        $prayers=  Tajweed::paginate(6);
-
-        //$books=Book::where('approved',true)->orderBy('id','desc')->paginate(6);
+        $prayers = Tajweed::paginate(6);
         return JsonResponse::success(TajweeedResource::collection($prayers));
     }
 
@@ -27,22 +25,4 @@ class TajweedApiController extends Controller
     {
         return JsonResponse::success(TajweeedResource::make($tajweed));
     }
-
-     /*
-    public function categories(){
-
-      $cats=Category::where('type','blogs')->get();
-        return JsonResponse::success(CategoryResource::collection($cats));
-    }
-
-
-
-
-    public function by_category($id){
-
-        $blogs=Blog::where('category_id',$id)->orderBy('id','desc')->get();
-        return JsonResponse::success(BlogResource::collection($blogs));
-    }*/
-
-
 }
