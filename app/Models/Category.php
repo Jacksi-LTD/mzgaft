@@ -87,4 +87,9 @@ class Category extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function audios()
+    {
+        return $this->hasMany(Audio::class, 'category_id', 'id');
+    }
 }
