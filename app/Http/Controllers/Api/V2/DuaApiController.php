@@ -65,7 +65,7 @@ class DuaApiController extends Controller
                         'id' => $plead->id,
                         'title' => $plead->title,
                         'description' => $plead->details,
-                        "audio_file" => $plead->audio_file ?? "",
+                        "audio_file" => $plead->getMedia('audio_file')->first()->url ?? "",
                     ];
                 })
         ]);
