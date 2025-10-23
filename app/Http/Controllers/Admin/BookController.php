@@ -12,7 +12,7 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\Person;
 use App\Models\User;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
@@ -106,7 +106,8 @@ class BookController extends Controller
                 return implode(' ', $links);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'writer', 'category', 'approved', 'image', 'file', 'files', 'images']);
+
+            $table->rawColumns(['actions', 'placeholder', 'writer', 'category', 'approved', 'image', 'file', 'files', 'images', 'audio_file']);
 
             return $table->make(true);
         }
@@ -134,19 +135,41 @@ class BookController extends Controller
         $book = Book::create($request->all());
 
         if ($request->input('image', false)) {
-            $book->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+            $imageFile = $request->input('image');
+            $imagePath = storage_path('tmp/uploads/' . basename($imageFile));
+            if (file_exists($imagePath)) {
+                $book->addMedia($imagePath)->toMediaCollection('image');
+            }
         }
 
         if ($request->input('file', false)) {
-            $book->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+            $fileFile = $request->input('file');
+            $filePath = storage_path('tmp/uploads/' . basename($fileFile));
+            if (file_exists($filePath)) {
+                $book->addMedia($filePath)->toMediaCollection('file');
+            }
         }
 
         foreach ($request->input('files', []) as $file) {
-            $book->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+            $filePath = storage_path('tmp/uploads/' . basename($file));
+            if (file_exists($filePath)) {
+                $book->addMedia($filePath)->toMediaCollection('files');
+            }
         }
 
         foreach ($request->input('images', []) as $file) {
-            $book->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
+            $filePath = storage_path('tmp/uploads/' . basename($file));
+            if (file_exists($filePath)) {
+                $book->addMedia($filePath)->toMediaCollection('images');
+            }
+        }
+
+        if ($request->input('audio_file', false)) {
+            $audioFile = $request->input('audio_file');
+            $audioPath = storage_path('tmp/uploads/' . basename($audioFile));
+            if (file_exists($audioPath)) {
+                $book->addMedia($audioPath)->toMediaCollection('audio_file');
+            }
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -174,22 +197,30 @@ class BookController extends Controller
         $book->update($request->all());
 
         if ($request->input('image', false)) {
-            if (!$book->image || $request->input('image') !== $book->image->file_name) {
+            $imageFile = $request->input('image');
+            if (!$book->image || $imageFile !== $book->image->file_name) {
                 if ($book->image) {
                     $book->image->delete();
                 }
-                $book->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+                $imagePath = storage_path('tmp/uploads/' . basename($imageFile));
+                if (file_exists($imagePath)) {
+                    $book->addMedia($imagePath)->toMediaCollection('image');
+                }
             }
         } elseif ($book->image) {
             $book->image->delete();
         }
 
         if ($request->input('file', false)) {
-            if (!$book->file || $request->input('file') !== $book->file->file_name) {
+            $fileFile = $request->input('file');
+            if (!$book->file || $fileFile !== $book->file->file_name) {
                 if ($book->file) {
                     $book->file->delete();
                 }
-                $book->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+                $filePath = storage_path('tmp/uploads/' . basename($fileFile));
+                if (file_exists($filePath)) {
+                    $book->addMedia($filePath)->toMediaCollection('file');
+                }
             }
         } elseif ($book->file) {
             $book->file->delete();
@@ -205,7 +236,10 @@ class BookController extends Controller
         $media = $book->files->pluck('file_name')->toArray();
         foreach ($request->input('files', []) as $file) {
             if (count($media) === 0 || !in_array($file, $media)) {
-                $book->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+                $filePath = storage_path('tmp/uploads/' . basename($file));
+                if (file_exists($filePath)) {
+                    $book->addMedia($filePath)->toMediaCollection('files');
+                }
             }
         }
 
@@ -219,8 +253,27 @@ class BookController extends Controller
         $media = $book->images->pluck('file_name')->toArray();
         foreach ($request->input('images', []) as $file) {
             if (count($media) === 0 || !in_array($file, $media)) {
-                $book->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('images');
+                $filePath = storage_path('tmp/uploads/' . basename($file));
+                if (file_exists($filePath)) {
+                    $book->addMedia($filePath)->toMediaCollection('images');
+                }
             }
+        }
+
+        if ($request->input('audio_file', false) && $request->input('audio_file') != "undefined") {
+            $audioFile = $request->input('audio_file');
+            $currentAudioFile = $book->audio_file->first();
+            if (!$currentAudioFile || $audioFile !== $currentAudioFile->file_name) {
+                if ($currentAudioFile) {
+                    $currentAudioFile->delete();
+                }
+                $audioPath = storage_path('tmp/uploads/' . basename($audioFile));
+                if (file_exists($audioPath)) {
+                    $book->addMedia($audioPath)->toMediaCollection('audio_file');
+                }
+            }
+        } elseif ($book->audio_file->count() > 0) {
+            $book->audio_file->first()->delete();
         }
 
         return redirect()->route('admin.books.index');
@@ -249,6 +302,24 @@ class BookController extends Controller
         Book::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function storeMedia(Request $request)
+    {
+        abort_if(Gate::denies('book_create') && Gate::denies('book_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (request()->has('size')) {
+            $this->validate(request(), [
+                'file' => 'max:' . request()->input('size') * 1024,
+            ]);
+        }
+
+        $model         = new Book();
+        $model->id     = $request->input('model_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('file')->toMediaCollection($request->input('collection_name'));
+
+        return response()->json($media, Response::HTTP_CREATED);
     }
 
     public function storeCKEditorImages(Request $request)

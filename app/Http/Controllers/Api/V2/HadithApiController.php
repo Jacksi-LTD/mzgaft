@@ -27,7 +27,7 @@ class HadithApiController extends Controller
 
     public function index()
     {
-        $hadith=  Hadith::query()
+        $hadith = Hadith::query()
             ->when(request()->filled('category_id'), function ($query) {
                 return $query->where('category_id', request('category_id'));
             })
@@ -35,7 +35,7 @@ class HadithApiController extends Controller
                 return $query->where('chapter_id', request('chapter_id'));
             })
             ->when(request()->filled('search'), function ($query) {
-                return $query->where('details','LIKE','%'.request('search').'%');
+                return $query->where('details', 'LIKE', '%' . request('search') . '%');
             })
             ->paginate(6);
 
@@ -48,33 +48,18 @@ class HadithApiController extends Controller
         return JsonResponse::success(HadithResource::make($hadith));
     }
 
-    public function categories(){
+    public function categories()
+    {
 
-        $cats=Category::where('type','hadith')->get();
+        $cats = Category::where('type', 'hadith')->get();
         return JsonResponse::success(CategoryResource::collection($cats));
     }
 
-    public function chapters($id){
+    public function chapters($id)
+    {
 
-     $chapters=Chapter::where('cat_id',$id)->get();
-     return JsonResponse::success(ChapterResource::collection($chapters));
+        $chapters = Chapter::where('cat_id', $id)->get();
+        return JsonResponse::success(ChapterResource::collection($chapters));
     }
-
-     /*
-    public function categories(){
-
-      $cats=Category::where('type','blogs')->get();
-        return JsonResponse::success(CategoryResource::collection($cats));
-    }
-
-
-
-
-    public function by_category($id){
-
-        $blogs=Blog::where('category_id',$id)->orderBy('id','desc')->get();
-        return JsonResponse::success(BlogResource::collection($blogs));
-    }*/
-
 
 }

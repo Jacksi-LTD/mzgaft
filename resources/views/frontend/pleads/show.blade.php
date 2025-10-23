@@ -25,6 +25,12 @@
                             <div class="header-title ">
 
                                 {{ $plead->title }}
+                                
+                                @if($plead->category)
+                                    <small class="text-muted d-block mt-2">
+                                        {{ trans('app.category') }}: {{ $plead->category->name }}
+                                    </small>
+                                @endif
 
                             </div>
 
@@ -35,11 +41,17 @@
 
                                 <div class="lesson-perview-area">
 
-
+                                    @if($plead->audio_file && $plead->audio_file->count() > 0)
+                                        <div class="audio-player-section mb-4">
+                                            <h5 class="mb-3">{{ trans('app.audio_file') }}</h5>
+                                            <audio id="audio-item" controls class="w-100">
+                                                <source src="{{ $plead->audio_file->first()->getUrl() }}" type="audio/mpeg">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </div>
+                                    @endif
 
                                     {!! $plead->details !!}
-
-
 
                                 </div>
                             </div>

@@ -9,9 +9,9 @@ class TeachersResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'    => $this->id ,
-            'title'  => $this->name,
-            'type'  => $this->type,
+            'id' => $this->id,
+            'name' => $this->name,
+            'type' => $this->type,
         ];
     }
 }

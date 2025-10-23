@@ -47,11 +47,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('pages', 'PageApiController');
 });
 */
+
+
 Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], function () {
 
     //categories/blogs
-    Route::get('categories/blogs', 'BlogsApiController@categories');
-    Route::get('blogs/category/{id}', 'BlogsApiController@by_category');
+    Route::get('blog-categories', 'BlogsApiController@categories');
+    Route::get('blog-categories/{id}', 'BlogsApiController@by_category');
     Route::apiResource('blogs', 'BlogsApiController');
 
     Route::get('categories/hadith', 'HadithApiController@categories');
@@ -64,10 +66,12 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
     Route::apiResource('donations', 'DonationApiController');
 
 
-    Route::get('categories/questions', 'QuestionsApiController@categories');
-    Route::get('sub_categories/{id}/questions', 'QuestionsApiController@sub_categories');
+    Route::get('question-categories', 'QuestionsApiController@categories');
+    Route::get('question-categories/{id}', 'QuestionsApiController@sub_categories');
     Route::apiResource('questions', 'QuestionsApiController');
 
+    Route::get("book-types", "BooksApiController@categories");
+    Route::get('book-types/{id}', 'BooksApiController@by_category');
     Route::apiResource('books', 'BooksApiController');
 
     Route::get('categories/products', 'ProductsApiController@categories');
@@ -76,14 +80,14 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
     Route::apiResource('pages', 'PagesApiController');
 
 
-    Route::get('acoustics_teachers', 'AudioApiController@acoustics_teachers');
+    Route::get('audio/teachers', 'AudioApiController@acoustics_teachers');
     Route::get('categories/audios', 'AudioApiController@categories');
     Route::apiResource('audios', 'AudioApiController');
 
 
     ///cahpters/audiobooks
     Route::get('cahpters/audiobooks', 'AudioBooksApiController@categories');
-    Route::apiResource('audiobooks', 'AudioBooksApiController');
+    Route::apiResource('audio/books', 'AudioBooksApiController');
 
 
     Route::apiResource('orders', 'OrdersApiController');
@@ -98,8 +102,30 @@ Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2'], functi
 
 
     Route::get('categories/youtube_videos', 'YoutubeApiController@categories');
-    Route::apiResource('youtube_videos', 'YoutubeApiController');
+    Route::apiResource('audio/youtube', 'YoutubeApiController');
+
+
 
     Route::apiResource('advice', 'AdviceApiController');
     Route::apiResource('attentions', 'AttentaionsApiController');
+
+    Route::get("asma-allah-alhusna", "GodNamesApiController@index");
+
+    Route::get("azkar-categories", "RemembranceApiController@categories");
+    Route::get("azkar-categories/{id}", "RemembranceApiController@showCategories");
+
+    Route::get("azkars", "RemembranceApiController@azkars");
+    Route::get("azkars/{id}", "RemembranceApiController@showAzkars");
+
+    Route::get('dua-categories', "DuaApiController@categories");
+    Route::get('dua-categories/{id}', "DuaApiController@showCategories");
+    Route::get("duas", "DuaApiController@index");
+    Route::get("duas/{id}", "DuaApiController@show");
+
+    Route::get('muslim-fortress-categories', "MuslimFortressApiController@categories");
+    Route::get('muslim-fortress-categories/{id}', "MuslimFortressApiController@showCategories");
+    // Muslim Fortress API routes
+    Route::get('muslim-fortresses', "MuslimFortressApiController@index");
+    Route::get('muslim-fortresses/{id}', "MuslimFortressApiController@show");
+
 });
