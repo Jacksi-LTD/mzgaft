@@ -13,7 +13,10 @@ class PrayerResource extends JsonResource
             'title'  => $this->title,
             'image'  =>  @$this->image,
             'file'  =>  $this->getMedia('file')->map(function ($media) {
-                return $media->getUrl();
+                return [
+                    "url" => $media->getUrl(),  
+                    "name" => $media->file_name,
+                ];
             }),
         ];
     }
