@@ -27,6 +27,7 @@ class Category extends Model
         'youtubevideos' => 'فيديوهات يوتيوب',
         'remembrance' => 'الاذكار',
         'pleads' => 'الادعية',
+        "god_names" => "اسماء الله الحسني",
         'muslim_fortress' => 'حصن المسلم',
     ];
 
