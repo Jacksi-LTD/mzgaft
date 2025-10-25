@@ -11,8 +11,8 @@ class TajweeedResource extends JsonResource
         return [
             'id'    => $this->id ,
             'title'  => $this->title,
-            'image'  =>  @$this->image,
-            'file'  =>  @$this->file,
+            'image'  =>  @$this->getFirstMediaUrl('image'),
+            'pdf_file'  =>  @$this->getFirstMediaUrl('file'),
         ];
     }
 }

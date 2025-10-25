@@ -52,10 +52,14 @@ class AudioApiController extends Controller
     }
 
 
-    public function categories(){
+    public function categories(Request $request){
 
-      $cats=Category::where('type','audios')->get();
-        return JsonResponse::success(CategoryResource::collection($cats));
+      $cats=Category::where('type','audios')->when($request->filled('writer_id'), function ($query) use ($request) {
+        $query->whereHas('audios', function ($query) use ($request) {
+          $query->where('writer_id', $request->writer_id);
+        });
+      })->get();
+    return JsonResponse::success(CategoryResource::collection($cats));
     }
 
 

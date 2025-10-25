@@ -37,7 +37,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('remembrances', 'RemembrancesController');
 
 
+    Route::post('pleads/media', 'PleadsController@storeMedia')->name('pleads.storeMedia');
+    Route::delete('plead-categories/destroy', 'PleadCategoryController@massDestroy')->name('plead-categories.massDestroy');
     Route::resource('pleads', 'PleadsController');
+    Route::resource('plead-categories', 'PleadCategoryController');
+
+    Route::delete('muslim-fortresses/destroy', 'MuslimFortressController@massDestroy')->name('muslim-fortresses.massDestroy');
+    Route::delete('muslim-fortress-categories/destroy', 'MuslimFortressCategoryController@massDestroy')->name('muslim-fortress-categories.massDestroy');
+    Route::resource('muslim-fortresses', 'MuslimFortressController');
+    Route::resource('muslim-fortress-categories', 'MuslimFortressCategoryController');
 
     //suggestions
     Route::resource('suggestions', 'SuggestionsController');

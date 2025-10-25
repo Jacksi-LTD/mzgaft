@@ -55,6 +55,7 @@
                         <th>
                             {{ trans('cruds.book.fields.images') }}
                         </th>
+                    
                         <th>
                             &nbsp;
                         </th>

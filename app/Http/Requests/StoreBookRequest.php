@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Book;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
@@ -25,16 +25,19 @@ class StoreBookRequest extends FormRequest
                 'nullable',
             ],
             'image' => [
-                'required',
+                'nullable',
             ],
             'file' => [
-                'required',
+                'nullable',
             ],
             'files' => [
                 'array',
             ],
             'images' => [
                 'array',
+            ],
+            'audio_file' => [
+                'nullable',
             ],
         ];
     }

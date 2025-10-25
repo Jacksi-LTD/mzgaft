@@ -26,6 +26,9 @@ class Category extends Model
         'product' => 'منتج',
         'youtubevideos' => 'فيديوهات يوتيوب',
         'remembrance' => 'الاذكار',
+        'pleads' => 'الادعية',
+        "god_names" => "اسماء الله الحسني",
+        'muslim_fortress' => 'حصن المسلم',
     ];
 
     public $table = 'categories';
@@ -71,8 +74,23 @@ class Category extends Model
         return $this->belongsTo(User::class, 'created_by_id');
     }
 
+    public function pleads()
+    {
+        return $this->hasMany(Plead::class, 'category_id');
+    }
+
+    public function muslimFortresses()
+    {
+        return $this->hasMany(MuslimFortress::class, 'category_id');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function audios()
+    {
+        return $this->hasMany(Audio::class, 'category_id', 'id');
     }
 }

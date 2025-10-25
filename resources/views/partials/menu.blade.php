@@ -452,6 +452,48 @@
                     </a>
                 </li>
 
+    @can('plead_category_access')
+    <li class="nav-item">
+        <a href="{{ route('admin.plead-categories.index') }}"
+           class="nav-link {{ request()->is('admin/plead-categories') || request()->is('admin/plead-categories/*') ? 'active' : '' }}">
+            <i class="fa-fw nav-icon fas fa-tags">
+
+            </i>
+            <p>
+                {{ trans('app.plead_categories') }}
+            </p>
+        </a>
+    </li>
+    @endcan
+
+    @can('muslim_fortress_access')
+    <li class="nav-item">
+        <a href="{{ route('admin.muslim-fortresses.index') }}"
+           class="nav-link {{ request()->is('admin/muslim-fortresses') || request()->is('admin/muslim-fortresses/*') ? 'active' : '' }}">
+            <i class="fa-fw nav-icon fas fa-shield-alt">
+
+            </i>
+            <p>
+                {{ trans('app.muslim_fortresses') }}
+            </p>
+        </a>
+    </li>
+    @endcan
+
+    @can('muslim_fortress_category_access')
+    <li class="nav-item">
+        <a href="{{ route('admin.muslim-fortress-categories.index') }}"
+           class="nav-link {{ request()->is('admin/muslim-fortress-categories') || request()->is('admin/muslim-fortress-categories/*') ? 'active' : '' }}">
+            <i class="fa-fw nav-icon fas fa-tags">
+
+            </i>
+            <p>
+                {{ trans('app.muslim_fortress_categories') }}
+            </p>
+        </a>
+    </li>
+    @endcan
+
 
 
             @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))

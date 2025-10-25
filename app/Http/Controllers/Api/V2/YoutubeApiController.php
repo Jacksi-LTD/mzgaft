@@ -25,7 +25,7 @@ class YoutubeApiController extends Controller
 
     public function index()
     {
-        $videos=  YoutubeVideo::query()->where('approved',true)
+        $videos = YoutubeVideo::query()->where('approved', true)
             ->when(request()->filled('category_id'), function ($query) {
                 return $query->where('category_id', request('category_id'));
             })
@@ -41,14 +41,9 @@ class YoutubeApiController extends Controller
     }
 
 
-    public function categories(){
-
-      $cats=Category::where('type','youtubevideos')->get();
+    public function categories()
+    {
+        $cats = Category::where('type', 'youtubevideos')->get();
         return JsonResponse::success(CategoryResource::collection($cats));
     }
-
-
-
-
-
 }

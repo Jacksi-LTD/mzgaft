@@ -9,12 +9,12 @@ class AudioBooksResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'    => $this->id ,
-            'title'  => $this->title,
-            'content'  => $this->content,
-            'category'  =>  @$this->category->name,
-            'image'  =>  @$this->image,
-            'files'  =>  AudioFilesResource::collection(@$this->audio),
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'category' => @$this->category->name,
+            'cover_image' => @$this->image?->getUrl(),
+            'files' => AudioFilesResource::collection(@$this->audio),
         ];
     }
 }
